@@ -25,7 +25,7 @@ import pandas as pd
 import json
 
 
-PDF_STORAGE_PATH = "./pdfs_active"
+PDF_STORAGE_PATH = "./pdfs_economicos"
 
 
 def process_pdfs(pdf_storage_path: str):
@@ -44,8 +44,7 @@ def process_pdfs(pdf_storage_path: str):
             loader = PyMuPDFLoader(str(pdf_path))
             documents = loader.load()
             chunks_md = split_text_markdown(documents)
-            chunks_md = label_chunks_ull(chunks_md)
-            # chunks_md = split_text_recursive(documents)
+            # chunks_md = label_chunks_ull(chunks_md)
             docs += chunks_md
 
         collection = chroma_client.create_collection("my_collection", embedding_function=mi_funcion)
@@ -91,9 +90,12 @@ def split_text_markdown(documents):
         all_text += documents[page_num].page_content
 
     headers_to_split_on = [
-        ("#", "Título"),
-        ("##", "Capítulo"),
-        ("###", "Artículo")
+        ("#", "Cabecera 1"),
+        ("##", "Cabecera 2"),
+        ("###", "Cabecera 3"),
+        ("####", "Cabecera 4"),
+        ("#####", "Cabecera 5"),
+        ("######", "Cabecera 6"),
     ]
 
     text_splitter_md = MarkdownHeaderTextSplitter(
@@ -104,10 +106,10 @@ def split_text_markdown(documents):
     chunks_md = text_splitter_md.split_text(all_text)
     export_chunks('outputs/chunks_md.txt', chunks_md)
 
-    chunks_char = split_text_char(chunks_md)
-    export_chunks('outputs/chunks_char.txt', chunks_char)
+    # chunks_char = split_text_char(chunks_md)
+    # export_chunks('outputs/chunks_char.txt', chunks_char)
 
-    chunks_recursive = split_text_recursive(chunks_char)
+    chunks_recursive = split_text_recursive(chunks_md)
 
     claves_a_anadir = ['source', 'page']
     for i in range(len(chunks_recursive)):
@@ -235,7 +237,7 @@ def label_chunks_ull(chunks):
 
 
 def export_chunks(filename, chunks):
-    with open(filename, 'w', encoding='utf-8') as f:
+    with open(filename, 'a', encoding='utf-8') as f:
         for chunk in chunks:
             f.writelines(str(chunk.page_content))
             f.write("\n")
