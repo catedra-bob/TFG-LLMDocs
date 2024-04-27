@@ -17,48 +17,15 @@ from langchain.schema import Document
 from langchain.schema.runnable import Runnable, RunnablePassthrough, RunnableConfig
 from langchain.callbacks.base import BaseCallbackHandler
 from autolabel import LabelingAgent, AutolabelDataset
-from chromadb import Documents, EmbeddingFunction, Embeddings
+from my_embedding_function import MyEmbeddingFunction
 
 import chromadb
 import chainlit as cl
 import pandas as pd
 import json
 
-ai_client = OpenAI(base_url="http://openai.ull.es:8080/v1", api_key="lm-studio")
 
-PDF_STORAGE_PATH = "./pdfs"
-
-
-def get_embedding(text, model="CompendiumLabs/bge-large-en-v1.5-gguf"):
-   global ai_client
-   text = str(text).replace("\n", " ")
-   emb = ai_client.embeddings.create(input = [text], model=model)
-   emb = emb.data[0].embedding
-   return emb
-
-
-class MyEmbeddingFunction(EmbeddingFunction):
-    def __call__(self, input: Documents) -> Embeddings:
-        # embed the documents somehow
-        embed = []
-        for doc in input:
-            b = [float(x) for x in get_embedding(doc)]
-            embed.append(b)
-        return embed
-    
-    def embed_documents(self, input: Documents) -> Embeddings:
-        # embed the documents somehow
-        embed = []
-        for doc in input:
-            b = [float(x) for x in get_embedding(doc)]
-            embed.append(b)
-        return embed
-    
-    def embed_query(self, input: str) -> Embeddings:
-        return get_embedding(input)
-
-
-mi_funcion = MyEmbeddingFunction()
+PDF_STORAGE_PATH = "./pdfs_active"
 
 
 def process_pdfs(pdf_storage_path: str):
@@ -68,6 +35,7 @@ def process_pdfs(pdf_storage_path: str):
         # data = json.load(json_data)
 
     chroma_client = chromadb.PersistentClient(path="./chroma")
+    mi_funcion = MyEmbeddingFunction()
     pdf_directory = Path(pdf_storage_path)
     docs = []  # type: List[Document]
 
