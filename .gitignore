@@ -1,0 +1,6 @@
+unused
+*venv
+__pycache__
+chroma
+outputs
+*.xlsx
