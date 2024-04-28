@@ -26,9 +26,10 @@ import json
 
 
 PDF_STORAGE_PATH = "./pdfs_economicos"
+COLLECTION_NAME = "coleccion_economicos"
 
 
-def process_pdfs(pdf_storage_path: str):
+def process_pdfs(pdf_storage_path: str, collection_name):
     # DOCCANO
     # data = {}
     # with open('admin.jsonl') as json_data:
@@ -37,9 +38,13 @@ def process_pdfs(pdf_storage_path: str):
     chroma_client = chromadb.PersistentClient(path="./chroma")
     mi_funcion = MyEmbeddingFunction()
     pdf_directory = Path(pdf_storage_path)
-    docs = []  # type: List[Document]
+    docs = []  # List[Document]
 
-    if (chroma_client.count_collections() == 0):
+    all_collections = []
+    for collection in chroma_client.list_collections():
+        all_collections.append(collection.name)
+
+    if (collection_name not in all_collections):
         for pdf_path in pdf_directory.glob("*.pdf"):
             loader = PyMuPDFLoader(str(pdf_path))
             documents = loader.load()
@@ -47,7 +52,7 @@ def process_pdfs(pdf_storage_path: str):
             # chunks_md = label_chunks_ull(chunks_md)
             docs += chunks_md
 
-        collection = chroma_client.create_collection("my_collection", embedding_function=mi_funcion)
+        collection = chroma_client.create_collection(collection_name, embedding_function=mi_funcion)
 
         document_id = 0
         for chunk in docs:
@@ -60,11 +65,11 @@ def process_pdfs(pdf_storage_path: str):
 
     doc_search = Chroma(
         client=chroma_client,
-        collection_name="my_collection",
+        collection_name=collection_name,
         embedding_function=mi_funcion,
     )
 
-    namespace = "chromadb/my_documents"
+    namespace = "chromadb/" + collection_name
     record_manager = SQLRecordManager(
         namespace, db_url="sqlite:///record_manager_cache.sql"
     )
@@ -245,7 +250,7 @@ def export_chunks(filename, chunks):
             f.write("\n\n")
 
 
-doc_search = process_pdfs(PDF_STORAGE_PATH)
+doc_search = process_pdfs(PDF_STORAGE_PATH, COLLECTION_NAME)
 model = ChatOpenAI(base_url="http://openai.ull.es:8080/v1", api_key="lm-studio", streaming=True)
 
 
