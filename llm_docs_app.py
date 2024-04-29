@@ -23,14 +23,15 @@ import chromadb
 import chainlit as cl
 import pandas as pd
 import json
+import re
 
 
-PDF_STORAGE_PATH = "./pdfs_economicos"
-COLLECTION_NAME = "coleccion_economicos"
+PDF_STORAGE_PATH = "./pdfs_economicos" # "./pdfs_economicos"
+COLLECTION_NAME = "coleccion_economicos" # "coleccion_anaga"
 
 
 def process_pdfs(pdf_storage_path: str, collection_name):
-    # DOCCANO
+    # ETIQUETADO DOCCANO
     # data = {}
     # with open('admin.jsonl') as json_data:
         # data = json.load(json_data)
@@ -48,8 +49,13 @@ def process_pdfs(pdf_storage_path: str, collection_name):
         for pdf_path in pdf_directory.glob("*.pdf"):
             loader = PyMuPDFLoader(str(pdf_path))
             documents = loader.load()
-            chunks_md = split_text_markdown(documents)
-            # chunks_md = label_chunks_ull(chunks_md)
+
+            if (collection_name == "coleccion_economicos"):
+                chunks_md = split_text_markdown(documents)
+                if (str(pdf_path) == "pdfs_economicos\Bases Ejecución 2024 (1).pdf"): chunks_md = label_chunks_ull(chunks_md)
+            else:
+                chunks_md = split_text_recursive(documents)
+
             docs += chunks_md
 
         collection = chroma_client.create_collection(collection_name, embedding_function=mi_funcion)
@@ -119,8 +125,10 @@ def split_text_markdown(documents):
     claves_a_anadir = ['source', 'page']
     for i in range(len(chunks_recursive)):
         for j in range(len(documents)):
-            if (chunks_recursive[i].page_content.splitlines()[0] in documents[j].page_content):
-                chunks_recursive[i].metadata.update({clave: documents[j].metadata[clave] for clave in claves_a_anadir if clave in documents[j].metadata})
+            chunks_recursive[i].metadata.update({'source': documents[j].metadata['source']})
+
+            if (chunks_recursive[i].page_content in documents[j].page_content):
+                chunks_recursive[i].metadata.update({'page': documents[j].metadata['page']})
 
     export_chunks('outputs/chunks_recursive.txt', chunks_recursive)
 
@@ -210,29 +218,32 @@ def label_chunks_autolabel(chunks):
 
 # Etiqueta los chunks
 def label_chunks_ull(chunks):
-    model = OpenAI(base_url="http://openai.ull.es:8080/v1", api_key="lm-studio")
+    # model = OpenAI(base_url="http://openai.ull.es:8080/v1", api_key="lm-studio")
+    model = OpenAI(api_key="sk-proj-S6N1LP3ePLPBDcRcU77uT3BlbkFJMsihwy3eQsyueEEIVKiX")
 
     labels = [
-        "Normativa Aplicable",
-        "Normativa Nacional",
-        "Normativa Universitaria",
-        "Normativa Autonómica",
-        "Estructura Presupuestaria",
-        "Estructura del Documento"
+        "Introducción: Una sección introductoria que proporciona una visión general del propósito y alcance de las bases de ejecución presupuestaria.\n",
+        "Marco Legal: Una descripción de las leyes, reglamentos y normativas que rigen la gestión presupuestaria de la entidad.\n",
+        "Objetivos: Una declaración de los objetivos y metas que se buscan alcanzar mediante la gestión y ejecución del presupuesto.\n",
+        "Procedimientos de Elaboración del Presupuesto: Detalles sobre el proceso de elaboración del presupuesto, incluyendo la participación de diferentes áreas o departamentos, los plazos involucrados y los criterios utilizados para asignar recursos.\n",
+        "Normas de Ejecución: Reglas y procedimientos específicos para la ejecución del presupuesto, como la autorización de gastos, la contratación pública, el control de pagos, entre otros.\n",
+        "Control y Seguimiento: Procedimientos para el control y seguimiento del presupuesto, incluyendo la elaboración de informes periódicos, auditorías internas o externas, y mecanismos de rendición de cuentas.\n",
+        "Modificaciones Presupuestarias: Procedimientos para realizar modificaciones al presupuesto inicial, como transferencias de créditos o incorporaciones de remanentes.\n",
+        "Disposiciones Adicionales: Otras disposiciones relevantes para la gestión y ejecución del presupuesto, como la gestión de deuda, el manejo de contingencias, entre otros.\n"
     ]
 
     i = 0
     for chunk in chunks:
         completion = model.chat.completions.create(
-        model="TheBloke/Mistral-7B-Instruct-v0.2-GGUF",
-        messages=[
-            {"role": "system", "content": "Responde sólo con las etiquetas en una lista separadas por comas."},
-            {"role": "user", "content": "Eres un experto en entendiendo la normativa de la Universidad de La Laguna.\nTu trabajo es etiquetar correctamente el siguiente ejemplo con una o más de las siguientes etiquetas:\n" + str(labels) + "\nEjemplo:\n" + chunks[i].page_content}
-        ],
-        temperature=0.7,
+            model="gpt-4",
+            messages=[
+                {"role": "system", "content": "Responde SÓLO con el nombre de la etiqueta, sin añadir la descripción"},
+                {"role": "user", "content": "Eres un experto en entendiendo la normativa de la Universidad de La Laguna.\nTu trabajo es etiquetar correctamente el siguiente extracto de la normativa con una de las siguientes etiquetas:\n" + str(labels) + "\nExtracto:\n" + chunks[i].page_content}
+            ],
+            temperature=0.7
         )
 
-        chunk.metadata['Etiqueta'] = completion.choices[0].message.content
+        chunk.metadata['Seccion'] = completion.choices[0].message.content
 
         i = i + 1
 
@@ -271,17 +282,16 @@ async def on_chat_start():
 
         for d in docs:
             results_metadatas_dict = d.metadata
-            for key, value in reversed(results_metadatas_dict.items()):
-                if ((key != "page") and (key != "source") and (key != "Etiqueta")):
+            for key, value in results_metadatas_dict.items():
+                regexp = re.compile(r'(Cabecera \d)|(Punto)')
+                if regexp.search(key):
                     if (key == "Punto"):
                         results += "Punto: " + value + "\n"
                     else:
-                        results += value + "\n"
+                        results += str(value) + "\n"
 
             results += d.page_content
             results += "\n\n---\n\n"
-
-        print(results)
 
         return results
 
