@@ -26,16 +26,11 @@ import json
 import re
 
 
-PDF_STORAGE_PATH = "./pdfs_economicos" # "./pdfs_economicos"
+PDF_STORAGE_PATH = "./pdfs_economicos" # "./pdfs_anaga"
 COLLECTION_NAME = "coleccion_economicos" # "coleccion_anaga"
 
 
 def process_pdfs(pdf_storage_path: str, collection_name):
-    # ETIQUETADO DOCCANO
-    # data = {}
-    # with open('admin.jsonl') as json_data:
-        # data = json.load(json_data)
-
     chroma_client = chromadb.PersistentClient(path="./chroma")
     mi_funcion = MyEmbeddingFunction()
     pdf_directory = Path(pdf_storage_path)
@@ -52,7 +47,7 @@ def process_pdfs(pdf_storage_path: str, collection_name):
 
             if (collection_name == "coleccion_economicos"):
                 chunks_md = split_text_markdown(documents)
-                if (str(pdf_path) == "pdfs_economicos\Bases Ejecución 2024 (1).pdf"): chunks_md = label_chunks_ull(chunks_md)
+                # if (str(pdf_path) == "pdfs_economicos\Bases Ejecución 2024 (1).pdf"): chunks_md = label_chunks_ull(chunks_md)
             else:
                 chunks_md = split_text_recursive(documents)
 
@@ -94,7 +89,7 @@ def process_pdfs(pdf_storage_path: str, collection_name):
     return doc_search
 
 
-# Divide los documentos según las etiquetas especificadas
+# Divide los documentos según las etiquetas markdown que contiene
 def split_text_markdown(documents):
     all_text = ""
     for page_num in range(len(documents)):
@@ -124,18 +119,25 @@ def split_text_markdown(documents):
 
     claves_a_anadir = ['source', 'page']
     for i in range(len(chunks_recursive)):
-        for j in range(len(documents)):
-            chunks_recursive[i].metadata.update({'source': documents[j].metadata['source']})
+        chunks_recursive[i].metadata.update({'source': documents[0].metadata['source']})
+        flag = 0
 
+        for j in range(len(documents)):
             if (chunks_recursive[i].page_content in documents[j].page_content):
                 chunks_recursive[i].metadata.update({'page': documents[j].metadata['page']})
+                flag = 1
+
+        if (flag == 0):
+            for j in range(len(documents)):
+                if (chunks_recursive[i].page_content.splitlines()[0] in documents[j].page_content):
+                    chunks_recursive[i].metadata.update({'page': documents[j].metadata['page']})
 
     export_chunks('outputs/chunks_recursive.txt', chunks_recursive)
 
     return chunks_recursive
 
 
-# Divide los documentos según los puntos que pueden haber en un artículo (1., 2., ...)
+# Divide los documentos según los puntos que pueden haber en un apartado (1., 2., ...)
 def split_text_char(documents):
     text_splitter = CharacterTextSplitter(
         separator="(\n\d+\.\s+|^\d+\.\s+)",
@@ -262,7 +264,7 @@ def export_chunks(filename, chunks):
 
 
 doc_search = process_pdfs(PDF_STORAGE_PATH, COLLECTION_NAME)
-model = ChatOpenAI(base_url="http://openai.ull.es:8080/v1", api_key="lm-studio", streaming=True)
+model = ChatOpenAI(api_key="sk-proj-S6N1LP3ePLPBDcRcU77uT3BlbkFJMsihwy3eQsyueEEIVKiX", streaming=True)
 
 
 @cl.on_chat_start
