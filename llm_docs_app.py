@@ -47,7 +47,7 @@ def process_pdfs(pdf_storage_path: str, collection_name):
             documents = loader.load()
 
             if (collection_name == "coleccion_economicos"):
-                chunks_md = split_text_markdown(documents)
+                chunks_md = split_text_markdown(documents, False)
                 # chunks_md = label_chunks_ull(chunks_md)
             else:
                 chunks_md = split_text_recursive(documents)
@@ -91,7 +91,7 @@ def process_pdfs(pdf_storage_path: str, collection_name):
 
 
 # Divide los documentos según las etiquetas markdown que contiene
-def split_text_markdown(documents):
+def split_text_markdown(documents, semantic):
     all_text = ""
     for page_num in range(len(documents)):
         all_text += documents[page_num].page_content
@@ -116,20 +116,24 @@ def split_text_markdown(documents):
     # chunks_char = split_text_char(chunks_md)
     # export_chunks('outputs/chunks_char.txt', chunks_char)
 
-    chunks_recursive = split_text_recursive(chunks_md)
-    chunks_recursive = add_source(chunks_recursive, documents)
+    chunks = []
 
-    export_chunks('outputs/chunks_recursive.txt', chunks_recursive)
+    if (semantic == True):
+        chunks = split_text_semantic(chunks_md)
+        chunks = add_source(chunks, documents)
+        export_chunks('outputs/chunks_semantic.txt', chunks)
+    else:
+        chunks = split_text_recursive(chunks_md)
+        chunks = add_source(chunks, documents)
+        export_chunks('outputs/chunks_recursive.txt', chunks)
 
-    return chunks_recursive
+    return chunks
 
 
 # Divide los documentos según el significado semántico de las frases
 def split_text_semantic(documents):
     text_splitter = SemanticChunker(MyEmbeddingFunction(), breakpoint_threshold_type="percentile")
-
     chunks_semantic = text_splitter.split_documents(documents)
-    export_chunks('outputs/chunks_semantic.txt', chunks_semantic)
 
     return chunks_semantic
 
