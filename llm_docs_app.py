@@ -18,6 +18,7 @@ from langchain.schema.runnable import Runnable, RunnablePassthrough, RunnableCon
 from langchain.callbacks.base import BaseCallbackHandler
 from autolabel import LabelingAgent, AutolabelDataset
 from my_embedding_function import MyEmbeddingFunction
+from langchain_experimental.text_splitter import SemanticChunker
 
 import chromadb
 import chainlit as cl
@@ -47,7 +48,7 @@ def process_pdfs(pdf_storage_path: str, collection_name):
 
             if (collection_name == "coleccion_economicos"):
                 chunks_md = split_text_markdown(documents)
-                # if (str(pdf_path) == "pdfs_economicos\Bases Ejecución 2024 (1).pdf"): chunks_md = label_chunks_ull(chunks_md)
+                # chunks_md = label_chunks_ull(chunks_md)
             else:
                 chunks_md = split_text_recursive(documents)
 
@@ -135,6 +136,16 @@ def split_text_markdown(documents):
     export_chunks('outputs/chunks_recursive.txt', chunks_recursive)
 
     return chunks_recursive
+
+
+# Divide los documentos según el significado semántico de las frases
+def split_text_semantic(documents):
+    text_splitter = SemanticChunker(MyEmbeddingFunction(), breakpoint_threshold_type="percentile")
+
+    chunks_semantic = text_splitter.split_documents(documents)
+    export_chunks('outputs/chunks_semantic.txt', chunks_semantic)
+
+    return chunks_semantic
 
 
 # Divide los documentos según los puntos que pueden haber en un apartado (1., 2., ...)
@@ -267,6 +278,7 @@ doc_search = process_pdfs(PDF_STORAGE_PATH, COLLECTION_NAME)
 model = ChatOpenAI(api_key="sk-proj-S6N1LP3ePLPBDcRcU77uT3BlbkFJMsihwy3eQsyueEEIVKiX", streaming=True)
 
 
+# RAG pipeline
 @cl.on_chat_start
 async def on_chat_start():
     template = """Responde en español a la pregunta basándote sólo en el siguiente contexto:
