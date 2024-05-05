@@ -117,21 +117,7 @@ def split_text_markdown(documents):
     # export_chunks('outputs/chunks_char.txt', chunks_char)
 
     chunks_recursive = split_text_recursive(chunks_md)
-
-    claves_a_anadir = ['source', 'page']
-    for i in range(len(chunks_recursive)):
-        chunks_recursive[i].metadata.update({'source': documents[0].metadata['source']})
-        flag = 0
-
-        for j in range(len(documents)):
-            if (chunks_recursive[i].page_content in documents[j].page_content):
-                chunks_recursive[i].metadata.update({'page': documents[j].metadata['page']})
-                flag = 1
-
-        if (flag == 0):
-            for j in range(len(documents)):
-                if (chunks_recursive[i].page_content.splitlines()[0] in documents[j].page_content):
-                    chunks_recursive[i].metadata.update({'page': documents[j].metadata['page']})
+    chunks_recursive = add_source(chunks_recursive, documents)
 
     export_chunks('outputs/chunks_recursive.txt', chunks_recursive)
 
@@ -262,6 +248,25 @@ def label_chunks_ull(chunks):
 
     export_chunks('outputs/labeled_chunks_md.txt', chunks)
 
+    return chunks
+
+
+def add_source(chunks, documents):
+    claves_a_anadir = ['source', 'page']
+    for i in range(len(chunks)):
+        chunks[i].metadata.update({'source': documents[0].metadata['source']})
+        flag = 0
+
+        for j in range(len(documents)):
+            if (chunks[i].page_content in documents[j].page_content):
+                chunks[i].metadata.update({'page': documents[j].metadata['page']})
+                flag = 1
+
+        if (flag == 0):
+            for j in range(len(documents)):
+                if (chunks[i].page_content.splitlines()[0] in documents[j].page_content):
+                    chunks[i].metadata.update({'page': documents[j].metadata['page']})
+    
     return chunks
 
 
