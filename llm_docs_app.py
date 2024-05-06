@@ -113,9 +113,6 @@ def split_text_markdown(documents, semantic):
     chunks_md = text_splitter_md.split_text(all_text)
     export_chunks('outputs/chunks_md.txt', chunks_md)
 
-    # chunks_char = split_text_char(chunks_md)
-    # export_chunks('outputs/chunks_char.txt', chunks_char)
-
     chunks = []
 
     if (semantic == True):
@@ -123,7 +120,13 @@ def split_text_markdown(documents, semantic):
         chunks = add_source(chunks, documents)
         export_chunks('outputs/chunks_semantic.txt', chunks)
     else:
-        chunks = split_text_recursive(chunks_md)
+        chunks = chunks_md
+
+        if (documents[0].metadata["source"] == "pdfs_economicos\Bases Ejecución 2024 (1).pdf"):
+            chunks = split_text_char(chunks_md)
+            export_chunks('outputs/chunks_char.txt', chunks)
+
+        chunks = split_text_recursive(chunks)
         chunks = add_source(chunks, documents)
         export_chunks('outputs/chunks_recursive.txt', chunks)
 
@@ -290,13 +293,13 @@ model = ChatOpenAI(api_key="sk-proj-S6N1LP3ePLPBDcRcU77uT3BlbkFJMsihwy3eQsyueEEI
 # RAG pipeline
 @cl.on_chat_start
 async def on_chat_start():
-    template = """Responde en español a la pregunta basándote sólo en el siguiente contexto:
+    template = """Responde a la pregunta basándote sólo en el siguiente contexto:
 
     {context}
 
     ---
 
-    Responde en español a la pregunta basándote en el contexto de arriba: {question}
+    Responde a la pregunta basándote en el contexto de arriba: {question}
     """
     prompt = ChatPromptTemplate.from_template(template)
  
