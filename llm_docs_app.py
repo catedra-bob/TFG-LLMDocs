@@ -321,7 +321,10 @@ async def on_chat_start():
 
         return results
 
-    retriever = doc_search.as_retriever()
+    retriever = doc_search.as_retriever(
+                    search_type="mmr",
+                    search_kwargs={'k': 3},
+                )
 
     runnable = (
         {"context": retriever | format_docs, "question": RunnablePassthrough()}
