@@ -47,7 +47,7 @@ def process_pdfs(pdf_storage_path: str, collection_name):
             documents = loader.load()
 
             if (collection_name == "coleccion_economicos"):
-                chunks_md = split_text_markdown(documents, False)
+                chunks_md = split_text_markdown(documents, semantic=True)
                 # chunks_md = label_chunks_ull(chunks_md)
             else:
                 chunks_md = split_text_recursive(documents)
@@ -323,7 +323,7 @@ async def on_chat_start():
 
     retriever = doc_search.as_retriever(
                     search_type="mmr",
-                    search_kwargs={'k': 3},
+                    search_kwargs={'k': 3}
                 )
 
     runnable = (
