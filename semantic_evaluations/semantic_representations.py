@@ -6,13 +6,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 import re
 
-def represent_chunks(text_splitter, documents):
-    all_text = ""
-    for page_num in range(len(documents)):
-        all_text += documents[page_num].page_content
-
+def represent_chunks(text_splitter, text):
     # Splitting the text on '.', '?', and '!'
-    single_sentences_list = re.split(r'(?<=[.?!])\s+', all_text)
+    single_sentences_list = re.split(r'(?<=[.?!])\s+', text)
 
     distances, sentences = text_splitter._calculate_sentence_distances(single_sentences_list)
 

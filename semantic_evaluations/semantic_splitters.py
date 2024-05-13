@@ -24,11 +24,10 @@ def split_text_semantic_langchain(text):
     return chunks_semantic
 
 
-# Método Langchain semantic chunker
-def split_documents_semantic_langchain(documents):
+def split_text_semantic_langchain_graph(text):
     text_splitter = SemanticChunker(MyEmbeddingFunction(), breakpoint_threshold_type="percentile", breakpoint_threshold_amount=95)
-    chunks_semantic = text_splitter.split_documents(documents)
-    represent_chunks(text_splitter, documents)
+    chunks_semantic = text_splitter.split_text(text)
+    represent_chunks(text_splitter, text)
 
     return chunks_semantic
 
