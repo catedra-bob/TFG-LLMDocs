@@ -9,6 +9,7 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_openai import ChatOpenAI
 from langchain_core.output_parsers import StrOutputParser
 from app_chroma.my_embedding_function import MyEmbeddingFunction
+from app_chroma.semantic_evaluations.semantic_representations import represent_chunks
 from langchain_experimental.text_splitter import SemanticChunker
 import re
 import tiktoken 
@@ -19,6 +20,15 @@ load_dotenv()
 def split_text_semantic_langchain(text):
     text_splitter = SemanticChunker(MyEmbeddingFunction(), breakpoint_threshold_type="percentile", breakpoint_threshold_amount=0.95)
     chunks_semantic = text_splitter.split_text(text)
+
+    return chunks_semantic
+
+
+# Método Langchain semantic chunker
+def split_documents_semantic_langchain(documents):
+    text_splitter = SemanticChunker(MyEmbeddingFunction(), breakpoint_threshold_type="percentile", breakpoint_threshold_amount=95)
+    chunks_semantic = text_splitter.split_documents(documents)
+    represent_chunks(text_splitter, documents)
 
     return chunks_semantic
 
