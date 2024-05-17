@@ -1,97 +1,639 @@
-EXPOSICIÓN DE MOTIVOS
-La elaboración del presupuesto de la Universidad de La Laguna se ha llevado a cabo a
-partir de los Criterios Básicos de Presupuestación para el ejercicio 2024, y cuya competencia
-de aprobación corresponde al Consejo de Gobierno, teniendo en cuenta, entre otras, la
-siguiente normativa:
--
-Ley 47/2003, de 26 de noviembre, General Presupuestaria. -
-Ley 11/2006, de 11 de diciembre, de la Hacienda Pública Canaria, en cuanto al
-régimen presupuestario, económico financiero, de contabilidad y control, de
-conformidad con lo señalado en su disposición adicional octava.
+TÍTULO II.- DE LA APROBACIÓN DE LOS PRESUPUESTOS Y SUS MODIFICACIONES
+CAPÍTULO I: APROBACIÓN Y CRÉDITOS INICIALES
+Artículo 5.
 ---
--
-Ley Orgánica 2/2012, de 27 de abril, de Estabilidad Presupuestaria y
-Sostenibilidad Financiera, así como resto de normas que la desarrollan. -
-Ley Orgánica 2/2023, de 22 de marzo, del Sistema Universitario. El contenido del presente presupuesto incorpora, entre otros, los siguientes apartados:
-1. Las Bases de Ejecución del presupuesto, que constituyen la regulación específica
-en la Universidad de La Laguna para el desarrollo de la actividad y ejecución
-presupuestaria a lo largo del ejercicio. 2. El Estado de Ingresos, que en aplicación del contenido del artículo 57 de la Ley
-Orgánica 2/2023, de 22 de marzo, del Sistema Universitario, recoge entre otros, los
-siguientes:
-a) Las transferencias para gastos corrientes y de capital fijadas, anualmente, por las
-Comunidades Autónomas dentro de un marco presupuestario a medio plazo. b) Los ingresos por los precios públicos por servicios académicos y demás derechos
-que legalmente se establezcan. En el caso de estudios conducentes a la obtención
-de títulos universitarios de carácter oficial, los precios públicos y derechos serán
-fijados por la Comunidad Autónoma o Administración correspondiente, dentro de un
-marco general de contención o reducción progresiva de los precios públicos. Asimismo, se consignarán las compensaciones correspondientes a los importes
-derivados de las exenciones y reducciones que legalmente se dispongan en materia
-de precios públicos y demás derechos. c) Los ingresos por los precios de las enseñanzas propias, la formación a lo largo de
-la vida y los referentes a las demás actividades autorizadas a las universidades, que
-deberán ser aprobados junto con los presupuestos anuales en los que se deban
-aplicar. d) Los ingresos procedentes de transferencias y subvenciones de organizaciones
-internacionales o supranacionales, de las distintas Administraciones Públicas y de
-otras entidades del sector público. e) Los ingresos procedentes de transferencias de entidades privadas, así como de
-herencias, legados o donaciones. f) Los ingresos derivados de actividades de mecenazgo, previstas en la Ley 49/2002,
-de 23 de diciembre, de régimen fiscal de las entidades sin fines lucrativos y de los
-incentivos
-fiscales
-al
-mecenazgo,
-incluidos
+De la aprobación de los estados de Gastos e Ingresos
+1. El Presupuesto de la Universidad de La Laguna para el ejercicio 2024 es público,
+único y equilibrado y comprende la totalidad de las obligaciones que, como máximo, pueden ser
+reconocidas y los derechos que se prevé liquidar durante el ejercicio. 2.
+---
+La Gerencia elaborará el anteproyecto de presupuesto, que deberá ser presentado
+al Consejo de Gobierno para su aprobación. El proyecto de presupuesto resultante será
+elevado al Consejo Social para su aprobación antes del inicio del ejercicio presupuestario. Si no
+fuera posible, deberá ser necesariamente presentado durante el primer trimestre del mismo.
+---
+3. El presente documento se ha elaborado dentro del marco normativo constituido por
+la Ley Orgánica 2/2012, de 27 de abril, de Estabilidad Presupuestaria y Sostenibilidad
+Financiera, debiéndose acomodar a los criterios de disciplina presupuestaria que se dicten a
+nivel estatal y siguiendo las directrices que acuerde el Gobierno de Canarias en cumplimiento
+de lo establecido en el artículo 38 de la Ley 11/2006, de 11 de diciembre, de la Hacienda
+Pública Canaria. Artículo 6.
+---
+Estado de Gastos e Ingresos
+1. En el Estado de Gastos se conceden créditos para atender el cumplimiento de
+obligaciones por un importe de 173.771.500€ distribuidos en una clasificación económica a
+nivel de capítulo. La financiación de los créditos que figuran en el Estado de Gastos se llevará a cabo, con
+los derechos económicos que se prevén liquidar en el ejercicio 2024, y de acuerdo
+con lo
+dispuesto en los art. 57.4 de la LOSU.
+---
+Artículo 7. De los créditos financiados con aportaciones contenidas en los presupuestos
+de la Comunidad Autónoma de Canarias
+1. Los créditos consignados en el programa 322F «Financiación de las Universidades
+Canarias» como aportaciones dinerarias destinadas a financiar globalmente su actividad, se
+someterán a las reglas contenidas en la Ley de Presupuestos para la Comunidad Autónoma de
+Canarias para 2024, y la normativa específica que resulte de aplicación. 2.
+---
+Los créditos consignados en las líneas de actuación 174G1651 «Asignación
+Consejo Social Universidad de La Laguna» y 174G1655 «Gastos funcionamiento Universidad
+de La Laguna» se librarán de forma fraccionada en doceavas partes al comienzo de cada mes
+natural. La justificación de estos fondos se efectuará con la presentación de la liquidación del
+presupuesto de cada universidad, que será remitida a la Dirección General de Universidades e
+Investigación antes del 30 de junio del año inmediatamente posterior. 3. Los créditos consignados en las líneas de actuación 174G1654 «Complementos
+calidad personal docente e investigador Universidad de La Laguna» destinados a cofinanciar
+los complementos retributivos del profesorado de la Universidad de La Laguna, de conformidad
+con lo previsto en los artículos 76.3 y 87.2 de la Ley Orgánica 2/2023, de 22 de marzo, del
+Sistema Universitario, y en el capítulo II del Decreto 140/2002, de 7 de octubre, sobre régimen
+del personal docente e investigador contratado y sobre complementos retributivos del
+profesorado de las universidades canarias, serán librados por doceavas partes al comienzo de
+cada mes natural. La justificación de estos fondos se efectuará con la presentación de la
+liquidación del presupuesto de la Universidad de La Laguna, que será remitida a la Dirección
+General de Universidades e Investigación antes del 30 de junio del año inmediatamente
+posterior.
+---
+4. La Universidad de La Laguna remitirá a la Consejería de Universidades, Ciencia e
+Innovación y Cultura, a través del Consejo Social, una relación del profesorado, tipos de
+complementos asignados y abonados a cada uno y el importe de los mismos, antes del 31 de
+marzo de 2024, a los efectos de liquidar los créditos librados en 2023, para la financiación de
+los complementos de calidad del personal docente e investigador. 5.
+---
+Los créditos que durante la ejecución del presupuesto se consignen en el
+programa 322F «Financiación de las universidades canarias», distintos de los indicados
+anteriormente, se librarán de conformidad con lo que se establezca en la orden de concesión
+de la aportación dineraria o subvención correspondiente. En caso de que no se aprobaran las modificaciones vía enmiendas presentadas a los
+presupuestos de la Comunidad Autónoma de Canarias, podrá efectuarse una retención de no
+disponibilidad por los créditos que fueran necesarios de cara a no superar ni los presupuestos
+definitivamente aprobados de la Comunidad Autónoma de Canarias para el ejercicio 2024 ni
+los límites establecidos en Ley Orgánica 2/2012, de 27 de abril, de Estabilidad Presupuestaria y
+Sostenibilidad Financiera. Artículo 8.
+---
+Clasificación de los créditos
+Los créditos incluidos en el Estado de Gastos se clasifican atendiendo a los criterios
+orgánico, funcional y económico. 1.
+---
+Criterio Orgánico.
+---
+Determina el gasto en función del centro de coste que lo realiza. En el ámbito global del
+presupuesto y a los efectos de vinculación de los créditos, los órganos que realizan el gasto
+son: Consejo Social, Sede Central, Servicios Centralizados, Vicerrectorados, Departamentos,
+Facultades y Escuelas, Institutos Universitarios, Colegios Mayores y Residencia Universitaria,
+Biblioteca Universitaria, Centro de Documentación Europea, Comité de Empresa, Junta de
+Personal Funcionario, Junta de Personal Docente e Investigador, Comité de Empresa del
+Personal Docente e Investigador Laboral. 2.
+---
+Criterio Funcional. Las acciones a llevar a cabo en el ejercicio 2024, en el contexto del Plan de Gobierno
+presentado por parte del Equipo de Gobierno de la Universidad de La Laguna se basan en la
+consecución
+de
 los
-derivados
+objetivos
+planteados
+en
+el
+documento
 de
-convenios
+Criterios
+Básicos
 de
-colaboración empresarial en actividades de interés general que hayan suscrito, a los
-efectos previstos en la citada ley. g) Los rendimientos procedentes de su patrimonio y de aquellas otras actividades
-económicas que desarrollen según lo previsto en esta ley orgánica y en sus propios
-Estatutos, incluyendo los ingresos procedentes de los contratos previstos en el
-artículo 60, así como los derivados de los contratos de patrocinio publicitario. h) Los remanentes de tesorería y cualquier otro ingreso. i)
-El
-producto
+Presupuestación. Dichos objetivos son los siguientes:
+Objetivos generales
+1.
+---
+Mejorar la calidad de la formación del alumnado de la Universidad de La Laguna: para
+el
+empleo,
+como
+ciudadanos
+activos,
+para
+su desarrollo personal y para el
+mantenimiento de una base de conocimiento amplia y avanzada.
+---
+2.
+---
+Trabajar conjuntamente con el Gobierno de Canarias en la consecución de un modelo
+estable y suficiente de financiación plurianual. 3.
+---
+Continuar promoviendo un adecuado mantenimiento y mejora de las infraestructuras e
+incrementar la sostenibilidad de las mismas, persistiendo para ello en la búsqueda de
+fuentes de financiación.
+---
+4.
+---
+Obtener financiación adicional que permita una adecuación de la plantilla docente y
+posibilite dar respuesta al reto de la LOSU, así como agilizar los procesos internos
+para su contratación y gestión.
+---
+5.
+---
+Continuar con el proceso de estabilización del personal de administración y servicios,
+dando un impulso para concluirlo lo antes posible y así conseguir varios objetivos:
+promocionar, dar estabilidad y cubrir las plazas vacantes. 6.
+---
+Agilizar trámites y procesos a través de un plan de modernización con el objetivo de
+lograr que sean más simples y la resolución de los mismos más rápida.
+---
+7. Planificar e implementar acciones de sostenibilidad en sus tres dimensiones: social,
+ambiental y económica.
+---
+8.
+---
+Potenciar el carácter internacional de la Universidad de La Laguna mediante los
+programas de movilidad comunitarios y extracomunitarios, así como los proyectos de
+Educación para el Desarrollo. Ampliar la presencia de la Universidad de La Laguna en
+la sociedad canaria, impulsando su imagen ante diferentes grupos de interés sociales,
+económicos
+y
+culturales. Fomentar
+la
+cooperación
+internacional
+con
+países
+desarrollados y con países en desarrollo cercanos cultural y geográficamente a
+nuestro entorno.
+---
+9.
+---
+Continuar con el impulso de la transformación digital en la gestión universitaria
+10. Consolidar la transparencia en la gestión universitaria.
+---
+11.
+---
+Mejorar las capacidades de gestión para la solicitud, seguimiento y justificación de
+proyectos y convenios de investigación nacionales e internacionales del PDI.
+---
+12.
+---
+Mejorar la experiencia del alumnado en su paso por la Universidad, así como preparar
+su transición a la vida laboral. Potenciar y promover la cultura y la extensión
+universitaria generadas en la Universidad de La Laguna para el beneficio y al alcance
+de toda la sociedad, optimizando su calidad, procurando una oferta amplia e idónea y
+mejorando su dotación.
+---
+Objetivos específicos
+1.
+---
+Elaboración de un Plan de Formación del PDI de tal forma que se potencie su
+formación integral como docente e investigador, se estimulen las actividades de
+innovación docente y se mejore la calidad de la docencia mediante la adquisición de
+habilidades, destrezas y competencias ampliando sus conocimientos en metodologías
+docentes. Este Plan contará con una especial atención al profesorado novel.
+---
+2.
+---
+Iniciar la elaboración de un nuevo Catálogo de Titulaciones Oficiales de la Universidad
+de La Laguna a partir del análisis de la situación actual y de las posibilidades que
+brinda el RD 822/2021, incluyendo nuevos títulos de grado y posgrado que den
+respuesta a las demandas del entorno que nuestra universidad no oferta, pero que
+tienen el potencial de ser demandados desde el mundo laboral. Agilizar los procesos
+de verificación y modificación de títulos oficiales.
+---
+Implementación del Sistema de
+Aseguración Interno de Calidad de nuestros centros. Crear un Centro de Formación
+Permanente que dé respuesta a una necesidad social cada vez más demandada a la
+Universidad: la formación basada en un aprendizaje continuo y el reciclaje de
+profesionales.
+---
+3.
+---
+Administrar el presupuesto asignado y captar fuentes de financiación adicionales para
+el desarrollo de proyectos y mantenimiento de infraestructuras. 4.
+---
+Simplificar los procesos de gestión del gasto de la Institución.
+---
+5.
+---
+Promover la generación de alianzas con otras entidades para el desarrollo de
+actividades que contribuyan al logro de los objetivos de desarrollo sostenible
+6. Impulsar un plan de choque para promover las convocatorias de personal docente e
+investigador que permita dar respuesta al reto de la LOSU, reivindicando la oportuna
+financiación al Gobierno de Canarias. 7.
+---
+Simplificar y agilizar los procesos de contratación docente e investigador, así como de
+personal de gestión, administración y servicios.
+---
+8. Culminar el proyecto de catalogación, visibilidad y protección del patrimonio artístico e
+histórico de la Universidad de La Laguna que implica el mantenimiento del catálogo de
+obras de arte. 9.
+---
+Avanzar en el programa de fomento de la cultura reforzando la presencia de
+actividades culturales en los campus y poniendo en marcha otras actividades de
+difusión.
+---
+10.
+---
+Llevar a cabo los procesos de estabilización planificados, tanto para el personal de
+administración y servicios laboral y funcionario.
+---
+11.
+---
+Aumentar la captación, recepción y gestión de fondos europeos para el desarrollo de
+políticas universitarias.
+---
+12. Consolidar la proyección social de la Universidad de La Laguna mediante iniciativas
+que vinculen la docencia y la investigación con la realidad medioambiental, cultural y
+social de Canarias y del mundo, observando los Objetivos de Desarrollo Sostenible. 13.
+---
+Favorecer la cooperación y el desarrollo de proyectos que aumenten el carácter
+internacional de la Universidad de La Laguna.
+---
+14.
+---
+Promover el aprendizaje de idiomas en la comunidad universitaria, así como el uso del
+español por extranjeros en el ámbito universitario.
+---
+15.
+---
+Incrementar la relevancia otorgada por la comunidad universitaria, y la sociedad
+canaria en general, a la internacionalización y cooperación al desarrollo mediante
+programas de Educación para el Desarrollo. 16.
+---
+Desarrollar nuevas titulaciones de carácter internacional.
+---
+17. Elaborar e implementar una Agenda 2030 de la Universidad de La Laguna alineada
+con un sistema de gestión ambiental y avanzar en un plan de acción para el clima y la
+energía sostenible
+18. Intensificar los procesos de robotización que agilizan de manera sustancial la gestión
+universitaria.
+---
+19.
+---
+Aumentar
+la
+transparencia
+y
+su
+valoración
+por
+parte
+del
+Comisionado
+de
+Transparencia de la Comunidad Autónoma Canaria.
+---
+20.
+---
+Desarrollar e implantar gradualmente el proyecto de Facultad del Programa de
+Estudios Universitarios de Personas Adultas y Mayores de la Universidad de La
+Laguna con acciones más allá de las aulas, el municipio y la isla. 21.
+---
+Mejorar la información, el acompañamiento, y los servicios de alojamiento y ayudas al
+alumnado.
+---
+22. Fomentar la participación del alumnado en la gobernanza universitaria a través de las
+delegaciones de estudiantes, los grupos claustrales y el Consejo de Estudiantes. 23.
+---
+Desarrollar programas y acciones de asesoramiento y acompañamiento para la
+inserción laboral y el emprendimiento.
+---
+24. Garantizar una amplia oferta cultural de la Universidad de La Laguna, mejorando su
+promoción y difusión, potenciando la dotación y visibilidad de sus premios culturales y
+consolidando el estatus de su paraninfo, lo que implica asegurar y potenciar una
+programación competitiva en los circuitos artísticos de máximo nivel, garantizando su
+conservación y racionalizando los costes de su funcionamiento, equipamiento y
+suministros según el interés universitario, formativo o estratégico de los espectáculos y
+actividades que se celebren en él. 25.
+---
+Mejorar
+el
+funcionamiento
 de
 las
-operaciones
-de crédito que concierten, debiendo ser
-compensado para la consecución del necesario equilibrio presupuestario de la
-Comunidad Autónoma o Administración que corresponda, la cual, en todo caso,
-deberá autorizar cualquier operación de endeudamiento. 3. El Estado de Gastos del presupuesto, que recoge los créditos según su naturaleza
-económica, y con arreglo a la clasificación por capítulos, artículos, conceptos y
-subconceptos que se detalla en la orden de elaboración de los Presupuestos. Se
-agrupan separando:
-●
-Operaciones corrientes: En los créditos para operaciones corrientes se distinguen
-los correspondientes al Capítulo I (gastos de personal), Capítulo II (gastos corrientes
-en bienes y servicios), Capítulo III (gastos financieros) y Capítulo IV (transferencias
-corrientes). ●
-Operaciones de capital: En los créditos para operaciones de capital se diferencian
-los correspondientes al Capítulo VI (inversiones reales) y al Capítulo VII las
-(transferencias de capital)
-●
-Operaciones
-financieras:
-En
-los
-créditos
-para
-operaciones
-financieras
-se
-distinguen los relativos al Capítulo VIII (activos financieros) y al Capítulo IX (pasivos
-financieros). ●
-Capítulo V, Fondo de Contingencia y otros imprevistos, para atender, cuando
-proceda, necesidades de carácter no discrecional y no previstas en el Presupuesto
-inicialmente
-aprobado,
-que
-puedan
-presentarse
-a
-lo largo del ejercicio, en
-cumplimiento del artículo 31 de la Ley de estabilidad presupuestaria y sostenibilidad
-financiera. 4.
+Aulas
+y
+Cátedras
+Culturales,
+Científicas
+y
+Tecnológicas de la Universidad de La Laguna, y de las Cátedras Institucionales y de
+Empresa, avanzando en la simplificación de los procedimientos administrativos; y
+regular el funcionamiento de los colectivos culturales, apoyando y reconociendo su
+actividad. Consolidar y optimizar las condiciones para el funcionamiento y la
+organización de la Biblioteca de la Universidad de La Laguna. Las actividades a llevar a cabo en el ejercicio 2024 se agrupan en unos programas del
+presupuesto, de acuerdo con el criterio funcional de la contabilidad.
 ---
-El Anexo de Personal, que recoge la relación del personal de todas las categorías
-de la Universidad especificando la cifra de costes. 
+3.
+---
+Criterio económico
+Según la estructura vigente, los gastos se clasifican según los Presupuestos Generales
+de la Comunidad Autónoma de Canarias, agrupando créditos por capítulos, separando las
+operaciones corrientes, las de capital y las financieras. Los capítulos se desglosan en artículos y estos a su vez en conceptos y subconceptos.
+---
+Existe una clasificación económica del gasto por capítulos. Las previsiones recogidas en el Estado de ingresos del presupuesto de la Universidad
+de La Laguna se estructuran siguiendo las clasificaciones orgánica y económica:
+a)
+La clasificación orgánica distinguirá los ingresos según el centro de gastos al que
+le corresponda. b)
+La clasificación económica agrupará los ingresos, atendiendo a una clasificación
+por capítulos.
+---
+Los capítulos se desglosan en artículos y éstos, a su vez, en conceptos que podrán dividirse en
+subconceptos.
+---
+Artículo 9.
+---
+Vinculación de los créditos
+1. Los créditos autorizados en el Estado de Gastos del presupuesto se destinarán
+exclusivamente a la finalidad específica con que aparecen en los estados de gastos y tienen un
+carácter limitativo y vinculante dentro de la clasificación orgánica, a nivel de centro de gasto,
+respecto de la clasificación funcional a nivel de subprograma y a nivel de capítulo en cuanto a
+la clasificación económica. 2. No obstante lo anterior, los créditos de Capítulo I son vinculantes a nivel de centro
+de gasto, programa y capítulo, con las excepciones relativas a los subconceptos:
+150.00 “Productividad”
+151.00 “Gratificaciones"
+3. Los créditos de Capítulo II son vinculantes a nivel de centro de gasto, subprograma,
+y capítulo, con las excepciones relativas al subconcepto 226.01 “Atenciones Protocolarias y
+Representativas”, que son vinculantes a nivel de subconcepto. 4.
+---
+Los créditos financiados con ingresos afectados tendrán la siguiente vinculación:
+centro de gasto, subprograma, capítulo y proyecto. 5.
+---
+Los créditos ampliables tendrán carácter vinculante al nivel de desagregación con la
+que aparezcan en el Estado de Gastos. Se declaran ampliables los siguientes subconceptos:
+423.C.Z.
+---
+Acción solidaria y promoción social
+831.00 Anticipos reintegrables al Personal
+411.A.2.
+---
+Personal Docente
+121.17 Retribuciones complementarias.
+---
+H.U.C. 121.27 Retribuciones complementarias.
+---
+H. La Candelaria
+121.37 Retribuciones complementarias. Atención primaria.
+---
+422.A.A.
+---
+Coordinación Tribunales EBAU
+230.00 Dietas
+231.00 Locomoción
+233.00 Otras indemnizaciones
+Artículo 10. Limitación Cuantitativa de los Créditos
+No podrán adquirirse compromisos de gastos por cuantía superior al importe del saldo
+de crédito existente en cada momento en el Estado de Gastos, el cual tiene carácter limitativo
+dentro del nivel de vinculación jurídica establecido, siendo nulos de pleno derecho los actos
+administrativos y disposiciones que infrinjan la expresada norma, sin perjuicio de las
+responsabilidades a que haya lugar. Artículo 11. Limitación Temporal de los Créditos
+1. Con cargo a los créditos del Estado de Gastos, sólo podrán contraerse obligaciones
+derivadas de adquisiciones, obras, servicios y demás prestaciones o gastos en general que se
+realicen en el año natural del propio ejercicio presupuestario, sin perjuicio de las salvedades
+establecidas en los apartados 2 y 3 del art. 34 Ley 47/2003, 26 de noviembre, General
+Presupuestaria.
+---
+2.
+---
+Se aplicarán a los créditos del presupuesto vigente en el momento de expedición de
+las órdenes de pago, las obligaciones que resulten de la liquidación de atrasos a favor del
+personal que perciba sus retribuciones con cargo al presupuesto de la Universidad, así como
+las que tengan su origen en resoluciones judiciales. 3. Podrán aplicarse a créditos del ejercicio corriente obligaciones contraídas en
+ejercicios
+anteriores, de conformidad con el ordenamiento jurídico, para las que se anulara
+crédito en el ejercicio de procedencia. 4. Asimismo, podrán atenderse con cargo a créditos del presupuesto del ejercicio
+corriente, obligaciones pendientes de ejercicios anteriores, en los casos en que figure dotado
+un crédito específico destinado a dar cobertura a dichas obligaciones, con independencia de la
+existencia de saldo de crédito anulado en el ejercicio de procedencia. 5.
+---
+Podrán
+aplicarse
+al
+presupuesto
+corriente
+las
+obligaciones
+derivadas
+de
+compromisos de gastos debidamente adquiridos en ejercicios anteriores, cuya incorporación se
+realizará al presupuesto vigente, siempre que existan para ello los suficientes recursos
+económicos y presupuestarios. 6.
+---
+Podrán también aplicarse al presupuesto las procedentes de ejercicios anteriores
+como consecuencia de la realización de un gasto que, por razones excepcionales, debidamente
+justificadas, no haya sido aprobado con anterioridad. El reconocimiento compete al Rector,
+cuando el importe sea igual o superior a 100.000,00 euros. En
+el resto de los casos el
+reconocimiento de la aplicación al presupuesto del ejercicio se autorizará por la Gerencia.
+---
+Artículo 12. Estabilidad presupuestaria y sostenibilidad financiera
+En relación a la aplicación de la Ley de Estabilidad Presupuestaria y Sostenibilidad
+Financiera es necesario tener en cuenta el restablecimiento de las reglas fiscales para el año
+2024, tras cuatro años de suspensión. La Universidad de La Laguna debe cumplir con la obligación recogida en el artículo 30
+de la Ley Orgánica de Estabilidad Presupuestarias y Sostenibilidad Financiera referido al límite
+de gasto no financiero, y en consecuencia debe aprobar un límite máximo de gasto no
+financiero. A pesar de no tener fijado un objetivo de estabilidad presupuestaria, ni porcentajes de
+déficit del PIB ni deuda pública para el ejercicio 2024, por parte del Gobierno español, ni para el
+Estado ni para las Comunidades Autónomas, la Universidad de La Laguna ha realizado un
+esfuerzo de presupuestación a gasto real, atendiendo a principios de cautela y responsabilidad. Así, los presupuestos de la Universidad se han definido permitiendo dar continuidad a las
+políticas iniciadas en los últimos ejercicios y que pretenden redundar en una mejora continua
+del servicio público al que se debe la institución, intentando además contribuir de manera tanto
+directa como indirecta a la dinamización de la economía. Todo ello ha supuesto una
+presupuestación que en términos comparativos con los créditos iniciales del ejercicio 2023
+suponen un incremento del 3,36%
+Teniendo en cuenta que el presupuesto de la Comunidad Autónoma de Canarias
+dispone de una previsión de incremento de un 11%, si consideramos esa magnitud como límite
+máximo de crecimiento, podría emplearse como cálculo del techo máximo de gasto respecto del
+techo del ejercicio 2023, un 11%, que resultaría en la cantidad de 188.280.442,06€
+Del análisis de las cifras que figuran en el estado de gastos del presupuesto 2024, el
+gasto no financiero ajustado que asciende a 166.198.380€€, cumple con dicho techo de gasto. No obstante, quedarán excluidos de dicho techo los fondos procedentes de la Unión
+Europea, destinados a la financiación del Plan de recuperación, transformación y resiliencia.
+---
+La Universidad de La Laguna suministrará a la Consejería de Hacienda y Relaciones
+con la Unión Europea la información necesaria para dar cumplimiento a los principios de
+estabilidad presupuestaria y sostenibilidad financiera.
+---
+CAPÍTULO II: DE LAS MODIFICACIONES PRESUPUESTARIAS
+Artículo 13.
+---
+Normas Generales
+Las modificaciones de los créditos presupuestarios se ajustarán a lo dispuesto en las
+presentes bases y en la Ley 11/2016, de 11 de diciembre, de Hacienda Pública Canaria. Todo expediente de modificación presupuestaria deberá indicar expresamente:
+a) Estructura orgánica afectada a nivel de centro de gasto.
+---
+b) Estructura funcional afectada a nivel de programa o subprograma, según rija
+c) En aquellos casos en que la modificación presupuestaria afecte a los Capítulos IV, VI y VII,
+habrán de indicarse todos los elementos vinculantes de la Línea de Actuación o de los
+Proyectos de Inversión o de Investigación afectados y, en su caso, la repercusión financiera
+en ejercicios posteriores. d) Códigos económicos afectados a nivel de subconcepto.
+---
+e) Las modificaciones presupuestarias con cobertura en el Estado de Ingresos deberán indicar
+la clasificación orgánica y económica afectada.
+---
+f) Motivo o necesidad de la misma.
+---
+g) Informe del Servicio de Gestión Económica y Financiera relativo a las repercusiones
+cuantitativas y cualitativas en el presupuesto.
+---
+Visto bueno del servicio de Gestión Económica
+y Financiera
+Artículo 14.
+---
+Créditos Extraordinarios y Suplementos de Crédito
+1. En el caso de que haya de realizarse con cargo al Presupuesto algún gasto que no
+pueda demorarse hasta el ejercicio siguiente y no exista crédito o éste resulte insuficiente y no
+ampliable, la propuesta se elevará, previo acuerdo favorable del Consejo de Gobierno, al
+Consejo Social, para su aprobación en la concesión de un crédito extraordinario en el primer
+supuesto y de un suplemento de crédito en el segundo, en el que se especificará el origen de
+los recursos que ha de financiar el mayor gasto público. 2.
+---
+La aprobación por el Consejo Social del correspondiente crédito extraordinario o
+suplemento de crédito se encuentra condicionado, en su caso a la autorización por los órganos
+competentes de la Comunidad Autónoma de Canarias con competencias en estabilidad
+presupuestaria. 3. Asimismo, el Consejo Social tendrá competencia para aprobar los suplementos de
+crédito y créditos extraordinarios con cargo al remanente de tesorería no afectado, siempre que
+no se ponga en riesgo el cumplimiento de los objetivos de estabilidad presupuestaria y la regla
+de gasto y cuya finalidad sea:
+a)
+dotar
+las
+aplicaciones
+presupuestarias
+precisas
+para
+atender
+obligaciones
+correspondientes a gastos de ejercicios anteriores contabilizados al cierre del ejercicio 2023 y
+anteriores y que forman parte de la información suministrada al Ministerio de Hacienda, de
+acuerdo con lo establecido en la Orden HAP/2105/2012, de 1 de octubre, por la que se
+desarrollan las obligaciones de suministro de información previstas en la Ley Orgánica 2/2012,
+de 27 de abril, de Estabilidad Presupuestaria y Sostenibilidad Financiera, previa justificación
+sobre la insuficiencia de crédito disponible. b)
+dotar gastos que se deriven de la aplicación de las reglas para el destino del
+superávit presupuestario vigente.
+---
+4. Durante el período de tramitación del expediente correspondiente a crédito
+extraordinario o suplemento de crédito y antes de la finalización del mismo, podrán tramitarse
+los expedientes de autorización de gasto que se prevean financiar con el mismo, calificados de
+urgencia, quedando, en todo caso, sometido el nacimiento del reconocimiento del derecho del
+tercero a la condición suspensiva de crédito suficiente y adecuado, en concordancia con lo
+establecido por el legislador en las Leyes de Presupuestos Generales de la Comunidad
+Autónoma de cada año para los entes con presupuesto limitativo. La condición suspensiva mencionada debe quedar claramente incorporada en la
+tramitación del procedimiento para conocimiento de los posibles terceros interesados.
+---
+Artículo 15. Transferencias de Crédito
+1.Las transferencias de crédito de cualquier clase se regirán por las siguientes reglas:
+a) No afectarán a los créditos ampliables ni a los extraordinarios concedidos durante el
+ejercicio. b) No
+minorarán
+créditos
+que
+hayan
+sido
+incrementados
+con
+suplementos
+o
+transferencias, salvo cuando afecten a créditos de personal. c)
+No incrementarán créditos que como consecuencia de otras transferencias hayan sido
+objeto de minoración, salvo cuando afecten a créditos de personal. 2.Las restricciones anteriores no se aplicarán cuando las transferencias tengan por
+objeto:
+a) Reorganizaciones administrativas.
+---
+b) Ajustes
+derivados
+de
+la suscripción o modificación de programas o acciones
+cofinanciados con la Unión Europea o la Administración General del Estado o de la
+Comunidad Autónoma o que sean necesarios para la adecuada ejecución de dichos
+programas o acciones.
+---
+c)
+Ajustes para la ejecución de programas y proyectos aprobados por el Gobierno para
+su financiación con cargo al Fondo de Desarrollo de Canarias. 3.Podrán transferirse créditos de operaciones de capital a operaciones corrientes en los
+siguientes casos:
+a) Las transferencias de crédito del capítulo 6 al 3, destinadas a hacer frente a gastos
+financieros derivados de aplazamientos en el pago de deudas, reintegros, e, intereses
+de demora, que se generen contra la Universidad por cualquier motivo. b) Las transferencias de crédito precisas para hacer frente a las indemnizaciones
+derivadas de procedimientos de responsabilidad patrimonial.
+---
+c)
+Las destinadas a dar cumplimiento a resoluciones judiciales firmes. d) Todas aquellas otras excepciones recogidas en la Ley de Presupuestos de la
+Comunidad Autónoma de Canarias para el 2024.
+---
+3.
+---
+Corresponde al Consejo de Gobierno aprobar o, en su caso, proponer las
+transferencias de crédito entre los diversos conceptos de los capítulos de gastos corrientes y
+operaciones de capital.
+---
+4. Corresponde al Consejo Social autorizar las transferencias que afecten a los
+créditos de gastos de capital del presupuesto de gasto, en el marco de lo previsto en el artículo
+54 de la Ley 11/2006, de 11 de diciembre, de la Hacienda Pública Canaria, así como conocer
+con anterioridad a su formalización aquellas transferencias que afecten al capítulo I. 5.
+---
+Asimismo, corresponderá a los Consejos Sociales la aprobación, en su caso, de las
+modificaciones al capítulo I incluido en los presupuestos anuales aprobados cuando el origen o
+destino de los créditos corresponda a otro capítulo presupuestario. 6.
+---
+Se dará cuenta al Consejo de Gobierno de toda transferencia aprobada con
+independencia del que ostente la competencia para su aprobación. Artículo 16.
+---
+Generación de Créditos
+1. Podrán generar crédito en el Estado de Gastos, los ingresos derivados de las
+siguientes operaciones, bien porque se haya producido su cobro, o bien porque exista un
+compromiso firme de aportación. a.- Aportaciones de personas físicas o jurídicas para financiar gastos, que no estén
+contemplados en alguno de los créditos de los distintos programas del Presupuesto.
+---
+b.- Prestaciones de servicios o realización de actividades por las cuales se hayan
+liquidado precios públicos, en cuantía superior a los ingresos presupuestarios.
+---
+c.- Enajenación de bienes de la Universidad.
+---
+2. La generación como consecuencia de aportaciones de la Comunidad Autónoma o
+de sus Agencias u Organismos, podrá tramitarse cuando exista un compromiso firme de la
+aportación, siempre que el derecho asociado al mismo se prevea realizar en el propio ejercicio.
+---
+3. En caso de encontrarse en tramitación un proyecto de Crédito Extraordinario o
+Suplemento de Crédito por parte de la Comunidad Autónoma de Canarias, en el cual se
+disponga de un documento del órgano competente de dicha entidad de la inclusión del crédito
+destinado a ser aportado a la Universidad de La Laguna, en base a cuya recepción procediere
+la tramitación de una modificación presupuestaria de generación de créditos, podrá tramitarse
+los expedientes de autorización de gasto que se prevean financiar con la misma, quedando
+sometido, en todo caso, el nacimiento del reconocimiento del derecho del tercero a la condición
+suspensiva de crédito suficiente y adecuado. La condición suspensiva mencionada debe quedar claramente incorporada en la
+tramitación del procedimiento para conocimiento de los posibles terceros interesados.
+---
+4.
+---
+Con carácter excepcional, en consonancia con el art. 55.3 de la Ley 11/2006, de
+Hacienda Pública Canaria, podrán generar crédito en el presupuesto, los supuestos previstos
+en el apartado primero de este artículo realizados en el último trimestre del ejercicio
+inmediatamente anterior. 5.
+---
+Compete al Consejo de Gobierno u órgano en quien delegue. Actualmente rige
+delegación expresa en el Rector.
+---
+Artículo 17.
+---
+Incorporación de Remanentes de Crédito
+1. Los créditos para gastos que al último día del ejercicio no estén afectados al
+cumplimiento de obligaciones ya reconocidas, quedarán anulados de pleno derecho. 2.
+---
+No obstante, compete al Consejo de Gobierno u órgano en quien delegue la
+autorización para la incorporación al Estado de Gastos del Presupuesto del ejercicio siguiente
+los remanentes de crédito con financiación afectada. Actualmente rige delegación expresa en el
+Rector.
+---
+3. Transcurrido un año desde que se tenga constancia del acuerdo por parte del
+órgano financiador declarando la finalización del proyecto y, en su caso, el abono de posibles
+reintegros, los remanentes no empleados podrán ser desafectados mediante autorización del
+Rector al respecto.
+---
+Artículo 18. Créditos Ampliables
+Se podrá incrementar, en la cuantía que exceda de los ingresos previstos en el
+Presupuesto de Ingresos, en función de la efectiva recaudación de los derechos afectados, los
+créditos que hayan sido declarados ampliables. Compete al Consejo de Gobierno u órgano en quién delegue la ampliación de créditos.
+---
+Actualmente rige delegación expresa en el Rector.
+---
+Artículo 19. Bajas por Anulación
+Podrán dar lugar a una baja de los créditos consignados:
+a.- La financiación del déficit en la liquidación definitiva del presupuesto del ejercicio anterior. b.- La ejecución de acuerdos tomados en alguno de los órganos de gobierno de la Universidad
+dentro de sus competencias.
+---
+Compete al Consejo de Gobierno u órgano en quién delegue la aprobación de bajas de
+crédito por anulación. Actualmente rige delegación expresa en el Rector.
+---
+
 ---

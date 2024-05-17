@@ -16,27 +16,27 @@ import tiktoken
 
 load_dotenv()
 
-# Método Langchain semantic chunker
+# Métodos Langchain semantic chunker
 def split_text_semantic_langchain(text):
-    text_splitter = SemanticChunker(MyEmbeddingFunction(), breakpoint_threshold_type="percentile", breakpoint_threshold_amount=0.95)
+    text_splitter = SemanticChunker(MyEmbeddingFunction(), breakpoint_threshold_type="percentile", breakpoint_threshold_amount=95)
     chunks_semantic = text_splitter.split_text(text)
 
     return chunks_semantic
 
 
 def split_text_semantic_langchain_graph(text):
-    text_splitter = SemanticChunker(MyEmbeddingFunction(), breakpoint_threshold_type="percentile", breakpoint_threshold_amount=95)
+    text_splitter = SemanticChunker(MyEmbeddingFunction(), breakpoint_threshold_type="percentile", breakpoint_threshold_amount=50)
     chunks_semantic = text_splitter.split_text(text)
     represent_chunks(text_splitter, text)
 
     return chunks_semantic
 
 
-# Clase ChatGPT (gpt-4)
+# Clase ChatGPT (gpt-4o)
 class LLMTextSplitter(TextSplitter):
     def __init__(
         self,
-        model_name: str = "gpt-4",
+        model_name: str = "gpt-4o",
         count_tokens: bool = False,
         encoding_name: str = "cl100k_base",
         **kwargs: Any

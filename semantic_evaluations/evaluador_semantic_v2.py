@@ -1,30 +1,32 @@
-from semantic_splitters import LLMTextSplitter, split_text_semantic_langchain_graph
+from semantic_splitters import split_text_semantic_langchain_graph, LLMTextSplitter
 from pathlib import Path
 from langchain_community.document_loaders import PyMuPDFLoader
+import sys
 
+pdf_path = "semantic_evaluations\Titulo II.pdf"
 document = []
-pdf_directory = Path("./semantic_evaluations")
-for pdf_path in pdf_directory.glob("*.pdf"):
-    print(str(pdf_path))
-    loader = PyMuPDFLoader(str(pdf_path))
-    document = loader.load()
+loader = PyMuPDFLoader(str(pdf_path))
+document = loader.load()
 
-with open("semantic_evaluations/pdf_langchain_chunks.txt", 'a', encoding='utf-8') as f:
-    all_text = ""
-    for page_num in range(len(document)):
-        all_text += document[page_num].page_content
+flag = int(sys.argv[1])
 
-    chunks = split_text_semantic_langchain_graph(all_text)
+if (flag == 0):
+    with open("semantic_evaluations/pdf_langchain_chunks.txt", 'w', encoding='utf-8') as f:
+        all_text = ""
+        for page_num in range(len(document)):
+            all_text += document[page_num].page_content
 
-    for chunk in chunks:
-        f.writelines(str(chunk))
+        chunks = split_text_semantic_langchain_graph(all_text)
+
+        for chunk in chunks:
+            f.writelines(str(chunk))
+            f.write("\n---\n")
+elif (flag == 1):
+    with open("semantic_evaluations/pdf_gpt_chunks.txt", 'w', encoding='utf-8') as f:
+        llm_splitter = LLMTextSplitter(count_tokens=True)
+        chunks = llm_splitter.split_documents(document) # Le afectan los saltos de página por ser documentos
+
+        for chunk in chunks:
+            f.writelines(str(chunk))
+            f.write("\n\n")
         f.write("\n---\n")
-
-with open("semantic_evaluations/pdf_gpt_chunks.txt", 'a', encoding='utf-8') as f:
-    llm_splitter = LLMTextSplitter(count_tokens=True)
-    chunks = llm_splitter.split_documents(document)
-
-    for chunk in chunks:
-        f.writelines(str(chunk))
-        f.write("\n\n")
-    f.write("\n---\n")

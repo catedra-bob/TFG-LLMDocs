@@ -14,7 +14,7 @@ def represent_chunks(text_splitter, text):
 
     plt.plot(distances)
 
-    y_upper_bound = .25
+    y_upper_bound = .35
     plt.ylim(0, y_upper_bound)
     plt.xlim(0, len(distances))
 
