@@ -18,7 +18,7 @@ from langchain.schema.runnable import Runnable, RunnablePassthrough, RunnableCon
 from langchain.callbacks.base import BaseCallbackHandler
 from autolabel import LabelingAgent, AutolabelDataset
 from my_embedding_function import MyEmbeddingFunction
-from langchain_experimental.text_splitter import SemanticChunker
+from semantic_evaluations.semantic_splitters import split_text_semantic_langchain, LLMTextSplitter
 
 import chromadb
 import chainlit as cl
@@ -47,7 +47,7 @@ def process_pdfs(pdf_storage_path: str, collection_name):
             documents = loader.load()
 
             if (collection_name == "coleccion_economicos"):
-                chunks_md = split_text_markdown(documents, semantic=True)
+                chunks_md = split_text_markdown(documents)
                 # chunks_md = label_chunks_ull(chunks_md)
             else:
                 chunks_md = split_text_recursive(documents)
@@ -91,7 +91,7 @@ def process_pdfs(pdf_storage_path: str, collection_name):
 
 
 # Divide los documentos según las etiquetas markdown que contiene
-def split_text_markdown(documents, semantic):
+def split_text_markdown(documents):
     all_text = ""
     for page_num in range(len(documents)):
         all_text += documents[page_num].page_content
@@ -115,30 +115,15 @@ def split_text_markdown(documents, semantic):
 
     chunks = []
 
-    if (semantic == True):
-        chunks = split_text_semantic(chunks_md)
-        chunks = add_source(chunks, documents)
-        export_chunks('outputs/chunks_semantic.txt', chunks)
-    else:
-        chunks = chunks_md
+    if (documents[0].metadata["source"] == "pdfs_economicos\Bases Ejecución 2024 (1).pdf"):
+        chunks = split_text_char(chunks_md)
+        export_chunks('outputs/chunks_char.txt', chunks)
 
-        if (documents[0].metadata["source"] == "pdfs_economicos\Bases Ejecución 2024 (1).pdf"):
-            chunks = split_text_char(chunks_md)
-            export_chunks('outputs/chunks_char.txt', chunks)
-
-        chunks = split_text_recursive(chunks)
-        chunks = add_source(chunks, documents)
-        export_chunks('outputs/chunks_recursive.txt', chunks)
+    chunks = split_text_recursive(chunks)
+    chunks = add_source(chunks, documents)
+    export_chunks('outputs/chunks_recursive.txt', chunks)
 
     return chunks
-
-
-# Divide los documentos según el significado semántico de las frases
-def split_text_semantic(documents):
-    text_splitter = SemanticChunker(MyEmbeddingFunction(), breakpoint_threshold_type="percentile")
-    chunks_semantic = text_splitter.split_documents(documents)
-
-    return chunks_semantic
 
 
 # Divide los documentos según los puntos que pueden haber en un apartado (1., 2., ...)
