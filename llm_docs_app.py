@@ -27,34 +27,37 @@ import json
 import re
 
 
-PDF_STORAGE_PATH = "./pdfs_economicos" # "./pdfs_anaga"
+PDF_STORAGE_PATH = Path("./pdfs_economicos") # Path("./pdfs_anaga")
 COLLECTION_NAME = "coleccion_economicos" # "coleccion_anaga"
 
+EMBEDDINGS_MODEL = MyEmbeddingFunction()
+GENERATIVE_MODEL = ChatOpenAI(model="gpt-4o", api_key="sk-proj-S6N1LP3ePLPBDcRcU77uT3BlbkFJMsihwy3eQsyueEEIVKiX", streaming=True)
 
-def process_pdfs(pdf_storage_path: str, collection_name):
+
+def process_pdfs(pdf_storage_path: Path, collection_name: str):
     chroma_client = chromadb.PersistentClient(path="./chroma")
-    mi_funcion = MyEmbeddingFunction()
-    pdf_directory = Path(pdf_storage_path)
-    docs = []  # List[Document]
+    docs = []
 
     all_collections = []
     for collection in chroma_client.list_collections():
         all_collections.append(collection.name)
 
     if (collection_name not in all_collections):
-        for pdf_path in pdf_directory.glob("*.pdf"):
+        # 1. Troceado y etiquetado
+        for pdf_path in pdf_storage_path.glob("*.pdf"):
             loader = PyMuPDFLoader(str(pdf_path))
             documents = loader.load()
 
             if (collection_name == "coleccion_economicos"):
-                chunks_md = split_text_markdown(documents)
-                # chunks_md = label_chunks_ull(chunks_md)
+                chunks = split_text_markdown(documents)
+                # chunks = label_chunks_ull(chunks)
             else:
-                chunks_md = split_text_recursive(documents)
+                chunks = split_text_recursive(documents, 1000, 250)
 
-            docs += chunks_md
+            docs += chunks
 
-        collection = chroma_client.create_collection(collection_name, embedding_function=mi_funcion)
+        # 2. Creación de la colección
+        collection = chroma_client.create_collection(collection_name, embedding_function=EMBEDDINGS_MODEL)
 
         document_id = 0
         for chunk in docs:
@@ -65,10 +68,11 @@ def process_pdfs(pdf_storage_path: str, collection_name):
             )
             document_id = document_id + 1
 
+    # 3. Almacenamiento
     doc_search = Chroma(
         client=chroma_client,
         collection_name=collection_name,
-        embedding_function=mi_funcion,
+        embedding_function=EMBEDDINGS_MODEL,
     )
 
     namespace = "chromadb/" + collection_name
@@ -119,7 +123,7 @@ def split_text_markdown(documents):
         chunks = split_text_char(chunks_md)
         export_chunks('outputs/chunks_char.txt', chunks)
 
-    chunks = split_text_recursive(chunks)
+    chunks = split_text_recursive(chunks, 1000, 250)
     chunks = add_source(chunks, documents)
     export_chunks('outputs/chunks_recursive.txt', chunks)
 
@@ -150,10 +154,10 @@ def split_text_char(documents):
 
 
 # Divide los documentos según un tamaño y overlap específico
-def split_text_recursive(documents):
+def split_text_recursive(documents, size, overlap):
     text_splitter = RecursiveCharacterTextSplitter(
-        chunk_size=1000,
-        chunk_overlap=250,
+        chunk_size=size,
+        chunk_overlap=overlap,
         length_function=len,
         is_separator_regex=False,
     )
@@ -272,7 +276,6 @@ def export_chunks(filename, chunks):
 
 
 doc_search = process_pdfs(PDF_STORAGE_PATH, COLLECTION_NAME)
-model = ChatOpenAI(api_key="sk-proj-S6N1LP3ePLPBDcRcU77uT3BlbkFJMsihwy3eQsyueEEIVKiX", streaming=True)
 
 
 # RAG pipeline
@@ -314,7 +317,7 @@ async def on_chat_start():
     runnable = (
         {"context": retriever | format_docs, "question": RunnablePassthrough()}
         | prompt
-        | model
+        | GENERATIVE_MODEL
         | StrOutputParser()
     )
 
