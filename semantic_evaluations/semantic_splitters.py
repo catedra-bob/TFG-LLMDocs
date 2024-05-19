@@ -28,7 +28,11 @@ def split_text_semantic_langchain(text, represent, treshold):
 def split_documents_semantic_langchain(documents, represent, treshold):
     text_splitter = SemanticChunker(MyEmbeddingFunction(), breakpoint_threshold_type="percentile", breakpoint_threshold_amount=treshold)
     chunks_semantic = text_splitter.split_documents(documents)
-    if (represent): represent_chunks(text_splitter, documents)
+    if (represent): 
+        all_text = ""
+        for page_num in range(len(documents)):
+            all_text += documents[page_num].page_content
+        represent_chunks(text_splitter, all_text)
 
     return chunks_semantic
 

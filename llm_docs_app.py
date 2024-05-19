@@ -12,7 +12,7 @@ from langchain.indexes import SQLRecordManager, index
 from langchain.schema.runnable import Runnable, RunnablePassthrough, RunnableConfig
 from langchain.callbacks.base import BaseCallbackHandler
 from my_embedding_function import MyEmbeddingFunction
-from semantic_evaluations.semantic_splitters import split_text_semantic_langchain, LLMTextSplitter
+from semantic_evaluations.semantic_splitters import split_text_semantic_langchain, split_documents_semantic_langchain, LLMTextSplitter
 from strategy_evaluations.ragas_evaluator import ragas_evaluator
 from splitter_functions import (
     split_text_markdown,
@@ -56,7 +56,8 @@ def process_pdfs(pdf_storage_path: Path, collection_name: str):
             elif (collection_name == "coleccion_anaga"):
                 chunks = split_text_recursive(documents, 1000, 250)
             else:
-                chunks = split_text_semantic_langchain(documents, False, 30)
+                llm_splitter = LLMTextSplitter(count_tokens=True)
+                chunks = llm_splitter.split_documents(documents)
 
             docs += chunks
 
