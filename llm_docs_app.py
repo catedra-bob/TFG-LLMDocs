@@ -13,6 +13,7 @@ from langchain.schema.runnable import Runnable, RunnablePassthrough, RunnableCon
 from langchain.callbacks.base import BaseCallbackHandler
 from my_embedding_function import MyEmbeddingFunction
 from semantic_evaluations.semantic_splitters import split_text_semantic_langchain, LLMTextSplitter
+from strategy_evaluations.ragas_evaluator import ragas_evaluator
 from splitter_functions import (
     split_text_markdown,
     split_text_char,
@@ -144,6 +145,8 @@ async def on_chat_start():
     )
 
     cl.user_session.set("runnable", runnable)
+
+    ragas_evaluator(runnable, retriever)
 
 
 @cl.on_message
