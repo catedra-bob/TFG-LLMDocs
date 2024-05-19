@@ -18,9 +18,17 @@ load_dotenv()
 
 # Método Langchain semantic chunker
 def split_text_semantic_langchain(text, represent, treshold):
-    text_splitter = SemanticChunker(MyEmbeddingFunction(), breakpoint_threshold_type="percentile", breakpoint_threshold_amount=95)
+    text_splitter = SemanticChunker(MyEmbeddingFunction(), breakpoint_threshold_type="percentile", breakpoint_threshold_amount=treshold)
     chunks_semantic = text_splitter.split_text(text)
     if (represent): represent_chunks(text_splitter, text)
+
+    return chunks_semantic
+
+
+def split_documents_semantic_langchain(documents, represent, treshold):
+    text_splitter = SemanticChunker(MyEmbeddingFunction(), breakpoint_threshold_type="percentile", breakpoint_threshold_amount=treshold)
+    chunks_semantic = text_splitter.split_documents(documents)
+    if (represent): represent_chunks(text_splitter, documents)
 
     return chunks_semantic
 

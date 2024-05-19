@@ -56,7 +56,7 @@ def process_pdfs(pdf_storage_path: Path, collection_name: str):
             elif (collection_name == "coleccion_anaga"):
                 chunks = split_text_recursive(documents, 1000, 250)
             else:
-                chunks = split_text_markdown(documents, 250, 50)
+                chunks = split_text_semantic_langchain(documents, False, 30)
 
             docs += chunks
 
