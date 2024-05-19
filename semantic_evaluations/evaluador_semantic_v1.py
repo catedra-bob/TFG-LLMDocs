@@ -17,7 +17,7 @@ texts = [text_v1, text_v2]
 
 for text in texts:
     with open("semantic_evaluations/langchain_chunks.txt", 'a', encoding='utf-8') as f:
-        chunks = split_text_semantic_langchain(text)
+        chunks = split_text_semantic_langchain(text, False, 95)
 
         for chunk in chunks:
             f.writelines(chunk)

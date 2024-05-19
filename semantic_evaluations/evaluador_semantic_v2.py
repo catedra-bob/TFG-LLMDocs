@@ -1,4 +1,4 @@
-from semantic_splitters import split_text_semantic_langchain_graph, LLMTextSplitter
+from semantic_splitters import split_text_semantic_langchain, LLMTextSplitter
 from pathlib import Path
 from langchain_community.document_loaders import PyMuPDFLoader
 import sys
@@ -16,7 +16,7 @@ if (flag == 0):
         for page_num in range(len(document)):
             all_text += document[page_num].page_content
 
-        chunks = split_text_semantic_langchain_graph(all_text)
+        chunks = split_text_semantic_langchain(all_text, True, 95)
 
         for chunk in chunks:
             f.writelines(str(chunk))
