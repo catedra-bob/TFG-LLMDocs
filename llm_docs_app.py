@@ -51,12 +51,12 @@ def process_pdfs(pdf_storage_path: Path, collection_name: str):
             documents = loader.load()
 
             if (collection_name == "coleccion_economicos"):
-                chunks = split_text_markdown(documents)
+                chunks = split_text_markdown(documents, 1000, 250)
                 # chunks = label_chunks_ull(chunks)
             elif (collection_name == "coleccion_anaga"):
                 chunks = split_text_recursive(documents, 1000, 250)
             else:
-                chunks = split_text_recursive(documents, 250, 50)
+                chunks = split_text_markdown(documents, 250, 50)
 
             docs += chunks
 
@@ -144,9 +144,9 @@ async def on_chat_start():
         | StrOutputParser()
     )
 
-    cl.user_session.set("runnable", runnable)
-
     ragas_evaluator(runnable, retriever)
+
+    cl.user_session.set("runnable", runnable)
 
 
 @cl.on_message

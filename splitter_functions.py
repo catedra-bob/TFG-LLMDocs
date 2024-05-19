@@ -7,7 +7,7 @@ from langchain_text_splitters import CharacterTextSplitter
 from semantic_evaluations.semantic_splitters import split_text_semantic_langchain, LLMTextSplitter
 
 # Divide los documentos según las etiquetas markdown que contiene
-def split_text_markdown(documents):
+def split_text_markdown(documents, recursive_size, recursive_overlap):
     all_text = ""
     for page_num in range(len(documents)):
         all_text += documents[page_num].page_content
@@ -29,13 +29,13 @@ def split_text_markdown(documents):
     chunks_md = text_splitter_md.split_text(all_text)
     export_chunks('outputs/chunks_md.txt', chunks_md)
 
-    chunks = []
+    chunks = chunks_md
 
     if (documents[0].metadata["source"] == "pdfs_economicos\Bases Ejecución 2024 (1).pdf"):
         chunks = split_text_char(chunks_md)
         export_chunks('outputs/chunks_char.txt', chunks)
 
-    chunks = split_text_recursive(chunks, 1000, 250)
+    chunks = split_text_recursive(chunks, recursive_size, recursive_overlap)
     chunks = add_source(chunks, documents)
     export_chunks('outputs/chunks_recursive.txt', chunks)
 
