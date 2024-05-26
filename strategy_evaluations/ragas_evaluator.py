@@ -42,12 +42,16 @@ def ragas_evaluator(runnable, retriever):
     df = result.to_pandas()
     df.to_csv("strategy_evaluations/result.csv")
 
-    heatmap_data = df[['context_relevancy', 'context_precision', 'context_recall', 'faithfulness', 'answer_relevancy']]
+    metrics_df = df[['context_relevancy', 'context_precision', 'context_recall', 'faithfulness', 'answer_relevancy']]
+    metrics_df.loc['total'] = metrics_df.mean()
+    media_total = metrics_df.loc['total'].mean()
+    media_total = "{:.2f}".format(media_total)
+    print("Puntuación final: " + str(media_total))
 
     cmap = LinearSegmentedColormap.from_list('green_red', ['red', 'green'])
 
     plt.figure(figsize=(10, 8))
-    sns.heatmap(heatmap_data, annot=True, fmt=".2f", linewidths=.5, cmap=cmap)
+    sns.heatmap(metrics_df, annot=True, fmt=".2f", linewidths=.5, cmap=cmap)
 
     plt.yticks(ticks=range(len(df['question'])), labels=df['question'], rotation=0)
 
