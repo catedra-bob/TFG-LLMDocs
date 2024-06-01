@@ -6,9 +6,7 @@ os.environ["NEO4J_USERNAME"] = "neo4j"
 os.environ["NEO4J_PASSWORD"] = "q7dUtnqP"
 
 from langchain_community.graphs import Neo4jGraph
-from langchain_community.chains.graph_qa.cypher import GraphCypherQAChain
 from langchain_openai import ChatOpenAI
-from openai import OpenAI
 from pathlib import Path
 from langchain_community.document_loaders import PyMuPDFLoader
 from splitter_functions import (
@@ -17,9 +15,7 @@ from splitter_functions import (
 from langchain_experimental.graph_transformers import LLMGraphTransformer
 from langchain.docstore.document import Document
 from rag_v2_prompts import (
-    GRAPH_GENERATION_PROMPT,
-    CYPHER_GENERATION_PROMPT,
-    CYPHER_QA_PROMPT
+    GRAPH_GENERATION_PROMPT
 )
 
 
@@ -45,17 +41,3 @@ graph.add_graph_documents(graph_documents,
                           include_source=True)
 
 graph.query("MATCH (n) SET n.id = toLower(n.id)")
-
-# Chain principal
-chain = GraphCypherQAChain.from_llm(
-    graph=graph,
-    llm=llm,
-    verbose=True,
-    validate_cypher=True,
-    top_k=10,
-    cypher_prompt=CYPHER_GENERATION_PROMPT,
-    qa_prompt=CYPHER_QA_PROMPT
-)
-
-response = chain.invoke({"query": "¿Cuál es el sello distintivo de la cocina mediterránea?"})
-print(response['result'])

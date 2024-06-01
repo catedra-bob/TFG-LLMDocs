@@ -1,0 +1,70 @@
+Node properties are the following:
+Concept {id: STRING}
+Event {id: STRING}
+Organization {id: STRING}
+Place {id: STRING}
+Person {id: STRING}
+Organism {id: STRING}
+Document {id: STRING, Cabecera_1: STRING, page: INTEGER, Cabecera_2: STRING, text: STRING, source: STRING}
+Condition {id: STRING}
+Lugar {id: STRING},Cosa {id: STRING}
+
+Relationship properties are the following:
+
+The relationships are the following:
+(:Concept)-[:PARTICIPAN_EN]->(:Concept)
+(:Concept)-[:ENRIQUECE]->(:Concept)
+(:Concept)-[:PROPORCIONA]->(:Concept)
+(:Concept)-[:CONTRIBUYE_A]->(:Concept)
+(:Concept)-[:INCERTIDUMBRE_SOBRE]->(:Concept)
+(:Concept)-[:REPRESENTAN_UNA_ALTERNATIVA_A]->(:Concept)
+(:Concept)-[:POSIBILIDAD_DE_REDUCIR]->(:Concept)
+(:Concept)-[:RESPETUOSO_CON]->(:Concept)
+(:Concept)-[:POSIBILIDAD_DE_MITIGAR_LOS_IMPACTOS_DE]->(:Concept)
+(:Concept)-[:PROMETE_MEJORAR]->(:Concept)
+(:Concept)-[:EN]->(:Concept)
+(:Concept)-[:CREANDO_MÁS_HABITABLES_Y_SALUDABLES]->(:Concept)
+(:Concept)-[:UTILIZA]->(:Concept)
+(:Concept)-[:TIENE]->(:Concept)
+(:Concept)-[:PROMUEVE]->(:Concept)
+(:Concept)-[:PREVIENE]->(:Concept)
+(:Concept)-[:ADAPTAN_Y_MUTAN_EN]->(:Concept)
+(:Concept)-[:EXPERIMENTAN_MUTACIONES_DISTINTAS_A_LAS_OBSERVADAS_EN]->(:Condition)
+(:Concept)-[:SE_ADAPTAN_EN]->(:Condition)
+(:Concept)-[:PROLIFERAN_EN]->(:Place)
+(:Concept)-[:EXPANSIÓN_HACIA]->(:Concept)
+(:Concept)-[:SE_ADAPTA_Y_EVOLUCIONA_EN]->(:Concept)
+(:Concept)-[:FORTALECE]->(:Concept)
+(:Concept)-[:JUEGA_UN_PAPEL_CRUCIAL_EN]->(:Concept)
+(:Concept)-[:FOMENTA]->(:Concept)
+(:Concept)-[:REÚNE_EN_TORNO_A]->(:Concept)
+(:Concept)-[:CULTIVAN]->(:Concept)
+(:Event)-[:ES]->(:Event)
+(:Organization)-[:COMPITE_CON]->(:Organization)
+(:Organization)-[:PARTICIPA_EN]->(:Event)
+(:Organization)-[:PARTICIPAN_EN]->(:Event)
+(:Person)-[:ESPERAN_ANSIOSAMENTE_EL_DESENLACE_EN]->(:Place)
+(:Person)-[:SE_PREPARAN_PARA_PRESENCIAR_EN]->(:Place)
+(:Person)-[:ESTÁN_EN_AMBOS_LADOS_DEL]->(:Place)
+(:Organism)-[:ADAPTAN_Y_MUTAN_EN]->(:Concept)
+(:Organism)-[:EXPERIMENTAN_MUTACIONES_DISTINTAS_A_LAS_OBSERVADAS_EN]->(:Condition)
+(:Organism)-[:SE_ADAPTAN_EN]->(:Condition)
+(:Organism)-[:PROLIFERAN_EN]->(:Place)
+(:Document)-[:MENTIONS]->(:Concept)
+(:Document)-[:MENTIONS]->(:Cosa)
+(:Document)-[:MENTIONS]->(:Lugar)
+(:Document)-[:MENTIONS]->(:Event)
+(:Document)-[:MENTIONS]->(:Organization)
+(:Document)-[:MENTIONS]->(:Place)
+(:Document)-[:MENTIONS]->(:Person)
+(:Document)-[:MENTIONS]->(:Condition)
+(:Document)-[:MENTIONS]->(:Organism)
+(:Cosa)-[:CONTRIBUYE_A]->(:Concept)
+(:Cosa)-[:INCERTIDUMBRE_SOBRE]->(:Concept)
+(:Cosa)-[:REPRESENTAN_UNA_ALTERNATIVA_A]->(:Concept)
+(:Cosa)-[:POSIBILIDAD_DE_REDUCIR]->(:Concept)
+(:Cosa)-[:RESPETUOSO_CON]->(:Concept)
+(:Cosa)-[:POSIBILIDAD_DE_MITIGAR_LOS_IMPACTOS_DE]->(:Concept)
+(:Cosa)-[:TRASLADO]->(:Concept)
+(:Cosa)-[:TRASLADO]->(:Cosa)
+(:Cosa)-[:UBICACIÓN]->(:Lugar)

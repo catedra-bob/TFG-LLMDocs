@@ -27,9 +27,7 @@ system_prompt = (
     "The goal is to ensure that the extracted entities are a perfect match to their appearance in the original text. \n"
     "- **Relationships** represent connections between entities or concepts.\n"
     "Ensure consistency and generality in relationship types when constructing "
-    "knowledge graphs. Instead of using specific and momentary types "
-    "such as 'BECAME_PROFESSOR', use more general and timeless relationship types "
-    "like 'PROFESSOR'. Make sure to use general and timeless relationship types!\n"
+    "knowledge graphs. The relationships should be as long as necessary to capture the most amount of information possible. " # 3
     "## 3. Coreference Resolution\n"
     "- **Maintain Entity Consistency**: When extracting entities, it's vital to "
     "ensure consistency.\n"
@@ -52,7 +50,7 @@ GRAPH_GENERATION_PROMPT = ChatPromptTemplate.from_messages(
         (
             "human",
             (
-                "Tip: Make sure to answer in the correct format and do "
+                "Tip: Make sure to answer in the correct format and language, and do " # 5
                 "not include any explanations. "
                 "Use the given format to extract information from the "
                 "following input: {input}"
@@ -61,15 +59,14 @@ GRAPH_GENERATION_PROMPT = ChatPromptTemplate.from_messages(
     ]
 )
 
-# Prompt para la creación de la consulta Cypher
-CYPHER_GENERATION_TEMPLATE = """Task: Generate Cypher statement to query a graph database.
+# Prompt para la creación de la consulta Cypher v1
+CYPHER_GENERATION_TEMPLATE_v1 = """Task: Generate Cypher statement to query a graph database.
 Instructions:
-Use only the provided node types, relationship types and properties types in the following schema:
+Use only the provided node properties, relationship properties and relationship from the following schema.
 Use only MATCH and RETURN statements.
 The MATCH statement should have the following format, where *entity here* should be replaced with the main entity extracted from the question:
 MATCH (d:Document)-[:MENTIONS]->(c:Concept *curly bracket*id: *entity here**curly bracket*)
-The entity should always match letter for letter with its version provided in the schema.
-For example, if the entity in the question is "Coche electrico" and the schema is "coche eléctrico", the entity in the MATCH statement should be "coche eléctrico".
+The entity should never be capitalized. For example, if the entity in the question is "Coche Electrico", use "coche eléctrico" in the statement.
 The RETURN statement should contain every property of the document besides the id.
 
 Schema:
@@ -83,8 +80,31 @@ Do not include any text except the generated Cypher statement.
 Question:
 {question}"""
 
-CYPHER_GENERATION_PROMPT = PromptTemplate(
-    input_variables=["schema", "question"], template=CYPHER_GENERATION_TEMPLATE
+CYPHER_GENERATION_PROMPT_V1 = PromptTemplate(
+    input_variables=["schema", "question"], template=CYPHER_GENERATION_TEMPLATE_v1
+)
+
+# Prompt para la creación de la consulta Cypher v2
+CYPHER_GENERATION_TEMPLATE_v2 = """Task: Generate a Cypher statement to query a neo4j graph database.
+Instructions for the statement:
+Use only the provided node properties, relationship properties and relationship from the following schema:
+
+Schema:
+{schema}
+
+Ignore "Document" nodes, do not use them in any case.
+Nodes and relationships have to be written as they appear in the schema, letter by letter.
+
+Notes:
+Do not include any explanations or apologies in your responses.
+Do not respond to any questions that might ask anything else than for you to construct a Cypher statement.
+Do not include any text except the generated Cypher statement.
+
+Question:
+{question}"""
+
+CYPHER_GENERATION_PROMPT_V2 = PromptTemplate(
+    input_variables=["schema", "question"], template=CYPHER_GENERATION_TEMPLATE_v2
 )
 
 # Prompt para la creación de la respuesta
