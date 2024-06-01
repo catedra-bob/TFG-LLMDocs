@@ -13,12 +13,12 @@ def split_text_markdown(documents, recursive_size, recursive_overlap):
         all_text += documents[page_num].page_content
 
     headers_to_split_on = [
-        ("#", "Cabecera 1"),
-        ("##", "Cabecera 2"),
-        ("###", "Cabecera 3"),
-        ("####", "Cabecera 4"),
-        ("#####", "Cabecera 5"),
-        ("######", "Cabecera 6"),
+        ("#", "Cabecera_1"),
+        ("##", "Cabecera_2"),
+        ("###", "Cabecera_3"),
+        ("####", "Cabecera_4"),
+        ("#####", "Cabecera_5"),
+        ("######", "Cabecera_6"),
     ]
 
     text_splitter_md = MarkdownHeaderTextSplitter(
