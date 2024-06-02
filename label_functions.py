@@ -5,6 +5,7 @@ os.environ["OPENAI_API_KEY"] = "sk-proj-S6N1LP3ePLPBDcRcU77uT3BlbkFJMsihwy3eQsyu
 from openai import OpenAI
 from langchain_community.document_loaders import DataFrameLoader
 from autolabel import LabelingAgent, AutolabelDataset
+from rag_v1_prompts import SYSTEM_LABEL_PROMPT, USER_LABEL_PROMPT
 
 import pandas as pd
 import json
@@ -58,24 +59,13 @@ def label_chunks_ull(chunks):
     # model = OpenAI(base_url="http://openai.ull.es:8080/v1", api_key="lm-studio")
     model = OpenAI(api_key="sk-proj-S6N1LP3ePLPBDcRcU77uT3BlbkFJMsihwy3eQsyueEEIVKiX")
 
-    labels = [
-        "Introducción: Una sección introductoria que proporciona una visión general del propósito y alcance de las bases de ejecución presupuestaria.\n",
-        "Marco Legal: Una descripción de las leyes, reglamentos y normativas que rigen la gestión presupuestaria de la entidad.\n",
-        "Objetivos: Una declaración de los objetivos y metas que se buscan alcanzar mediante la gestión y ejecución del presupuesto.\n",
-        "Procedimientos de Elaboración del Presupuesto: Detalles sobre el proceso de elaboración del presupuesto, incluyendo la participación de diferentes áreas o departamentos, los plazos involucrados y los criterios utilizados para asignar recursos.\n",
-        "Normas de Ejecución: Reglas y procedimientos específicos para la ejecución del presupuesto, como la autorización de gastos, la contratación pública, el control de pagos, entre otros.\n",
-        "Control y Seguimiento: Procedimientos para el control y seguimiento del presupuesto, incluyendo la elaboración de informes periódicos, auditorías internas o externas, y mecanismos de rendición de cuentas.\n",
-        "Modificaciones Presupuestarias: Procedimientos para realizar modificaciones al presupuesto inicial, como transferencias de créditos o incorporaciones de remanentes.\n",
-        "Disposiciones Adicionales: Otras disposiciones relevantes para la gestión y ejecución del presupuesto, como la gestión de deuda, el manejo de contingencias, entre otros.\n"
-    ]
-
     i = 0
     for chunk in chunks:
         completion = model.chat.completions.create(
             model="gpt-4",
             messages=[
-                {"role": "system", "content": "Responde SÓLO con el nombre de la etiqueta, sin añadir la descripción"},
-                {"role": "user", "content": "Eres un experto en entendiendo la normativa de la Universidad de La Laguna.\nTu trabajo es etiquetar correctamente el siguiente extracto de la normativa con una de las siguientes etiquetas:\n" + str(labels) + "\nExtracto:\n" + chunks[i].page_content}
+                {"role": "system", "content": SYSTEM_LABEL_PROMPT},
+                {"role": "user", "content": USER_LABEL_PROMPT + chunks[i].page_content}
             ],
             temperature=0.7
         )

@@ -31,5 +31,8 @@ chain = GraphCypherQAChain.from_llm(
     qa_prompt=CYPHER_QA_PROMPT
 )
 
-response = chain.invoke({"query": "¿Qué tiene la cocina mediterránea?"})
+response = chain.invoke({"query": "¿Cuál es el sello distintivo de la cocina mediterránea?"})
 print(response['result'])
+
+with open("schema.txt", 'w', encoding='utf-8') as f:
+    f.writelines(str(graph.schema))

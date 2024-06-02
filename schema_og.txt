@@ -1,0 +1,62 @@
+Node properties:
+Concept {id: STRING}
+Event {id: STRING}
+Organization {id: STRING}
+Place {id: STRING}
+Organism {id: STRING}
+Document {id: STRING, Cabecera_1: STRING, page: INTEGER, Cabecera_2: STRING, text: STRING, source: STRING}
+Group {id: STRING}
+Relationship properties:
+
+The relationships:
+(:Concept)-[:JUEGA_UN_PAPEL_CRUCIAL_EN]->(:Concept)
+(:Concept)-[:FOMENTA]->(:Concept)
+(:Concept)-[:SE_REÚNE_EN_TORNO_A]->(:Concept)
+(:Concept)-[:CULTIVAN]->(:Concept)
+(:Concept)-[:ENRIQUECE]->(:Concept)
+(:Concept)-[:PARTICIPEN_AUMENTA]->(:Concept)
+(:Concept)-[:PROPORCIONA]->(:Concept)
+(:Concept)-[:SE_VISLUMBRA_COMO_UN_PASO_SIGNIFICATIVO_HACIA]->(:Concept)
+(:Concept)-[:TIENEN]->(:Concept)
+(:Concept)-[:INCERTIDUMBRE_SOBRE_SI_SE_CONVERTIRÁN_EN_LA_PRINCIPAL_OPCIÓN_DE]->(:Concept)
+(:Concept)-[:REPRESENTAN_UNA_ALTERNATIVA_A]->(:Concept)
+(:Concept)-[:POSIBILIDAD_DE_REDUCIR]->(:Concept)
+(:Concept)-[:RESPETUOSO_CON]->(:Concept)
+(:Concept)-[:POSIBILIDAD_DE_MITIGAR_LOS_IMPACTOS_DE]->(:Concept)
+(:Concept)-[:PROMETE_MEJORAR]->(:Concept)
+(:Concept)-[:EN]->(:Concept)
+(:Concept)-[:EN]->(:Place)
+(:Concept)-[:CREANDO_MÁS_HABITABLES_Y_SALUDABLES]->(:Concept)
+(:Concept)-[:DESTACA_POR_EL_EMPLEO_DE]->(:Concept)
+(:Concept)-[:INCLUYE]->(:Concept)
+(:Concept)-[:TIENE_SELLO_DISTINTIVO_DE]->(:Concept)
+(:Concept)-[:SE_COMBINAN_CON]->(:Concept)
+(:Concept)-[:SE_HA_ASOCIADO_CON]->(:Concept)
+(:Concept)-[:PROMOCIÓN_DE]->(:Concept)
+(:Concept)-[:PREVENCIÓN_DE]->(:Concept)
+(:Concept)-[:ADAPTAN_Y_MUTAN]->(:Concept)
+(:Concept)-[:ADAPTAN_Y_MUTAN]->(:Place)
+(:Concept)-[:EXPERIMENTANDO]->(:Concept)
+(:Concept)-[:DIFERENTES_A_LAS_QUE_SE_OBSERVAN_EN]->(:Concept)
+(:Concept)-[:DISTINTAS_A]->(:Concept)
+(:Concept)-[:EXPANSIÓN]->(:Concept)
+(:Concept)-[:SE_DESTACA_EN]->(:Concept)
+(:Concept)-[:DE]->(:Concept)
+(:Concept)-[:SE_TRASLADAN_EN]->(:Concept)
+(:Event)-[:DE]->(:Group)
+(:Event)-[:ENFRENTA_A]->(:Organization)
+(:Event)-[:ENTRE]->(:Group)
+(:Event)-[:LLEVARÁ_A]->(:Group)
+(:Organism)-[:ADAPTAN_Y_MUTAN]->(:Concept)
+(:Organism)-[:ADAPTAN_Y_MUTAN]->(:Place)
+(:Organism)-[:EN]->(:Concept)
+(:Organism)-[:EXPERIMENTANDO]->(:Concept)
+(:Document)-[:MENTIONS]->(:Concept)
+(:Document)-[:MENTIONS]->(:Organization)
+(:Document)-[:MENTIONS]->(:Event)
+(:Document)-[:MENTIONS]->(:Place)
+(:Document)-[:MENTIONS]->(:Group)
+(:Document)-[:MENTIONS]->(:Organism)
+(:Group)-[:ESPERAN_ANSIOSAMENTE_EN]->(:Place)
+(:Group)-[:SE_PREPARAN_EN]->(:Place)
+(:Group)-[:EN_AMBOS_LADOS_DEL]->(:Place)

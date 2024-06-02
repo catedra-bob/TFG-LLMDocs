@@ -4,7 +4,6 @@ os.environ["OPENAI_API_KEY"] = "sk-proj-S6N1LP3ePLPBDcRcU77uT3BlbkFJMsihwy3eQsyu
 
 from pathlib import Path
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
-from langchain.prompts import ChatPromptTemplate
 from langchain.schema import StrOutputParser
 from langchain_community.document_loaders import PyMuPDFLoader
 from langchain.vectorstores.chroma import Chroma
@@ -12,12 +11,14 @@ from langchain.indexes import SQLRecordManager, index
 from langchain.schema.runnable import Runnable, RunnablePassthrough, RunnableConfig
 from langchain.callbacks.base import BaseCallbackHandler
 from my_embedding_function import MyEmbeddingFunction
-from semantic_evaluations.semantic_splitters import split_text_semantic_langchain, split_documents_semantic_langchain, LLMTextSplitter
 from strategy_evaluations.ragas_evaluator import ragas_evaluator
+from rag_v1_prompts import QA_PROMPT
 from splitter_functions import (
     split_text_markdown,
     split_text_char,
     split_text_recursive,
+    split_text_semantic_langchain,
+    LLMTextSplitter
 )
 from label_functions import (
     label_chunks_autolabel,
@@ -105,23 +106,13 @@ doc_search = process_pdfs(PDF_STORAGE_PATH, COLLECTION_NAME)
 # RAG pipeline
 @cl.on_chat_start
 async def on_chat_start():
-    template = """Responde a la pregunta basándote sólo en el siguiente contexto:
-
-    {context}
-
-    ---
-
-    Responde a la pregunta basándote en el contexto de arriba: {question}
-    """
-    prompt = ChatPromptTemplate.from_template(template)
- 
     def format_docs(docs):
         results = ""
 
         for d in docs:
             results_metadatas_dict = d.metadata
             for key, value in results_metadatas_dict.items():
-                regexp = re.compile(r'(Cabecera \d)|(Punto)')
+                regexp = re.compile(r'(Cabecera_\d)|(Punto)')
                 if regexp.search(key):
                     if (key == "Punto"):
                         results += "Punto: " + value + "\n"
@@ -140,7 +131,7 @@ async def on_chat_start():
 
     runnable = (
         {"context": retriever | format_docs, "question": RunnablePassthrough()}
-        | prompt
+        | QA_PROMPT
         | GENERATIVE_MODEL
         | StrOutputParser()
     )

@@ -23,11 +23,11 @@ system_prompt = (
     "names or human-readable identifiers found in the text. "
     "Node IDs should be exactly as they appear in the text. This means that accents, " # 2
     "diacritical marks, and capitalization must be retained in their original form. "
-    'For example, if the entity in the text is "fútbol americano," it should not be altered to "Fútbol Americano" or "futbol americano". '
     "The goal is to ensure that the extracted entities are a perfect match to their appearance in the original text. \n"
     "- **Relationships** represent connections between entities or concepts.\n"
     "Ensure consistency and generality in relationship types when constructing "
     "knowledge graphs. The relationships should be as long as necessary to capture the most amount of information possible. " # 3
+    "Relationships should be in the same language as they appear in the text."
     "## 3. Coreference Resolution\n"
     "- **Maintain Entity Consistency**: When extracting entities, it's vital to "
     "ensure consistency.\n"
@@ -50,7 +50,7 @@ GRAPH_GENERATION_PROMPT = ChatPromptTemplate.from_messages(
         (
             "human",
             (
-                "Tip: Make sure to answer in the correct format and language, and do " # 5
+                "Tip: Make sure to answer in the correct format, and do "
                 "not include any explanations. "
                 "Use the given format to extract information from the "
                 "following input: {input}"
@@ -60,13 +60,14 @@ GRAPH_GENERATION_PROMPT = ChatPromptTemplate.from_messages(
 )
 
 # Prompt para la creación de la consulta Cypher v1
-CYPHER_GENERATION_TEMPLATE_v1 = """Task: Generate Cypher statement to query a graph database.
+CYPHER_GENERATION_TEMPLATE_v1 = """Task: Generate a Cypher statement to query a neo4j graph database.
 Instructions:
-Use only the provided node properties, relationship properties and relationship from the following schema.
+Use only the provided node properties, relationship properties and relationships from the following schema.
 Use only MATCH and RETURN statements.
 The MATCH statement should have the following format, where *entity here* should be replaced with the main entity extracted from the question:
 MATCH (d:Document)-[:MENTIONS]->(c:Concept *curly bracket*id: *entity here**curly bracket*)
-The entity should never be capitalized. For example, if the entity in the question is "Coche Electrico", use "coche eléctrico" in the statement.
+The entity extracted from the question should never be capitalized and must be written with the correct accent marks.
+For example, if the entity in the question is "Coche Electrico", use "coche eléctrico" in the statement.
 The RETURN statement should contain every property of the document besides the id.
 
 Schema:
@@ -87,13 +88,15 @@ CYPHER_GENERATION_PROMPT_V1 = PromptTemplate(
 # Prompt para la creación de la consulta Cypher v2
 CYPHER_GENERATION_TEMPLATE_v2 = """Task: Generate a Cypher statement to query a neo4j graph database.
 Instructions for the statement:
-Use only the provided node properties, relationship properties and relationship from the following schema:
+Use only the provided node properties, relationship properties and relationships from the following schema:
 
 Schema:
 {schema}
 
 Ignore "Document" nodes, do not use them in any case.
-Nodes and relationships have to be written as they appear in the schema, letter by letter.
+The nodes of the RETURN statement should have a meaningful name.
+The entity extracted from the question should never be capitalized and must be written with the correct accent marks.
+For example, if the entity in the question is "Coche Electrico", use "coche eléctrico" in the statement.
 
 Notes:
 Do not include any explanations or apologies in your responses.
@@ -111,7 +114,11 @@ CYPHER_GENERATION_PROMPT_V2 = PromptTemplate(
 CYPHER_QA_TEMPLATE = """You are an assistant that helps to form nice and human understandable answers.
 The information part contains the provided information that you must use to construct an answer.
 The provided information is authoritative, you must never doubt it or try to use your internal knowledge to correct it.
-Make the answer sound as a response to the question. Do not mention that you based the result on the given information.
+Make the answer sound as a response to the question.
+The answer must have every information provided in the context.
+Respond in a natural and conversational manner without using quotation marks to highlight the key concepts or phrases provided in the context.
+For example, instead of saying 'La clave del éxito es "trabajo duro" y "dedicación".' say 'La clave del éxito es el trabajo duro y la dedicación.'
+Do not mention that you based the result on the given information.
 Here is an example:
 
 Question: Which managers own Neo4j stocks?

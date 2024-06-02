@@ -11,6 +11,7 @@ from langchain_core.output_parsers import StrOutputParser
 from app_chroma.my_embedding_function import MyEmbeddingFunction
 from app_chroma.semantic_evaluations.semantic_representations import represent_chunks
 from langchain_experimental.text_splitter import SemanticChunker
+from app_chroma.rag_v1_prompts import LLM_SPLITTER_PROMPT
 import re
 import tiktoken 
 
@@ -28,7 +29,7 @@ def split_text_semantic_langchain(text, represent, treshold):
 def split_documents_semantic_langchain(documents, represent, treshold):
     text_splitter = SemanticChunker(MyEmbeddingFunction(), breakpoint_threshold_type="percentile", breakpoint_threshold_amount=treshold)
     chunks_semantic = text_splitter.split_documents(documents)
-    if (represent): 
+    if (represent):
         all_text = ""
         for page_num in range(len(documents)):
             all_text += documents[page_num].page_content
@@ -53,7 +54,7 @@ class LLMTextSplitter(TextSplitter):
         self.model = ChatOpenAI(model=self.model_name, api_key="sk-proj-S6N1LP3ePLPBDcRcU77uT3BlbkFJMsihwy3eQsyueEEIVKiX")
         self.output_paser = StrOutputParser() 
 
-        topic_template = "Trocea el siguiente texto siguiendo la técnica de troceado semántico. Añade >>> y <<< alrededor de cada trozo: '{text}'"
+        topic_template = LLM_SPLITTER_PROMPT
         self.prompt_template = ChatPromptTemplate.from_template(topic_template)
         self.chain = self.prompt_template | self.model | self.output_paser
 
