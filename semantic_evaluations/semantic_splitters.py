@@ -51,7 +51,7 @@ class LLMTextSplitter(TextSplitter):
         self.model_name = model_name 
         self.count_tokens = count_tokens
         self.encoding_name = encoding_name
-        self.model = ChatOpenAI(model=self.model_name, api_key="sk-proj-S6N1LP3ePLPBDcRcU77uT3BlbkFJMsihwy3eQsyueEEIVKiX")
+        self.model = ChatOpenAI(temperature=0, model=self.model_name, api_key="sk-proj-S6N1LP3ePLPBDcRcU77uT3BlbkFJMsihwy3eQsyueEEIVKiX")
         self.output_paser = StrOutputParser() 
 
         topic_template = LLM_SPLITTER_PROMPT

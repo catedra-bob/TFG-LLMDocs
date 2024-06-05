@@ -67,7 +67,7 @@ def label_chunks_ull(chunks):
                 {"role": "system", "content": SYSTEM_LABEL_PROMPT},
                 {"role": "user", "content": USER_LABEL_PROMPT + chunks[i].page_content}
             ],
-            temperature=0.7
+            temperature=0
         )
 
         chunk.metadata['Seccion'] = completion.choices[0].message.content

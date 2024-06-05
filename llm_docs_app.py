@@ -125,8 +125,8 @@ async def on_chat_start():
         return results
 
     retriever = doc_search.as_retriever(
-                    search_type="similarity",
-                    search_kwargs={'k': 3}
+                    search_type="similarity_score_threshold",
+                    search_kwargs={'score_threshold': 0.8}
                 )
 
     runnable = (
