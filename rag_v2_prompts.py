@@ -81,9 +81,6 @@ Do not include any text except the generated Cypher statement.
 Question:
 {question}"""
 
-CYPHER_GENERATION_PROMPT_V1 = PromptTemplate(
-    input_variables=["schema", "question"], template=CYPHER_GENERATION_TEMPLATE_v1
-)
 
 # Prompt para la creación de la consulta Cypher v2
 CYPHER_GENERATION_TEMPLATE_v2 = """Task: Generate a Cypher statement to query a neo4j graph database.

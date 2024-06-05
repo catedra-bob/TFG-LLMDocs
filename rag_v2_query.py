@@ -8,22 +8,22 @@ os.environ["NEO4J_PASSWORD"] = "q7dUtnqP"
 from langchain_community.graphs import Neo4jGraph
 from langchain_community.chains.graph_qa.cypher import GraphCypherQAChain
 from langchain_openai import ChatOpenAI
-from langchain_experimental.graph_transformers import LLMGraphTransformer
+from strategy_evaluations.ragas_evaluator import ragas_evaluator_graph
 from rag_v2_prompts import (
-    GRAPH_GENERATION_PROMPT,
     CYPHER_GENERATION_PROMPT_V2,
     CYPHER_QA_PROMPT
 )
 
 
 graph = Neo4jGraph()
-llm = ChatOpenAI(temperature=0, model_name="gpt-4o")
-llm_transformer = LLMGraphTransformer(llm=llm, prompt=GRAPH_GENERATION_PROMPT)
+llm_qa = ChatOpenAI(model_name="gpt-4o")
+llm_cypher = ChatOpenAI(temperature=0, model_name="gpt-4o")
 
 # Chain principal
 chain = GraphCypherQAChain.from_llm(
     graph=graph,
-    llm=llm,
+    cypher_llm=llm_cypher,
+    qa_llm=llm_qa,
     verbose=True,
     validate_cypher=True,
     top_k=10,
@@ -31,8 +31,11 @@ chain = GraphCypherQAChain.from_llm(
     qa_prompt=CYPHER_QA_PROMPT
 )
 
+# ragas_evaluator_graph(chain)
+
 response = chain.invoke({"query": "¿Cuál es el sello distintivo de la cocina mediterránea?"})
 print(response['result'])
+chain.cypher_generation_chain
 
-with open("schema.txt", 'w', encoding='utf-8') as f:
-    f.writelines(str(graph.schema))
+# with open("schema.txt", 'w', encoding='utf-8') as f:
+    # f.writelines(str(graph.schema))

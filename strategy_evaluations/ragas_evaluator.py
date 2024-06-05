@@ -39,6 +39,40 @@ def ragas_evaluator(runnable, retriever):
         ],
     )
 
+    plot_solutions(result)
+
+
+def ragas_evaluator_graph(chain):
+    testset = pd.read_excel("strategy_evaluations/temas_variados_test_set.xlsx")
+
+    questions = testset["question"].to_list()
+    ground_truth = testset["ground_truth"].to_list()
+
+    data = {"question": [], "answer": [], "contexts": [], "ground_truth": ground_truth}
+
+    for query in questions:
+        response = chain.invoke(query)
+        data["question"].append(query)
+        data["answer"].append(response['result'])
+        data["contexts"].append(["{'sello_distintivo': {'id': 'sabores vibrantes'}}", "{'sello_distintivo': {'id': 'simplicidad'}}"])
+
+    dataset = Dataset.from_dict(data)
+
+    result = evaluate(
+        dataset = dataset,
+        metrics=[
+            context_relevancy,
+            context_precision,
+            context_recall,
+            faithfulness,
+            answer_relevancy,
+        ],
+    )
+
+    plot_solutions(result)
+
+
+def plot_solutions(result):
     df = result.to_pandas()
     df.to_csv("strategy_evaluations/result.csv")
 

@@ -62,7 +62,7 @@ def label_chunks_ull(chunks):
     i = 0
     for chunk in chunks:
         completion = model.chat.completions.create(
-            model="gpt-4",
+            model="gpt-4o",
             messages=[
                 {"role": "system", "content": SYSTEM_LABEL_PROMPT},
                 {"role": "user", "content": USER_LABEL_PROMPT + chunks[i].page_content}

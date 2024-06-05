@@ -125,7 +125,7 @@ async def on_chat_start():
         return results
 
     retriever = doc_search.as_retriever(
-                    search_type="mmr",
+                    search_type="similarity",
                     search_kwargs={'k': 3}
                 )
 
