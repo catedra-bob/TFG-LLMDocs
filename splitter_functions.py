@@ -4,7 +4,7 @@ os.environ["OPENAI_API_KEY"] = "sk-proj-S6N1LP3ePLPBDcRcU77uT3BlbkFJMsihwy3eQsyu
 
 from langchain.text_splitter import RecursiveCharacterTextSplitter, MarkdownHeaderTextSplitter
 from langchain_text_splitters import CharacterTextSplitter
-from semantic_evaluations.semantic_splitters import split_text_semantic_langchain, LLMTextSplitter
+
 
 # Divide los documentos según las etiquetas markdown que contiene
 def split_text_markdown(documents, recursive_size, recursive_overlap):

@@ -5,12 +5,13 @@ os.environ["OPENAI_API_KEY"] = "sk-proj-S6N1LP3ePLPBDcRcU77uT3BlbkFJMsihwy3eQsyu
 from openai import OpenAI
 from langchain_community.document_loaders import DataFrameLoader
 from autolabel import LabelingAgent, AutolabelDataset
-from rag_v1_prompts import SYSTEM_LABEL_PROMPT, USER_LABEL_PROMPT
+from prompts import SYSTEM_LABEL_PROMPT, USER_LABEL_PROMPT
 
 import pandas as pd
 import json
 
-# Etiqueta los chunks
+
+# Etiqueta los chunks con autolabel (no utilizado)
 def label_chunks_autolabel(chunks):
     # 1. Convertir los chunks a dataframe
     df = pd.DataFrame(columns=['page_content','Título','Capítulo','Artículo','Punto'])
@@ -54,7 +55,7 @@ def label_chunks_autolabel(chunks):
     return chunks
 
 
-# Etiqueta los chunks
+# Etiqueta los chunks con OpenAI
 def label_chunks_ull(chunks):
     # model = OpenAI(base_url="http://openai.ull.es:8080/v1", api_key="lm-studio")
     model = OpenAI(api_key="sk-proj-S6N1LP3ePLPBDcRcU77uT3BlbkFJMsihwy3eQsyueEEIVKiX")

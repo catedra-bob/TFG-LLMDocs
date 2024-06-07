@@ -9,19 +9,24 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_openai import ChatOpenAI
 from langchain_core.output_parsers import StrOutputParser
 from app_chroma.my_embedding_function import MyEmbeddingFunction
+from app_chroma.splitter_functions import export_chunks
 from app_chroma.semantic_evaluations.semantic_representations import represent_chunks
 from langchain_experimental.text_splitter import SemanticChunker
-from app_chroma.rag_v1_prompts import LLM_SPLITTER_PROMPT
+from app_chroma.prompts import LLM_SPLITTER_PROMPT
+
 import re
 import tiktoken 
 
 load_dotenv()
 
-# Método Langchain semantic chunker
+
+# Métodos Langchain semantic chunker
 def split_text_semantic_langchain(text, represent, treshold):
     text_splitter = SemanticChunker(MyEmbeddingFunction(), breakpoint_threshold_type="percentile", breakpoint_threshold_amount=treshold)
     chunks_semantic = text_splitter.split_text(text)
     if (represent): represent_chunks(text_splitter, text)
+
+    export_chunks('outputs/chunks_semantic_langchain.txt', chunks_semantic)
 
     return chunks_semantic
 
@@ -34,6 +39,8 @@ def split_documents_semantic_langchain(documents, represent, treshold):
         for page_num in range(len(documents)):
             all_text += documents[page_num].page_content
         represent_chunks(text_splitter, all_text)
+
+    export_chunks('outputs/chunks_semantic_langchain.txt', chunks_semantic)
 
     return chunks_semantic
 
@@ -75,4 +82,5 @@ class LLMTextSplitter(TextSplitter):
         pattern = r">>>(.*?)<<<"
         chunks = re.findall(pattern, text, re.DOTALL)
         formatted_chunks = [chunk.strip() for chunk in chunks]
+        export_chunks('outputs/chunks_semantic_gpt.txt', formatted_chunks)
         return formatted_chunks

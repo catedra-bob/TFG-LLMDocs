@@ -1,0 +1,79 @@
+Node properties:
+- **Concept**
+  - `id`: STRING Example: "alimentos"
+- **Event**
+  - `id`: STRING Available options: ['semifinal de la copa de europa', 'partido', 'semifinal', 'copa de europa']
+- **Organization**
+  - `id`: STRING Available options: ['real madrid', 'bayern de múnich', 'gigantes del fútbol europeo', 'equipos']
+- **Place**
+  - `id`: STRING Available options: ['mundo', 'estadio', 'campo', 'estación espacial']
+- **Person**
+  - `id`: STRING Available options: ['fanáticos', 'aficionados', 'jugadores']
+- **Organism**
+  - `id`: STRING Available options: ['bacterias']
+- **Document**
+  - `id`: STRING Available options: ['8a91a21816d2d622af910081ead7db63', '71f140f468e0d72cf3795a2db86e01ce', '77b969ccf32c0f259f8f1f22a7436b34', 'ac27f5e40e03399415e2e517e88996ab', '9e325596569c923bbbf92ebc10e82aab', 'f5ccf6e52852da977ddb83269518afc8', '59d47897326adca277c1e1b7ef322eb7', '438abb55ecbd9b2135aaabde72470c9b']
+  - `page`: INTEGER Min: 0, Max: 1
+  - `text`: STRING Available options: ['La cocina mediterránea, reconocida mundialmente po', 'Este encuentro promete una exhibición de talento y', 'La expansión del conocimiento humano hacia el espa', 'La importancia de la unidad familiar se destaca en', 'Además, la dimensión de la familia juega un papel ', 'El auge de los vehículos eléctricos se vislumbra c', 'Los vehículos eléctricos representan una alternati', 'Los alimentos de la cocina se trasladan en vehícul']
+  - `source`: STRING Available options: ['pdfs_otros\\Temas_variados.pdf', 'local']
+  - `Cabecera_1`: STRING Available options: ['Importancia de la Unidad Familiar', 'El Futuro de los Vehículos Eléctricos: Perspectiva']
+  - `Cabecera_2`: STRING Available options: ['La Dimensión de la Familia: Más es Mejor', 'La Promesa de la Sostenibilidad']
+- **Condition**
+  - `id`: STRING Available options: ['condiciones terrestres', 'entornos extraterrestres']
+Relationship properties:
+
+The relationships:
+(:Concept)-[:SE_TRASLADAN_EN]->(:Concept)
+(:Concept)-[:DE]->(:Concept)
+(:Concept)-[:INCLUYE]->(:Concept)
+(:Concept)-[:USA]->(:Concept)
+(:Concept)-[:TIENE]->(:Concept)
+(:Concept)-[:DESTACA_POR_EL_EMPLEO_DE]->(:Concept)
+(:Concept)-[:PREVENCIÓN_DE]->(:Concept)
+(:Concept)-[:PROMOCIÓN_DE]->(:Concept)
+(:Concept)-[:ADAPTAN_Y_MUTAN]->(:Concept)
+(:Concept)-[:ADAPTAN_Y_MUTAN]->(:Place)
+(:Concept)-[:COMPORTAMIENTO_Y_ADAPTACIÓN_EN]->(:Condition)
+(:Concept)-[:MUTACIONES_DISTINTAS_A_LAS_OBSERVADAS_EN]->(:Condition)
+(:Concept)-[:PROLIFERACIÓN_EN]->(:Concept)
+(:Concept)-[:PROLIFERACIÓN_EN]->(:Place)
+(:Concept)-[:EXPANSIÓN]->(:Concept)
+(:Concept)-[:DIFERENTES_A_LAS_QUE_SE_OBSERVAN]->(:Concept)
+(:Concept)-[:FORTALECE_LOS_LAZOS_AFECTIVOS]->(:Concept)
+(:Concept)-[:JUEGA_UN_PAPEL_CRUCIAL_EN]->(:Concept)
+(:Concept)-[:FOMENTA]->(:Concept)
+(:Concept)-[:SE_REÚNE_EN_TORNO_A]->(:Concept)
+(:Concept)-[:CULTIVAN]->(:Concept)
+(:Concept)-[:PARTICIPEN_AUMENTA]->(:Concept)
+(:Concept)-[:ENRIQUECE]->(:Concept)
+(:Concept)-[:PROPORCIONA]->(:Concept)
+(:Concept)-[:REPRESENTAN_UNA_ALTERNATIVA_A]->(:Concept)
+(:Concept)-[:POSIBILIDAD_DE_REDUCIR]->(:Concept)
+(:Concept)-[:PROMETE_MEJORAR]->(:Concept)
+(:Concept)-[:CREANDO_MÁS_HABITABLES_Y_SALUDABLES]->(:Concept)
+(:Concept)-[:SE_VISLUMBRA_COMO_UN_PASO_SIGNIFICATIVO_HACIA]->(:Concept)
+(:Concept)-[:INCERTIDUMBRE_SOBRE_SI_SE_CONVERTIRÁN_EN_LA_PRINCIPAL_OPCIÓN_DE]->(:Concept)
+(:Concept)-[:RESPETUOSO_CON]->(:Concept)
+(:Concept)-[:POSIBILIDAD_DE_MITIGAR_LOS_IMPACTOS_DE]->(:Concept)
+(:Concept)-[:EN]->(:Concept)
+(:Event)-[:PARTICIPA]->(:Organization)
+(:Event)-[:CRUCIAL_PARA]->(:Person)
+(:Event)-[:ES_DE]->(:Event)
+(:Organization)-[:ENFRENTAMIENTO_ENTRE_EN]->(:Place)
+(:Organization)-[:DESTINO_PENDE_DE_UN_HILO_EN]->(:Event)
+(:Person)-[:ESPERAN_ANSIOSAMENTE_EL_DESENLACE_EN]->(:Place)
+(:Person)-[:SE_PREPARAN_PARA_PRESENCIAR_EN]->(:Place)
+(:Person)-[:EN_AMBOS_LADOS_DEL]->(:Place)
+(:Organism)-[:ADAPTAN_Y_MUTAN]->(:Concept)
+(:Organism)-[:ADAPTAN_Y_MUTAN]->(:Place)
+(:Organism)-[:COMPORTAMIENTO_Y_ADAPTACIÓN_EN]->(:Condition)
+(:Organism)-[:MUTACIONES_DISTINTAS_A_LAS_OBSERVADAS_EN]->(:Condition)
+(:Organism)-[:PROLIFERACIÓN_EN]->(:Concept)
+(:Organism)-[:PROLIFERACIÓN_EN]->(:Place)
+(:Document)-[:MENTIONS]->(:Concept)
+(:Document)-[:MENTIONS]->(:Organization)
+(:Document)-[:MENTIONS]->(:Event)
+(:Document)-[:MENTIONS]->(:Place)
+(:Document)-[:MENTIONS]->(:Person)
+(:Document)-[:MENTIONS]->(:Condition)
+(:Document)-[:MENTIONS]->(:Organism)

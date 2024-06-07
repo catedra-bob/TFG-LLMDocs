@@ -13,6 +13,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from matplotlib.colors import LinearSegmentedColormap
 
+
 def ragas_evaluator(runnable, retriever):
     testset = pd.read_excel("strategy_evaluations/test_set.xlsx")
 
@@ -42,7 +43,7 @@ def ragas_evaluator(runnable, retriever):
     plot_solutions(result)
 
 
-def ragas_evaluator_graph(chain, retriever):
+def ragas_evaluator_graph(chain):
     testset = pd.read_excel("strategy_evaluations/temas_variados_test_set.xlsx")
 
     questions = testset["question"].to_list()
@@ -51,9 +52,10 @@ def ragas_evaluator_graph(chain, retriever):
     data = {"question": [], "answer": [], "contexts": [], "ground_truth": ground_truth}
 
     for query in questions:
+        response = chain.invoke(query)
         data["question"].append(query)
-        data["answer"].append(chain.invoke(query))
-        data["contexts"].append(retriever(query))
+        data["answer"].append(response['answer'])
+        data["contexts"].append(response['context'])
 
     dataset = Dataset.from_dict(data)
 

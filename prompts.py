@@ -1,7 +1,31 @@
 from langchain_core.prompts.prompt import PromptTemplate
 from langchain_core.prompts import ChatPromptTemplate
 
-# Prompt para la creación del grafo
+############### RAG V1 ###############
+
+# Troceado semántico LLMs
+LLM_SPLITTER_PROMPT = "Trocea el siguiente texto siguiendo la técnica de troceado semántico. Añade >>> y <<< alrededor de cada trozo: '{text}'"
+
+# Etiquetado
+SYSTEM_LABEL_PROMPT = "Responde SÓLO con el nombre de la etiqueta, sin añadir la descripción"
+
+USER_LABEL_PROMPT = (
+    "Eres un experto en entendiendo la normativa de la Universidad de La Laguna.\n"
+    "Tu trabajo es etiquetar correctamente el siguiente extracto de la normativa con una de las siguientes etiquetas:\n"
+        "Introducción: Una sección introductoria que proporciona una visión general del propósito y alcance de las bases de ejecución presupuestaria.\n",
+        "Marco Legal: Una descripción de las leyes, reglamentos y normativas que rigen la gestión presupuestaria de la entidad.\n",
+        "Objetivos: Una declaración de los objetivos y metas que se buscan alcanzar mediante la gestión y ejecución del presupuesto.\n",
+        "Procedimientos de Elaboración del Presupuesto: Detalles sobre el proceso de elaboración del presupuesto, incluyendo la participación de diferentes áreas o departamentos, los plazos involucrados y los criterios utilizados para asignar recursos.\n",
+        "Normas de Ejecución: Reglas y procedimientos específicos para la ejecución del presupuesto, como la autorización de gastos, la contratación pública, el control de pagos, entre otros.\n",
+        "Control y Seguimiento: Procedimientos para el control y seguimiento del presupuesto, incluyendo la elaboración de informes periódicos, auditorías internas o externas, y mecanismos de rendición de cuentas.\n",
+        "Modificaciones Presupuestarias: Procedimientos para realizar modificaciones al presupuesto inicial, como transferencias de créditos o incorporaciones de remanentes.\n",
+        "Disposiciones Adicionales: Otras disposiciones relevantes para la gestión y ejecución del presupuesto, como la gestión de deuda, el manejo de contingencias, entre otros.\n"
+    "\nExtracto:\n"
+)
+
+############### RAG V2 ###############
+
+# Creación del grafo
 system_prompt = (
     "# Knowledge Graph Instructions for GPT-4\n"
     "## 1. Overview\n"
@@ -59,7 +83,7 @@ GRAPH_GENERATION_PROMPT = ChatPromptTemplate.from_messages(
     ]
 )
 
-# Prompt para la creación de la consulta Cypher v1
+# Creación de la consulta Cypher v1 (no utilizado)
 CYPHER_GENERATION_TEMPLATE_v1 = """Task: Generate a Cypher statement to query a neo4j graph database.
 Instructions:
 Use only the provided node properties, relationship properties and relationships from the following schema.
@@ -82,7 +106,7 @@ Question:
 {question}"""
 
 
-# Prompt para la creación de la consulta Cypher v2
+# Creación de la consulta Cypher v2
 CYPHER_GENERATION_TEMPLATE_v2 = """Task: Generate a Cypher statement to query a neo4j graph database.
 Instructions for the statement:
 Use only the provided node properties, relationship properties and relationships from the following schema:
@@ -107,7 +131,21 @@ CYPHER_GENERATION_PROMPT_V2 = PromptTemplate(
     input_variables=["schema", "question"], template=CYPHER_GENERATION_TEMPLATE_v2
 )
 
-# Prompt para la creación de la respuesta
+############### GENERACIÓN ###############
+
+# Generación de la respuesta para ambas versiones
+QA_PROMPT_TEMPLATE = """Responde a la pregunta basándote sólo en el siguiente contexto:
+
+{context}
+
+---
+
+Responde a la pregunta basándote en el contexto de arriba: {question}
+"""
+
+QA_PROMPT = ChatPromptTemplate.from_template(QA_PROMPT_TEMPLATE)
+
+# Generación de la respuesta para RAG v2 (no utilizado)
 CYPHER_QA_TEMPLATE = """You are an assistant that helps to form nice and human understandable answers.
 The information part contains the provided information that you must use to construct an answer.
 The provided information is authoritative, you must never doubt it or try to use your internal knowledge to correct it.
@@ -129,7 +167,3 @@ Information:
 
 Question: {question}
 Helpful Answer:"""
-
-CYPHER_QA_PROMPT = PromptTemplate(
-    input_variables=["context", "question"], template=CYPHER_QA_TEMPLATE
-)
