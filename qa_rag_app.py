@@ -26,13 +26,14 @@ import re
 
 PDF_STORAGE_PATH = Path("./pdfs_otros") # Path("./pdfs_economicos") # Path("./pdfs_anaga")
 COLLECTION_NAME = "coleccion_otros" # "coleccion_economicos" # "coleccion_anaga"
-PROCESS = True
+RAG_VERSION = 2
+PROCESS = False
 
 GENERATIVE_MODEL = ChatOpenAI(model="gpt-4o", streaming=True)
 GENERATIVE_MODEL_T0 = ChatOpenAI(model_name="gpt-4o", temperature=0)
 
 
-database = preprocess_documents(PDF_STORAGE_PATH, COLLECTION_NAME, PROCESS)
+database = preprocess_documents(PDF_STORAGE_PATH, COLLECTION_NAME, RAG_VERSION, PROCESS)
 
 
 def rag_v1_chain():
@@ -72,6 +73,11 @@ def rag_v1_chain():
 
 
 def rag_v2_chain():
+    neo4j_db = Neo4jGraph(enhanced_schema=True)
+    
+    with open("outputs/enhanced_schema.txt", 'w', encoding='utf-8') as f:
+        f.writelines(str(neo4j_db.schema))
+
     def extract_nested_values(data):
         values = []
         for item in data:
@@ -92,15 +98,15 @@ def rag_v2_chain():
             **use_cypher_llm_kwargs,
         )
 
-        generated_cypher = cypher_generation_chain.run({"schema": database.schema, "question": question})
+        generated_cypher = cypher_generation_chain.run({"schema": neo4j_db.schema, "question": question})
         generated_cypher = extract_cypher(generated_cypher)
         print("CYPHER: " + str(generated_cypher))
-        context = database.query(generated_cypher)[: 10]
+        context = neo4j_db.query(generated_cypher)[: 10]
         print("CONTEXT:" + str(context))
         result = extract_nested_values(context)
         print("NODES: " + str(result))
 
-        response = database.query("WITH " + str(result) + """AS terms 
+        response = neo4j_db.query("WITH " + str(result) + """AS terms 
                                 MATCH (doc:Document)-[:MENTIONS]->(term)
                                 WHERE term.id IN terms
                                 WITH doc, terms, collect(term.id) AS mentionedTerms
@@ -117,9 +123,6 @@ def rag_v2_chain():
         | GENERATIVE_MODEL
         | StrOutputParser()
     )
-
-    # response = rag_chain_with_source.invoke("¿Quién se enfrenta al Real Madrid?")
-    # print(response['answer'])
 
     """def format_docs(docs):
         return "\n\n".join(doc for doc in docs)
@@ -153,7 +156,6 @@ async def on_chat_start():
     cl.user_session.set("runnable", runnable)
 
 
-# Fases 5 y 6: Recuperación y generación
 @cl.on_message
 async def on_message(message: cl.Message):
     runnable = cl.user_session.get("runnable")  # type: Runnable

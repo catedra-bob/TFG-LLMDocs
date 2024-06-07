@@ -16,7 +16,7 @@ from langchain_community.vectorstores.chroma import Chroma
 from langchain.indexes import SQLRecordManager, index
 from my_embedding_function import MyEmbeddingFunction
 from prompts import GRAPH_GENERATION_PROMPT
-from splitter_functions import (
+from split_functions import (
     split_text_markdown,
     split_text_char,
     split_text_recursive
@@ -84,24 +84,40 @@ def rag_v2_store_chunks_graphs(chunks: List[Document]):
     neo4j_db = Neo4jGraph(enhanced_schema=True)
     llm_transformer = LLMGraphTransformer(llm=GENERATIVE_MODEL_T0, prompt=GRAPH_GENERATION_PROMPT)
 
+    neo4j_db.query("MATCH (n) DETACH DELETE n")
     neo4j_db.refresh_schema()
-    graph_documents = llm_transformer.convert_to_graph_documents(chunks)
-    neo4j_db.add_graph_documents(graph_documents, baseEntityLabel=True, include_source=True)
 
+    graph_documents = llm_transformer.convert_to_graph_documents(chunks)
+
+    neo4j_db.add_graph_documents(graph_documents, baseEntityLabel=True, include_source=True)
     neo4j_db.query("MATCH (n) SET n.id = toLower(n.id)")
 
     return neo4j_db
 
 
-def preprocess_documents(pdf_storage_path: Path, collection_name: str, process: bool):
-    chunks = []
+def preprocess_documents(pdf_storage_path: Path, collection_name: str, rag_version: int, process: bool):
+    database = []
 
     if (process):
+        chunks = []
+
         for pdf_path in pdf_storage_path.glob("*.pdf"):
             documents = load_pdf(str(pdf_path)) # Fase 1: Carga
             chunks += split_and_label_documents(documents, collection_name) # Fases 2 y 3: Troceado y etiquetado
 
-    # database = rag_v1_store_chunks_embeddings(chunks, collection_name) # Fase 4: Almacenamiento como embeddings
-    database = rag_v2_store_chunks_graphs(chunks) # Fase 4: Almacenamiento como grafos
+        if (rag_version == 1):
+            database = rag_v1_store_chunks_embeddings(chunks, collection_name) # Fase 4: Almacenamiento como embeddings
+        elif (rag_version == 2):
+            database = rag_v2_store_chunks_graphs(chunks) # Fase 4: Almacenamiento como grafos
+    else:
+        if (rag_version == 1):
+            chroma_client = chromadb.PersistentClient(path="./chroma")
+            database = Chroma(
+                client=chroma_client,
+                collection_name=collection_name,
+                embedding_function=EMBEDDINGS_MODEL,
+            )
+        elif (rag_version == 2):
+            database = Neo4jGraph(enhanced_schema=True)
 
     return database
