@@ -1,7 +1,7 @@
 from semantic_splitters import split_text_semantic_langchain, LLMTextSplitter
-from pathlib import Path
 from langchain_community.document_loaders import PyMuPDFLoader
 import sys
+
 
 pdf_path = "semantic_evaluations\Titulo II.pdf"
 document = []

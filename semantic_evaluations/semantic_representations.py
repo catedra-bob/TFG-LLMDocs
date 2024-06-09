@@ -8,7 +8,7 @@ import re
 
 
 def represent_chunks(text_splitter, text):
-    # Splitting the text on '.', '?', and '!'
+    # Separa el texto en '.', '?', y '!'
     single_sentences_list = re.split(r'(?<=[.?!])\s+', text)
 
     distances, sentences = text_splitter._calculate_sentence_distances(single_sentences_list)
@@ -19,19 +19,15 @@ def represent_chunks(text_splitter, text):
     plt.ylim(0, y_upper_bound)
     plt.xlim(0, len(distances))
 
-    # We need to get the distance threshold that we'll consider an outlier
     breakpoint_distance_threshold = text_splitter._calculate_breakpoint_threshold(distances)
 
     plt.axhline(y=breakpoint_distance_threshold, color='r', linestyle='-')
 
-    # Then we'll see how many distances are actually above this one
-    num_distances_above_theshold = len([x for x in distances if x > breakpoint_distance_threshold]) # The amount of distances above your threshold
+    num_distances_above_theshold = len([x for x in distances if x > breakpoint_distance_threshold])
     plt.text(x=(len(distances)*.01), y=y_upper_bound/50, s=f"{num_distances_above_theshold + 1} Chunks")
 
-    # Then we'll get the index of the distances that are above the threshold. This will tell us where we should split our text
-    indices_above_thresh = [i for i, x in enumerate(distances) if x > breakpoint_distance_threshold] # The indices of those breakpoints on your list
+    indices_above_thresh = [i for i, x in enumerate(distances) if x > breakpoint_distance_threshold]
 
-    # Start of the shading and text
     colors = ['b', 'g', 'r', 'c', 'm', 'y', 'k']
     for i, breakpoint_index in enumerate(indices_above_thresh):
         start_index = 0 if i == 0 else indices_above_thresh[i - 1]
@@ -43,7 +39,6 @@ def represent_chunks(text_splitter, text):
                 s=f"Chunk #{i}", horizontalalignment='center',
                 rotation='vertical')
 
-    # # Additional step to shade from the last breakpoint to the end of the dataset
     if indices_above_thresh:
         last_breakpoint = indices_above_thresh[-1]
         if last_breakpoint < len(distances):

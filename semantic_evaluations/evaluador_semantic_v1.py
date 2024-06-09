@@ -1,4 +1,4 @@
-from semantic_splitters import LLMTextSplitter, split_text_semantic_langchain
+from semantic_splitters import split_text_semantic_langchain, LLMTextSplitter
 
 
 text_v1 = "La cocina mediterránea es muy saludable, sobre todo por el uso de aceite, vegetales y otros productos. \

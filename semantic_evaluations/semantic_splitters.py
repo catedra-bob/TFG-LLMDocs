@@ -21,8 +21,8 @@ load_dotenv()
 
 
 # Métodos Langchain semantic chunker
-def split_text_semantic_langchain(text, represent, treshold):
-    text_splitter = SemanticChunker(MyEmbeddingFunction(), breakpoint_threshold_type="percentile", breakpoint_threshold_amount=treshold)
+def split_text_semantic_langchain(text, represent, threshold):
+    text_splitter = SemanticChunker(MyEmbeddingFunction(), breakpoint_threshold_type="percentile", breakpoint_threshold_amount=threshold)
     chunks_semantic = text_splitter.split_text(text)
     if (represent): represent_chunks(text_splitter, text)
 
@@ -31,15 +31,15 @@ def split_text_semantic_langchain(text, represent, treshold):
     return chunks_semantic
 
 
-def split_documents_semantic_langchain(documents, represent, treshold):
-    text_splitter = SemanticChunker(MyEmbeddingFunction(), breakpoint_threshold_type="percentile", breakpoint_threshold_amount=treshold)
+def split_documents_semantic_langchain(documents, represent, threshold):
+    text_splitter = SemanticChunker(MyEmbeddingFunction(), breakpoint_threshold_type="percentile", breakpoint_threshold_amount=threshold)
     chunks_semantic = text_splitter.split_documents(documents)
     if (represent):
         all_text = ""
         for page_num in range(len(documents)):
             all_text += documents[page_num].page_content
+            all_text += "."
         represent_chunks(text_splitter, all_text)
-
     export_chunks('outputs/chunks_semantic_langchain.txt', chunks_semantic)
 
     return chunks_semantic
@@ -82,5 +82,5 @@ class LLMTextSplitter(TextSplitter):
         pattern = r">>>(.*?)<<<"
         chunks = re.findall(pattern, text, re.DOTALL)
         formatted_chunks = [chunk.strip() for chunk in chunks]
-        export_chunks('outputs/chunks_semantic_gpt.txt', formatted_chunks)
+        
         return formatted_chunks

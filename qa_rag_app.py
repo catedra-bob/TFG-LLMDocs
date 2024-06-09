@@ -11,32 +11,44 @@ from langchain_core.output_parsers import StrOutputParser
 from langchain.chains.llm import LLMChain
 from langchain_community.chains.graph_qa.cypher import extract_cypher
 from pathlib import Path
-from langchain_openai import ChatOpenAI
+from langchain_openai import ChatOpenAI, OpenAIEmbeddings
+from my_embedding_function import MyEmbeddingFunction
 from langchain.schema import StrOutputParser
 from langchain_community.vectorstores.chroma import Chroma
 from langchain.schema.runnable import Runnable, RunnablePassthrough, RunnableConfig
 from langchain.callbacks.base import BaseCallbackHandler
-from strategy_evaluations.ragas_evaluator import ragas_evaluator, ragas_evaluator_graph
+from strategy_evaluations.ragas_evaluator import ragas_evaluator
 from prompts import QA_PROMPT, CYPHER_GENERATION_PROMPT_V2
 from preprocess_functions import preprocess_documents
 
 import chainlit as cl
+import chromadb
 import re
 
 
 PDF_STORAGE_PATH = Path("./pdfs_otros") # Path("./pdfs_economicos") # Path("./pdfs_anaga")
 COLLECTION_NAME = "coleccion_otros" # "coleccion_economicos" # "coleccion_anaga"
 RAG_VERSION = 2
-PROCESS = False
+PREPROCESS = True
 
 GENERATIVE_MODEL = ChatOpenAI(model="gpt-4o", streaming=True)
 GENERATIVE_MODEL_T0 = ChatOpenAI(model_name="gpt-4o", temperature=0)
+EMBEDDINGS_MODEL = OpenAIEmbeddings()
 
 
-database = preprocess_documents(PDF_STORAGE_PATH, COLLECTION_NAME, RAG_VERSION, PROCESS)
+if (PREPROCESS):
+    preprocess_documents(PDF_STORAGE_PATH, COLLECTION_NAME, RAG_VERSION)
 
 
 def rag_v1_chain():
+    chroma_client = chromadb.PersistentClient(path="./chroma")
+
+    chroma_db = Chroma(
+        client=chroma_client,
+        collection_name=COLLECTION_NAME,
+        embedding_function=EMBEDDINGS_MODEL,
+    )
+    
     def format_docs(docs):
         results = ""
 
@@ -55,9 +67,9 @@ def rag_v1_chain():
 
         return results
 
-    retriever = database.as_retriever(
+    retriever = chroma_db.as_retriever(
                     search_type="similarity_score_threshold",
-                    search_kwargs={'score_threshold': 0.8}
+                    search_kwargs={'score_threshold': 0.2}
                 )
 
     runnable = (
@@ -100,11 +112,11 @@ def rag_v2_chain():
 
         generated_cypher = cypher_generation_chain.run({"schema": neo4j_db.schema, "question": question})
         generated_cypher = extract_cypher(generated_cypher)
-        print("CYPHER: " + str(generated_cypher))
+        print(str(generated_cypher))
         context = neo4j_db.query(generated_cypher)[: 10]
-        print("CONTEXT:" + str(context))
+        print("Context:" + str(context))
         result = extract_nested_values(context)
-        print("NODES: " + str(result))
+        print("Nodes: " + str(result))
 
         response = neo4j_db.query("WITH " + str(result) + """AS terms 
                                 MATCH (doc:Document)-[:MENTIONS]->(term)
@@ -114,20 +126,20 @@ def rag_v2_chain():
                                 RETURN doc.text""")
         
         texts = [list(item.values())[0] for item in response]
-        print("DOCS: " + str(texts))
+        print("Docs: " + str(texts))
         return texts
 
-    runnable = (
+    """runnable = (
         {"context": retriever, "question": RunnablePassthrough()}
         | QA_PROMPT
         | GENERATIVE_MODEL
         | StrOutputParser()
-    )
+    )"""
 
-    """def format_docs(docs):
+    def format_docs(docs):
         return "\n\n".join(doc for doc in docs)
 
-    chain = (
+    runnable = (
         RunnablePassthrough.assign(context=(lambda x: format_docs(x["context"])))
         | QA_PROMPT
         | GENERATIVE_MODEL
@@ -136,9 +148,9 @@ def rag_v2_chain():
 
     rag_chain_with_source = RunnableParallel(
         {"context": retriever, "question": RunnablePassthrough()}
-    ).assign(answer=chain)
+    ).assign(answer=runnable)
     
-    ragas_evaluator_graph(rag_chain_with_source)"""
+    ragas_evaluator(rag_chain_with_source)
 
     return runnable
 
@@ -148,9 +160,9 @@ def rag_v2_chain():
 async def on_chat_start():
     runnable = ()
 
-    if (isinstance(database, Chroma)):
+    if (RAG_VERSION == 1): # RAG v1
         runnable = rag_v1_chain()
-    elif (isinstance(database, Neo4jGraph)):
+    elif (RAG_VERSION == 2): # RAG v2
         runnable = rag_v2_chain()
 
     cl.user_session.set("runnable", runnable)

@@ -7,7 +7,7 @@ from langchain_text_splitters import CharacterTextSplitter
 
 
 # Divide los documentos según las etiquetas markdown que contiene
-def split_text_markdown(documents, recursive_size, recursive_overlap):
+def split_documents_markdown(documents, recursive_size, recursive_overlap):
     all_text = ""
     for page_num in range(len(documents)):
         all_text += documents[page_num].page_content
@@ -31,11 +31,11 @@ def split_text_markdown(documents, recursive_size, recursive_overlap):
 
     chunks = chunks_md
 
-    if (documents[0].metadata["source"] == "pdfs_economicos\Bases Ejecución 2024 (1).pdf"):
-        chunks = split_text_char(chunks_md)
+    if (documents[0].metadata["source"] == "pdfs_economicos\Bases Ejecución 2024 10 art.pdf"):
+        chunks = split_documents_char(chunks_md)
         export_chunks('outputs/chunks_char.txt', chunks)
 
-    chunks = split_text_recursive(chunks, recursive_size, recursive_overlap)
+    chunks = split_documents_recursive(chunks, recursive_size, recursive_overlap)
     chunks = add_source(chunks, documents)
     export_chunks('outputs/chunks_recursive.txt', chunks)
 
@@ -43,7 +43,7 @@ def split_text_markdown(documents, recursive_size, recursive_overlap):
 
 
 # Divide los documentos según los puntos que pueden haber en un apartado (1., 2., ...)
-def split_text_char(documents):
+def split_documents_char(documents):
     text_splitter = CharacterTextSplitter(
         separator="(\n\d+\.\s+|^\d+\.\s+)",
         chunk_size=0,
@@ -66,7 +66,7 @@ def split_text_char(documents):
 
 
 # Divide los documentos según un tamaño y overlap específico
-def split_text_recursive(documents, size, overlap):
+def split_documents_recursive(documents, size, overlap):
     text_splitter = RecursiveCharacterTextSplitter(
         chunk_size=size,
         chunk_overlap=overlap,

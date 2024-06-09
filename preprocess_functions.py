@@ -17,17 +17,20 @@ from langchain.indexes import SQLRecordManager, index
 from my_embedding_function import MyEmbeddingFunction
 from prompts import GRAPH_GENERATION_PROMPT
 from split_functions import (
-    split_text_markdown,
-    split_text_char,
-    split_text_recursive
+    split_documents_markdown,
+    split_documents_recursive,
+    export_chunks
 )
-from semantic_evaluations.semantic_splitters import split_text_semantic_langchain, LLMTextSplitter
-from label_functions import label_chunks_ull
+from semantic_evaluations.semantic_splitters import (
+    split_documents_semantic_langchain,
+    LLMTextSplitter
+)
+from label_functions import label_chunks_llm
 
 import chromadb
 
 
-EMBEDDINGS_MODEL = MyEmbeddingFunction()
+EMBEDDINGS_MODEL = OpenAIEmbeddings()
 GENERATIVE_MODEL_T0 = ChatOpenAI(model_name="gpt-4o", temperature=0)
 
 
@@ -42,17 +45,34 @@ def split_and_label_documents(documents: List[Document], collection_name: str):
     chunks = []
 
     if (collection_name == "coleccion_economicos"):
-        chunks = split_text_markdown(documents, 1000, 250)
-        # chunks = label_chunks_ull(chunks)
+        chunks = split_documents_recursive(documents, 1000, 250)
+
+        # chunks = split_documents_markdown(documents, 1000, 250)
+
+        # chunks = split_documents_semantic_langchain(documents, True, 30)
+
+        # llm_splitter = LLMTextSplitter(count_tokens=True)
+        # chunks = llm_splitter.split_documents(documents)
+        # export_chunks('outputs/chunks_semantic_gpt.txt', chunks)
+
+        # chunks = label_chunks_llm(chunks)
     elif (collection_name == "coleccion_anaga"):
-        chunks = split_text_recursive(documents, 1000, 250)
+        chunks = split_documents_recursive(documents, 1000, 250)
     else:
-        chunks = split_text_markdown(documents, 1000, 0)
+        chunks = split_documents_recursive(documents, 250, 50)
+
+        # chunks = split_documents_markdown(documents, 250, 50)
+
+        # chunks = split_documents_semantic_langchain(documents, True, 30)
+
+        # llm_splitter = LLMTextSplitter(count_tokens=True)
+        # chunks = llm_splitter.split_documents(documents)
+        # export_chunks('outputs/chunks_semantic_gpt.txt', chunks)
 
     return chunks
 
 
-def rag_v1_store_chunks_embeddings(chunks: List[Document], collection_name: str):
+def rag_v1_store_embeddings(chunks: List[Document], collection_name: str):
     chroma_client = chromadb.PersistentClient(path="./chroma")
 
     chroma_db = Chroma(
@@ -77,10 +97,8 @@ def rag_v1_store_chunks_embeddings(chunks: List[Document], collection_name: str)
 
     print(f"Indexing stats: {index_result}")
 
-    return chroma_db
 
-
-def rag_v2_store_chunks_graphs(chunks: List[Document]):
+def rag_v2_store_graphs(chunks: List[Document]):
     neo4j_db = Neo4jGraph(enhanced_schema=True)
     llm_transformer = LLMGraphTransformer(llm=GENERATIVE_MODEL_T0, prompt=GRAPH_GENERATION_PROMPT)
 
@@ -92,32 +110,15 @@ def rag_v2_store_chunks_graphs(chunks: List[Document]):
     neo4j_db.add_graph_documents(graph_documents, baseEntityLabel=True, include_source=True)
     neo4j_db.query("MATCH (n) SET n.id = toLower(n.id)")
 
-    return neo4j_db
 
+def preprocess_documents(pdf_storage_path: Path, collection_name: str, rag_version: int):
+    chunks = []
 
-def preprocess_documents(pdf_storage_path: Path, collection_name: str, rag_version: int, process: bool):
-    database = []
+    for pdf_path in pdf_storage_path.glob("*.pdf"):
+        documents = load_pdf(str(pdf_path)) # Fase 1: Carga
+        chunks += split_and_label_documents(documents, collection_name) # Fases 2 y 3: Troceado y etiquetado
 
-    if (process):
-        chunks = []
-
-        for pdf_path in pdf_storage_path.glob("*.pdf"):
-            documents = load_pdf(str(pdf_path)) # Fase 1: Carga
-            chunks += split_and_label_documents(documents, collection_name) # Fases 2 y 3: Troceado y etiquetado
-
-        if (rag_version == 1):
-            database = rag_v1_store_chunks_embeddings(chunks, collection_name) # Fase 4: Almacenamiento como embeddings
-        elif (rag_version == 2):
-            database = rag_v2_store_chunks_graphs(chunks) # Fase 4: Almacenamiento como grafos
-    else:
-        if (rag_version == 1):
-            chroma_client = chromadb.PersistentClient(path="./chroma")
-            database = Chroma(
-                client=chroma_client,
-                collection_name=collection_name,
-                embedding_function=EMBEDDINGS_MODEL,
-            )
-        elif (rag_version == 2):
-            database = Neo4jGraph(enhanced_schema=True)
-
-    return database
+    if (rag_version == 1):
+        rag_v1_store_embeddings(chunks, collection_name) # Fase 4: Almacenamiento como embeddings
+    elif (rag_version == 2):
+        rag_v2_store_graphs(chunks) # Fase 4: Almacenamiento como grafos

@@ -14,18 +14,26 @@ import pandas as pd
 from matplotlib.colors import LinearSegmentedColormap
 
 
-def ragas_evaluator(runnable, retriever):
-    testset = pd.read_excel("strategy_evaluations/test_set.xlsx")
+def ragas_evaluator(runnable, retriever = 0):
+    # testset = pd.read_excel("strategy_evaluations/economicos/my_economicos_test_set.xlsx")
+    testset = pd.read_excel("strategy_evaluations/temas_variados/temas_variados_test_set.xlsx")
 
     questions = testset["question"].to_list()
     ground_truth = testset["ground_truth"].to_list()
 
     data = {"question": [], "answer": [], "contexts": [], "ground_truth": ground_truth}
 
-    for query in questions:
-        data["question"].append(query)
-        data["answer"].append(runnable.invoke(query))
-        data["contexts"].append([doc.page_content for doc in retriever.get_relevant_documents(query)])
+    if (retriever != 0): # RAG v1
+        for query in questions:
+            data["question"].append(query)
+            data["answer"].append(runnable.invoke(query))
+            data["contexts"].append([doc.page_content for doc in retriever.get_relevant_documents(query)])
+    else: # RAG v2
+        for query in questions:
+            response = runnable.invoke(query)
+            data["question"].append(query)
+            data["answer"].append(response['answer'])
+            data["contexts"].append(response['context'])
 
     dataset = Dataset.from_dict(data)
 
@@ -40,42 +48,13 @@ def ragas_evaluator(runnable, retriever):
         ],
     )
 
-    plot_solutions(result)
+    plot_results(result)
 
 
-def ragas_evaluator_graph(chain):
-    testset = pd.read_excel("strategy_evaluations/temas_variados_test_set.xlsx")
-
-    questions = testset["question"].to_list()
-    ground_truth = testset["ground_truth"].to_list()
-
-    data = {"question": [], "answer": [], "contexts": [], "ground_truth": ground_truth}
-
-    for query in questions:
-        response = chain.invoke(query)
-        data["question"].append(query)
-        data["answer"].append(response['answer'])
-        data["contexts"].append(response['context'])
-
-    dataset = Dataset.from_dict(data)
-
-    result = evaluate(
-        dataset = dataset,
-        metrics=[
-            context_relevancy,
-            context_precision,
-            context_recall,
-            faithfulness,
-            answer_relevancy,
-        ],
-    )
-
-    plot_solutions(result)
-
-
-def plot_solutions(result):
+def plot_results(result):
     df = result.to_pandas()
-    df.to_csv("strategy_evaluations/result.csv")
+    # df.to_csv("strategy_evaluations/economicos/result.csv")
+    df.to_csv("strategy_evaluations/temas_variados/result.csv")
 
     metrics_df = df[['context_relevancy', 'context_precision', 'context_recall', 'faithfulness', 'answer_relevancy']]
     metrics_df.loc['total'] = metrics_df.mean()
