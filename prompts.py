@@ -4,7 +4,7 @@ from langchain_core.prompts import ChatPromptTemplate
 ############### RAG V1 ###############
 
 # Troceado semántico LLMs
-LLM_SPLITTER_PROMPT = "Trocea el siguiente texto siguiendo la técnica de troceado semántico. Añade >>> y <<< alrededor de cada trozo: '{text}'"
+LLM_SPLITTER_PROMPT = "Trocea el siguiente texto siguiendo la técnica de troceado semántico, manteniendo juntos los distintos apartados y párrafos que pertenezcan al mismo tema. Añade >>> y <<< alrededor de cada trozo: '{text}'"
 
 # Etiquetado
 SYSTEM_LABEL_PROMPT = "Responde SÓLO con el nombre de la etiqueta, sin añadir la descripción"
@@ -39,6 +39,7 @@ system_prompt = (
     "accessible for a vast audience.\n"
     "## 2. Labeling Nodes\n"
     "- **Consistency**: Ensure you use available types for node labels.\n"
+    "Ensure node labels spaces are replaced with low bars.\n"
     "Ensure you use basic or elementary types for node labels.\n"
     "- For example, when you identify an entity representing a person, "
     "always label it as **'person'**. Avoid using more specific terms "
@@ -115,7 +116,7 @@ Schema:
 {schema}
 
 Ignore "Document" nodes, do not use them in any case.
-The nodes of the RETURN statement should have a meaningful name.
+Keep in mind that node ids are always nouns, never verbs
 The entity extracted from the question should never be capitalized and must be written with the correct accent marks.
 For example, if the entity in the question is "Coche Electrico", use "coche eléctrico" in the statement.
 
@@ -130,6 +131,53 @@ Question:
 CYPHER_GENERATION_PROMPT_V2 = PromptTemplate(
     input_variables=["schema", "question"], template=CYPHER_GENERATION_TEMPLATE_v2
 )
+
+
+# Cambio en la relación de la consulta Cypher
+CYPHER_DIRECTION_TEMPLATE = """Task: Change the relationship direction in a Cypher statement to query a neo4j graph database.
+
+Notes:
+Do not include any explanations or apologies in your responses.
+Do not respond to any questions that might ask anything else than for you to construct a Cypher statement.
+Do not include any text except the generated Cypher statement.
+
+Cypher statement:
+{old_cypher}"""
+
+CYPHER_DIRECTION_PROMPT = PromptTemplate(
+    input_variables=["old_cypher"], template=CYPHER_DIRECTION_TEMPLATE
+)
+
+
+# Reformulación de la consulta Cypher
+CYPHER_REFORMULATION_TEMPLATE = """Task: Generate a Cypher statement to query a neo4j graph database.
+
+Instructions for the statement:
+Use only the provided node properties, relationship properties and relationships from the following schema:
+
+Schema:
+{schema}
+
+Ignore "Document" nodes, do not use them in any case.
+Keep in mind that node ids are always nouns, never verbs
+The entity extracted from the question should never be capitalized and must be written with the correct accent marks.
+For example, if the entity in the question is "Coche Electrico", use "coche eléctrico" in the statement.
+
+Notes:
+Do not include any explanations or apologies in your responses.
+Do not respond to any questions that might ask anything else than for you to construct a Cypher statement.
+Do not include any text except the generated Cypher statement.
+
+Question:
+{question}
+
+Keep in mind that following cypher statements are wrong:
+{old_cyphers}"""
+
+CYPHER_REFORMULATION_PROMPT = PromptTemplate(
+    input_variables=["schema", "question", "old_cyphers"], template=CYPHER_REFORMULATION_TEMPLATE
+)
+
 
 ############### GENERACIÓN ###############
 

@@ -1,0 +1,104 @@
+Node properties:
+- **Concept**
+  - `id`: STRING Example: "unidad familiar"
+- **Event**
+  - `id`: STRING Available options: ['semifinal de la copa', 'partido', 'semifinal de la copa de europa']
+- **Organization**
+  - `id`: STRING Available options: ['real madrid', 'bayern de múnich', 'gigantes_del_fútbol_europeo']
+- **Place**
+  - `id`: STRING Available options: ['europa', 'estadio', 'campo']
+- **Person**
+  - `id`: STRING Available options: ['aficionados', 'jugadores', 'espectadores']
+- **Location**
+  - `id`: STRING Available options: ['estación espacial']
+- **Organism**
+  - `id`: STRING Available options: ['bacterias']
+- **Phenomenon**
+  - `id`: STRING Available options: ['mutaciones']
+- **Document**
+  - `format`: STRING Available options: ['PDF 1.4']
+  - `trapped`: STRING Available options: ['']
+  - `author`: STRING Available options: ['']
+  - `subject`: STRING Available options: ['']
+  - `file_path`: STRING Available options: ['pdfs_otros\\Temas_variados.pdf']
+  - `creator`: STRING Available options: ['']
+  - `modDate`: STRING Available options: ['']
+  - `keywords`: STRING Available options: ['']
+  - `id`: STRING Example: "f5e7c069f3f20258f793a9eba90ddc36"
+  - `producer`: STRING Available options: ['Skia/PDF m126 Google Docs Renderer']
+  - `text`: STRING Example: "mesa, se fomenta la conexión emocional y se cultiv"
+  - `source`: STRING Available options: ['pdfs_otros\\Temas_variados.pdf']
+  - `page`: INTEGER Min: 0, Max: 1
+  - `total_pages`: INTEGER Min: 2, Max: 2
+  - `title`: STRING Available options: ['Temas_variados']
+  - `creationDate`: STRING Available options: ['']
+- **Group**
+  - `id`: STRING Available options: ['millones de fanáticos', 'equipos']
+- **Concepto**
+  - `id`: STRING Available options: ['estación espacial', 'bacterias', 'mutaciones', 'tierra']
+Relationship properties:
+
+The relationships:
+(:Concept)-[:IMPORTANCIA]->(:Concept)
+(:Concept)-[:FORTALECE]->(:Concept)
+(:Concept)-[:REÚNE_EN_TORNO_A]->(:Concept)
+(:Concept)-[:CULTIVAN]->(:Concept)
+(:Concept)-[:FOMENTA]->(:Concept)
+(:Concept)-[:PARTICIPACIÓN_AUMENTA]->(:Concept)
+(:Concept)-[:PROPORCIONA]->(:Concept)
+(:Concept)-[:ENRIQUECE]->(:Concept)
+(:Concept)-[:SE_VISLUMBRA_COMO]->(:Concept)
+(:Concept)-[:ALTERNATIVA]->(:Concept)
+(:Concept)-[:RESPETUOSO_CON]->(:Concept)
+(:Concept)-[:INCERTIDUMBRE_SOBRE]->(:Concept)
+(:Concept)-[:RELACIONADO_CON]->(:Concept)
+(:Concept)-[:MITIGAR]->(:Concept)
+(:Concept)-[:PROMETE_MEJORAR]->(:Concept)
+(:Concept)-[:EN]->(:Concept)
+(:Concept)-[:EN]->(:Event)
+(:Concept)-[:CREAR]->(:Concept)
+(:Concept)-[:DESTACA_POR_EL_EMPLEO_GENEROSO_DE]->(:Concept)
+(:Concept)-[:SON_EL_SELLO_DISTINTIVO_DE]->(:Concept)
+(:Concept)-[:SE_COMBINAN_CON]->(:Concept)
+(:Concept)-[:REALZAN]->(:Concept)
+(:Concept)-[:SON_PARTE_DE]->(:Concept)
+(:Concept)-[:ES_UNA_CELEBRACIÓN_DE]->(:Concept)
+(:Concept)-[:ES_UNA_DELICIA_PARA]->(:Concept)
+(:Concept)-[:INCLUYE]->(:Concept)
+(:Concept)-[:SE_CENTRA_EN]->(:Event)
+(:Concept)-[:PLANTEANDO_INTERROGANTES_SOBRE_SU_COMPORTAMIENTO_Y_ADAPTACIÓN_EN]->(:Concept)
+(:Concept)-[:EXPANSIÓN_HACIA]->(:Concept)
+(:Concept)-[:SE_ADAPTA_Y_EVOLUCIONA_EN]->(:Concept)
+(:Concept)-[:IMPACTO_EN]->(:Concept)
+(:Event)-[:LLEVARÁ_AL_BORDE_DE_SUS_ASIENTOS]->(:Person)
+(:Event)-[:TIENE]->(:Concept)
+(:Organization)-[:ENFRENTA]->(:Organization)
+(:Organization)-[:ENFRENTAMIENTO_ENTRE]->(:Place)
+(:Person)-[:SE_PREPARAN_PARA_PRESENCIAR]->(:Place)
+(:Person)-[:EN_AMBOS_LADOS_DE]->(:Place)
+(:Organism)-[:ADAPTAN_Y_MUTAN_EN]->(:Location)
+(:Organism)-[:ADAPTAN_Y_MUTAN_EN]->(:Concepto)
+(:Organism)-[:EXPERIMENTANDO]->(:Phenomenon)
+(:Organism)-[:EXPERIMENTANDO]->(:Concepto)
+(:Organism)-[:PROLIFERACIÓN_EN]->(:Location)
+(:Organism)-[:PROLIFERACIÓN_EN]->(:Concepto)
+(:Phenomenon)-[:DIFERENTES_A_LAS_QUE_SE_OBSERVAN_EN]->(:Concepto)
+(:Document)-[:MENTIONS]->(:Concept)
+(:Document)-[:MENTIONS]->(:Event)
+(:Document)-[:MENTIONS]->(:Organization)
+(:Document)-[:MENTIONS]->(:Group)
+(:Document)-[:MENTIONS]->(:Place)
+(:Document)-[:MENTIONS]->(:Person)
+(:Document)-[:MENTIONS]->(:Organism)
+(:Document)-[:MENTIONS]->(:Concepto)
+(:Document)-[:MENTIONS]->(:Location)
+(:Document)-[:MENTIONS]->(:Phenomenon)
+(:Group)-[:ESPERAN]->(:Organization)
+(:Group)-[:DESTINO_PENDE_DE_UN_HILO]->(:Event)
+(:Concepto)-[:ADAPTAN_Y_MUTAN_EN]->(:Location)
+(:Concepto)-[:ADAPTAN_Y_MUTAN_EN]->(:Concepto)
+(:Concepto)-[:EXPERIMENTANDO]->(:Phenomenon)
+(:Concepto)-[:EXPERIMENTANDO]->(:Concepto)
+(:Concepto)-[:PROLIFERACIÓN_EN]->(:Location)
+(:Concepto)-[:PROLIFERACIÓN_EN]->(:Concepto)
+(:Concepto)-[:DIFERENTES_A_LAS_QUE_SE_OBSERVAN_EN]->(:Concepto)

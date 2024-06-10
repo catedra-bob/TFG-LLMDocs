@@ -45,15 +45,15 @@ def split_and_label_documents(documents: List[Document], collection_name: str):
     chunks = []
 
     if (collection_name == "coleccion_economicos"):
-        chunks = split_documents_recursive(documents, 1000, 250)
+        # chunks = split_documents_recursive(documents, 1000, 250)
 
         # chunks = split_documents_markdown(documents, 1000, 250)
 
-        # chunks = split_documents_semantic_langchain(documents, True, 30)
+        # chunks = split_documents_semantic_langchain(documents, False, 30)
 
-        # llm_splitter = LLMTextSplitter(count_tokens=True)
-        # chunks = llm_splitter.split_documents(documents)
-        # export_chunks('outputs/chunks_semantic_gpt.txt', chunks)
+        llm_splitter = LLMTextSplitter(count_tokens=True)
+        chunks = llm_splitter.split_documents(documents)
+        export_chunks('outputs/chunks_semantic_gpt.txt', chunks)
 
         # chunks = label_chunks_llm(chunks)
     elif (collection_name == "coleccion_anaga"):
@@ -63,7 +63,7 @@ def split_and_label_documents(documents: List[Document], collection_name: str):
 
         # chunks = split_documents_markdown(documents, 250, 50)
 
-        # chunks = split_documents_semantic_langchain(documents, True, 30)
+        # chunks = split_documents_semantic_langchain(documents, False, 30)
 
         # llm_splitter = LLMTextSplitter(count_tokens=True)
         # chunks = llm_splitter.split_documents(documents)
@@ -91,7 +91,7 @@ def rag_v1_store_embeddings(chunks: List[Document], collection_name: str):
         chunks,
         record_manager,
         chroma_db,
-        cleanup="incremental",
+        cleanup="full",
         source_id_key="source",
     )
 

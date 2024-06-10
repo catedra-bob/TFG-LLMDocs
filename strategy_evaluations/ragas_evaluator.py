@@ -15,8 +15,8 @@ from matplotlib.colors import LinearSegmentedColormap
 
 
 def ragas_evaluator(runnable, retriever = 0):
-    # testset = pd.read_excel("strategy_evaluations/economicos/my_economicos_test_set.xlsx")
-    testset = pd.read_excel("strategy_evaluations/temas_variados/temas_variados_test_set.xlsx")
+    testset = pd.read_excel("strategy_evaluations/economicos/my_economicos_test_set.xlsx")
+    # testset = pd.read_excel("strategy_evaluations/temas_variados/temas_variados_test_set.xlsx")
 
     questions = testset["question"].to_list()
     ground_truth = testset["ground_truth"].to_list()
@@ -53,8 +53,8 @@ def ragas_evaluator(runnable, retriever = 0):
 
 def plot_results(result):
     df = result.to_pandas()
-    # df.to_csv("strategy_evaluations/economicos/result.csv")
-    df.to_csv("strategy_evaluations/temas_variados/result.csv")
+    df.to_csv("strategy_evaluations/economicos/rag_v1/result.csv")
+    # df.to_csv("strategy_evaluations/temas_variados/result.csv")
 
     metrics_df = df[['context_relevancy', 'context_precision', 'context_recall', 'faithfulness', 'answer_relevancy']]
     metrics_df.loc['total'] = metrics_df.mean()

@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 from langchain.text_splitter import TextSplitter
 from typing import List, Any
 from langchain_core.prompts import ChatPromptTemplate
-from langchain_openai import ChatOpenAI
+from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 from langchain_core.output_parsers import StrOutputParser
 from app_chroma.my_embedding_function import MyEmbeddingFunction
 from app_chroma.split_functions import export_chunks
@@ -22,7 +22,7 @@ load_dotenv()
 
 # Métodos Langchain semantic chunker
 def split_text_semantic_langchain(text, represent, threshold):
-    text_splitter = SemanticChunker(MyEmbeddingFunction(), breakpoint_threshold_type="percentile", breakpoint_threshold_amount=threshold)
+    text_splitter = SemanticChunker(OpenAIEmbeddings(), breakpoint_threshold_type="percentile", breakpoint_threshold_amount=threshold)
     chunks_semantic = text_splitter.split_text(text)
     if (represent): represent_chunks(text_splitter, text)
 
@@ -32,7 +32,7 @@ def split_text_semantic_langchain(text, represent, threshold):
 
 
 def split_documents_semantic_langchain(documents, represent, threshold):
-    text_splitter = SemanticChunker(MyEmbeddingFunction(), breakpoint_threshold_type="percentile", breakpoint_threshold_amount=threshold)
+    text_splitter = SemanticChunker(OpenAIEmbeddings(), breakpoint_threshold_type="percentile", breakpoint_threshold_amount=threshold)
     chunks_semantic = text_splitter.split_documents(documents)
     if (represent):
         all_text = ""

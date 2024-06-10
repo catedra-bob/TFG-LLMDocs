@@ -1,0 +1,71 @@
+Pregunta:¿Qué beneficios para la salud tiene la cocina mediterránea?
+cypher
+MATCH (c:Concept {id: "cocina mediterránea"})-[:PROPORCIONA]->(beneficio:Concept)
+RETURN beneficio.id
+Context:[]
+Nodes: []
+---
+Pregunta:¿Cuál es el sello distintivo de la cocina mediterránea?
+cypher
+MATCH (c:Concept {id: "cocina mediterránea"})-[:SON_EL_SELLO_DISTINTIVO_DE]->(s:Concept)
+RETURN s.id
+Context:[]
+Nodes: []
+---
+Pregunta:¿Quién se enfrenta al Real Madrid?
+cypher
+MATCH (o1:Organization {id: 'real madrid'})<-[:ENFRENTA]-(o2:Organization)
+RETURN o2.id
+Context:[]
+Nodes: []
+---
+Pregunta:¿Qué se espera del partido?
+cypher
+MATCH (g:Group)-[:DESTINO_PENDE_DE_UN_HILO]->(e:Event {id: 'partido'})
+RETURN g.id
+Context:[{'g.id': 'equipos'}]
+Nodes: ['equipos']
+---
+Pregunta:¿Cuál es el desafío relacionado con las bacterias en la estación espacial?
+cypher
+MATCH (o:Organism {id: 'bacterias'})-[:ADAPTAN_Y_MUTAN_EN]->(l:Location {id: 'estación espacial'})
+RETURN o, l
+Context:[{'o': {'id': 'bacterias'}, 'l': {'id': 'estación espacial'}}]
+Nodes: ['bacterias', 'estación espacial']
+---
+Pregunta:¿Qué plantea el fenómeno de las mutaciones bacterianas?
+cypher
+MATCH (p:Phenomenon {id: 'mutaciones'})-[:DIFERENTES_A_LAS_QUE_SE_OBSERVAN_EN]->(c:Concepto)
+RETURN c.id
+Context:[{'c.id': 'tierra'}]
+Nodes: ['tierra']
+---
+Pregunta:¿Cómo fortalece compartir una comida los lazos familiares?
+cypher
+MATCH (c1:Concept {id: "compartir una comida"})-[:FORTALECE]->(c2:Concept {id: "lazos familiares"})
+RETURN c1, c2
+Context:[]
+Nodes: []
+---
+Pregunta:¿Por qué se destaca la participación de más miembros en las reuniones familiares?
+cypher
+MATCH (c:Concept {id: "participación"}), (r:Concept {id: "reuniones familiares"})
+MATCH (c)-[:AUMENTA]->(r)
+RETURN c, r
+Context:[]
+Nodes: []
+---
+Pregunta:¿Qué incertidumbre hay sobre los vehículos eléctricos?
+cypher
+MATCH (c:Concept {id: "vehículos eléctricos"})-[:INCERTIDUMBRE_SOBRE]->(related:Concept)
+RETURN related
+Context:[]
+Nodes: []
+---
+Pregunta:¿Por qué los vehículos eléctricos son una alternativa a los de combustión fósil?
+cypher
+MATCH (c1:Concept {id: "vehículos eléctricos"})-[:ALTERNATIVA]->(c2:Concept {id: "combustión fósil"})
+RETURN c1, c2
+Context:[]
+Nodes: []
+---

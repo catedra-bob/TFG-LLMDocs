@@ -18,7 +18,7 @@ from langchain_community.vectorstores.chroma import Chroma
 from langchain.schema.runnable import Runnable, RunnablePassthrough, RunnableConfig
 from langchain.callbacks.base import BaseCallbackHandler
 from strategy_evaluations.ragas_evaluator import ragas_evaluator
-from prompts import QA_PROMPT, CYPHER_GENERATION_PROMPT_V2
+from prompts import QA_PROMPT, CYPHER_GENERATION_PROMPT_V2, CYPHER_REFORMULATION_PROMPT, CYPHER_DIRECTION_PROMPT
 from preprocess_functions import preprocess_documents
 
 import chainlit as cl
@@ -26,10 +26,10 @@ import chromadb
 import re
 
 
-PDF_STORAGE_PATH = Path("./pdfs_otros") # Path("./pdfs_economicos") # Path("./pdfs_anaga")
-COLLECTION_NAME = "coleccion_otros" # "coleccion_economicos" # "coleccion_anaga"
+PDF_STORAGE_PATH = Path("./pdfs_economicos") # Path("./pdfs_otros") # Path("./pdfs_anaga")
+COLLECTION_NAME = "coleccion_economicos" # "coleccion_otros" # "coleccion_anaga"
 RAG_VERSION = 2
-PREPROCESS = True
+PREPROCESS = False
 
 GENERATIVE_MODEL = ChatOpenAI(model="gpt-4o", streaming=True)
 GENERATIVE_MODEL_T0 = ChatOpenAI(model_name="gpt-4o", temperature=0)
@@ -41,14 +41,6 @@ if (PREPROCESS):
 
 
 def rag_v1_chain():
-    chroma_client = chromadb.PersistentClient(path="./chroma")
-
-    chroma_db = Chroma(
-        client=chroma_client,
-        collection_name=COLLECTION_NAME,
-        embedding_function=EMBEDDINGS_MODEL,
-    )
-    
     def format_docs(docs):
         results = ""
 
@@ -66,11 +58,19 @@ def rag_v1_chain():
             results += "\n\n---\n\n"
 
         return results
+    
+    chroma_client = chromadb.PersistentClient(path="./chroma")
+
+    chroma_db = Chroma(
+        client=chroma_client,
+        collection_name=COLLECTION_NAME,
+        embedding_function=EMBEDDINGS_MODEL,
+    )
 
     retriever = chroma_db.as_retriever(
-                    search_type="similarity_score_threshold",
-                    search_kwargs={'score_threshold': 0.2}
-                )
+        search_type="similarity_score_threshold",
+        search_kwargs={'score_threshold': 0.2}
+    )
 
     runnable = (
         {"context": retriever | format_docs, "question": RunnablePassthrough()}
@@ -79,17 +79,12 @@ def rag_v1_chain():
         | StrOutputParser()
     )
 
-    # ragas_evaluator(runnable, retriever)
+    ragas_evaluator(runnable, retriever)
 
     return runnable
 
 
 def rag_v2_chain():
-    neo4j_db = Neo4jGraph(enhanced_schema=True)
-    
-    with open("outputs/enhanced_schema.txt", 'w', encoding='utf-8') as f:
-        f.writelines(str(neo4j_db.schema))
-
     def extract_nested_values(data):
         values = []
         for item in data:
@@ -102,21 +97,45 @@ def rag_v2_chain():
         return values
 
     def retriever(question):
+        result = []
+        old_cyphers = ""
+        count = 0
         use_cypher_llm_kwargs = {}
-        use_cypher_llm_kwargs['prompt'] = CYPHER_GENERATION_PROMPT_V2
 
-        cypher_generation_chain = LLMChain(
-            llm=GENERATIVE_MODEL_T0,
-            **use_cypher_llm_kwargs,
-        )
+        while ((result == []) and (count != 5)):
+            if (count == 0):
+                use_cypher_llm_kwargs['prompt'] = CYPHER_GENERATION_PROMPT_V2
+            elif ((count % 2) == 0):
+                use_cypher_llm_kwargs['prompt'] = CYPHER_REFORMULATION_PROMPT
+            else:
+                use_cypher_llm_kwargs['prompt'] = CYPHER_DIRECTION_PROMPT
 
-        generated_cypher = cypher_generation_chain.run({"schema": neo4j_db.schema, "question": question})
-        generated_cypher = extract_cypher(generated_cypher)
-        print(str(generated_cypher))
-        context = neo4j_db.query(generated_cypher)[: 10]
-        print("Context:" + str(context))
-        result = extract_nested_values(context)
-        print("Nodes: " + str(result))
+            cypher_generation_chain = LLMChain(
+                llm=GENERATIVE_MODEL_T0,
+                **use_cypher_llm_kwargs,
+            )
+
+            if (count == 0):
+                generated_cypher = cypher_generation_chain.run({"schema": neo4j_db.schema, "question": question})
+            elif ((count % 2) == 0):
+                generated_cypher = cypher_generation_chain.run({"schema": neo4j_db.schema, "question": question, "old_cyphers": old_cyphers})
+            else:
+                generated_cypher = cypher_generation_chain.run({"old_cypher": old_cypher})
+
+            generated_cypher = extract_cypher(generated_cypher)
+            context = neo4j_db.query(generated_cypher)[: 10]
+            result = extract_nested_values(context)
+
+            with open("outputs/cyphers.txt", 'a', encoding='utf-8') as f:
+                f.writelines("Pregunta:" + question + "\n")
+                f.writelines(str(generated_cypher))
+                f.writelines("Context:" + str(context) + "\n")
+                f.writelines("Nodes: " + str(result))
+                f.writelines("\n---\n")
+            
+            old_cyphers += generated_cypher
+            old_cypher = generated_cypher
+            count += 1
 
         response = neo4j_db.query("WITH " + str(result) + """AS terms 
                                 MATCH (doc:Document)-[:MENTIONS]->(term)
@@ -126,17 +145,21 @@ def rag_v2_chain():
                                 RETURN doc.text""")
         
         texts = [list(item.values())[0] for item in response]
-        print("Docs: " + str(texts))
         return texts
+    
+    neo4j_db = Neo4jGraph(enhanced_schema=True)
+    
+    with open("outputs/schema.txt", 'w', encoding='utf-8') as f:
+        f.writelines(str(neo4j_db.schema))
 
-    """runnable = (
+    runnable = (
         {"context": retriever, "question": RunnablePassthrough()}
         | QA_PROMPT
         | GENERATIVE_MODEL
         | StrOutputParser()
-    )"""
+    )
 
-    def format_docs(docs):
+    """def format_docs(docs):
         return "\n\n".join(doc for doc in docs)
 
     runnable = (
@@ -150,7 +173,7 @@ def rag_v2_chain():
         {"context": retriever, "question": RunnablePassthrough()}
     ).assign(answer=runnable)
     
-    ragas_evaluator(rag_chain_with_source)
+    ragas_evaluator(rag_chain_with_source)"""
 
     return runnable
 
