@@ -134,7 +134,8 @@ CYPHER_GENERATION_PROMPT_V2 = PromptTemplate(
 
 
 # Cambio en la relación de la consulta Cypher
-CYPHER_DIRECTION_TEMPLATE = """Task: Change the relationship direction in a Cypher statement to query a neo4j graph database.
+CYPHER_DIRECTION_TEMPLATE = """Task: Change only the relationship direction in a Cypher statement to query a neo4j graph database.
+Do not change the nodes position.
 
 Notes:
 Do not include any explanations or apologies in your responses.
@@ -171,7 +172,7 @@ Do not include any text except the generated Cypher statement.
 Question:
 {question}
 
-Keep in mind that following cypher statements are wrong:
+The following cypher statements for the given question are wrong:
 {old_cyphers}"""
 
 CYPHER_REFORMULATION_PROMPT = PromptTemplate(

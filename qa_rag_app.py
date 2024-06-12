@@ -28,7 +28,7 @@ import re
 
 PDF_STORAGE_PATH = Path("./pdfs_economicos") # Path("./pdfs_otros") # Path("./pdfs_anaga")
 COLLECTION_NAME = "coleccion_economicos" # "coleccion_otros" # "coleccion_anaga"
-RAG_VERSION = 2
+RAG_VERSION = 1
 PREPROCESS = False
 
 GENERATIVE_MODEL = ChatOpenAI(model="gpt-4o", streaming=True)
@@ -79,7 +79,7 @@ def rag_v1_chain():
         | StrOutputParser()
     )
 
-    ragas_evaluator(runnable, retriever)
+    # ragas_evaluator(runnable, retriever)
 
     return runnable
 

@@ -1,0 +1,82 @@
+Node properties:
+- **Concept**
+  - `id`: STRING Example: "cocina mediterránea"
+- **Event**
+  - `id`: STRING Available options: ['copa de europa']
+- **Organization**
+  - `id`: STRING Available options: ['real madrid', 'bayern de múnich']
+- **Place**
+  - `id`: STRING Available options: ['estadio']
+- **Person**
+  - `id`: STRING Available options: ['fanáticos', 'jugadores']
+- **Document**
+  - `format`: STRING Available options: ['PDF 1.4']
+  - `trapped`: STRING Available options: ['']
+  - `author`: STRING Available options: ['']
+  - `subject`: STRING Available options: ['']
+  - `file_path`: STRING Available options: ['pdfs_otros\\Temas_variados.pdf']
+  - `creator`: STRING Available options: ['']
+  - `modDate`: STRING Available options: ['']
+  - `keywords`: STRING Available options: ['']
+  - `id`: STRING Available options: ['b9153881123d9c69cbeaa782a13ea821', '19227902182a6ca2a1ff1be622e5d2a2', 'dec42e9b30cc7e629e239e605c44c2a0', 'cadf1e924808d8ba450ed3e36957f2df', '67473e2e18e0ef206b512f9ea4ec4a91', '65b74f195f75baf16f88186b5f24ffe8', '089575e8043c544ca41193168861a953']
+  - `producer`: STRING Available options: ['Skia/PDF m126 Google Docs Renderer']
+  - `text`: STRING Available options: ['La cocina mediterránea, reconocida mundialmente po', 'Hoy, la atención deportiva se centra en la emocion', 'En el entorno de la estación espacial, surge un de', '# Importancia de la Unidad Familiar La importancia', '## La Dimensión de la Familia: Más es Mejor Además', '# El Futuro de los Vehículos Eléctricos: Perspecti', '## La Promesa de la Sostenibilidad Los vehículos e']
+  - `source`: STRING Available options: ['pdfs_otros\\Temas_variados.pdf']
+  - `page`: INTEGER Min: 0, Max: 1
+  - `total_pages`: INTEGER Min: 2, Max: 2
+  - `title`: STRING Available options: ['Temas_variados']
+  - `creationDate`: STRING Available options: ['']
+- **Concepto**
+  - `id`: STRING Available options: ['mutaciones', 'conocimiento humano', 'vida']
+- **Entidad**
+  - `id`: STRING Available options: ['estación espacial', 'bacterias', 'condiciones terrestres', 'entornos extraterrestres', 'espacio exterior', 'misiones', 'exploración interplanetaria']
+Relationship properties:
+
+The relationships:
+(:Concept)-[:INCLUYE]->(:Concept)
+(:Concept)-[:DESTACA_POR_EL_EMPLEO_GENEROSO_DE]->(:Concept)
+(:Concept)-[:ES_EL_SELLO_DISTINTIVO_DE]->(:Concept)
+(:Concept)-[:DONDE_SE_COMBINAN]->(:Concept)
+(:Concept)-[:SE_HA_ASOCIADO_CON]->(:Concept)
+(:Concept)-[:ES_UNA_DELICIA_PARA]->(:Concept)
+(:Concept)-[:INCLUYEN_LA_PREVENCIÓN_DE]->(:Concept)
+(:Concept)-[:INCLUYEN_LA_PROMOCIÓN_DE]->(:Concept)
+(:Concept)-[:IMPORTANCIA]->(:Concept)
+(:Concept)-[:COMPARTIR]->(:Concept)
+(:Concept)-[:REUNIRSE]->(:Concept)
+(:Concept)-[:CULTIVAR]->(:Concept)
+(:Concept)-[:FOMENTAR]->(:Concept)
+(:Concept)-[:JUEGA_UN_PAPEL_CRUCIAL_EN]->(:Concept)
+(:Concept)-[:PARTICIPEN_EN]->(:Concept)
+(:Concept)-[:ENRIQUECE]->(:Concept)
+(:Concept)-[:POSIBILIDAD_DE_MITIGAR_LOS_IMPACTOS_DEL]->(:Concept)
+(:Concept)-[:INCERTIDUMBRE_SOBRE_SI_ESTOS_VEHÍCULOS_SE_CONVERTIRÁN_EN]->(:Concept)
+(:Concept)-[:REPRESENTAN_UNA_ALTERNATIVA_A]->(:Concept)
+(:Concept)-[:PROMETEN_MEJORAR]->(:Concept)
+(:Concept)-[:POSIBILIDAD_DE_REDUCIR]->(:Concept)
+(:Concept)-[:SE_VISLUMBRA_COMO_UN_PASO_SIGNIFICATIVO_HACIA]->(:Concept)
+(:Concept)-[:RESPETUOSO_CON]->(:Concept)
+(:Concept)-[:EN]->(:Concept)
+(:Concept)-[:CREANDO_MÁS_HABITABLES_Y_SALUDABLES]->(:Concept)
+(:Organization)-[:SE_ENFRENTA]->(:Organization)
+(:Organization)-[:PARTICIPA_EN]->(:Event)
+(:Person)-[:SE_PREPARAN_PARA_PRESENCIAR]->(:Place)
+(:Person)-[:ESPERAN]->(:Event)
+(:Person)-[:PERTENECEN_A]->(:Organization)
+(:Document)-[:MENTIONS]->(:Concept)
+(:Document)-[:MENTIONS]->(:Person)
+(:Document)-[:MENTIONS]->(:Place)
+(:Document)-[:MENTIONS]->(:Organization)
+(:Document)-[:MENTIONS]->(:Event)
+(:Document)-[:MENTIONS]->(:Concepto)
+(:Document)-[:MENTIONS]->(:Entidad)
+(:Concepto)-[:DISTINTAS_A_LAS_OBSERVADAS_EN]->(:Entidad)
+(:Concepto)-[:CÓMO_LA_VIDA_SE_ADAPTA_Y_EVOLUCIONA_EN]->(:Entidad)
+(:Concepto)-[:CÓMO_SE_ADAPTA_Y_EVOLUCIONA_EN]->(:Concepto)
+(:Concepto)-[:IMPACTO_EN_FUTURAS]->(:Entidad)
+(:Concepto)-[:IMPACTO_EN_LA]->(:Entidad)
+(:Concepto)-[:COMPORTAMIENTO_Y_ADAPTACIÓN_EN]->(:Entidad)
+(:Concepto)-[:EXPANSIÓN_HACIA]->(:Entidad)
+(:Entidad)-[:PROLIFERACIÓN]->(:Entidad)
+(:Entidad)-[:ADAPTAN_Y_MUTAN_DE_MANERAS_INESPERADAS_EN]->(:Concepto)
+(:Entidad)-[:EXPERIMENTANDO]->(:Concepto)

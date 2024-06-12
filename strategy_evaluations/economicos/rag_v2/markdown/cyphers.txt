@@ -1,0 +1,460 @@
+Pregunta:¿cuáles son los pasos para gestionar un contrato menor?
+cypher
+MATCH (c:Concept {id: "contratos menores de importe infe"})-[:GESTIONE]->(p:Concept)
+RETURN p.id
+Context:[]
+Nodes: []
+---
+Pregunta:¿cuáles son los pasos para gestionar un contrato menor?
+cypher
+MATCH (c:Concept {id: "contratos menores de importe infe"})<-[:GESTIONE]-(p:Concept)
+RETURN p.idContext:[]
+Nodes: []
+---
+Pregunta:¿cuáles son los pasos para gestionar un contrato menor?
+cypher
+MATCH (c:Concept {id: "contratos menores de importe infe"})-[:GESTIONE]->(p:Concept)
+RETURN p.id
+Context:[]
+Nodes: []
+---
+Pregunta:¿cuáles son los pasos para gestionar un contrato menor?
+cypher
+MATCH (c:Concept {id: "contratos menores de importe infe"})<-[:GESTIONE]-(p:Concept)
+RETURN p.idContext:[]
+Nodes: []
+---
+Pregunta:¿cuáles son los pasos para gestionar un contrato menor?
+cypher
+MATCH (c:Concept {id: "contratos menores"})-[:GESTIONE]->(p:Concept)
+RETURN p.id
+Context:[]
+Nodes: []
+---
+Pregunta: soy el director del departamento de análisis matemático y tengo que organizar el sorteo de los miembros externos de una comisión de selección para una plaza de profesor permanente laboral, ¿qué pasos debo dar exactamente?
+cypher
+MATCH (p:Person)-[:JEFA]->(g:Group {id: "departamento"})
+RETURN p.id, g.id
+Context:[]
+Nodes: []
+---
+Pregunta: soy el director del departamento de análisis matemático y tengo que organizar el sorteo de los miembros externos de una comisión de selección para una plaza de profesor permanente laboral, ¿qué pasos debo dar exactamente?
+cypher
+MATCH (p:Person)<-[:JEFA]-(g:Group {id: "departamento"})
+RETURN p.id, g.idContext:[]
+Nodes: []
+---
+Pregunta: soy el director del departamento de análisis matemático y tengo que organizar el sorteo de los miembros externos de una comisión de selección para una plaza de profesor permanente laboral, ¿qué pasos debo dar exactamente?
+cypher
+MATCH (g:Group {id: "departamento"})-[:PERTENECE_A]->(o:Organization)
+RETURN g.id, o.id
+Context:[]
+Nodes: []
+---
+Pregunta: soy el director del departamento de análisis matemático y tengo que organizar el sorteo de los miembros externos de una comisión de selección para una plaza de profesor permanente laboral, ¿qué pasos debo dar exactamente?
+cypher
+MATCH (g:Group {id: "departamento"})<-[:PERTENECE_A]-(o:Organization)
+RETURN g.id, o.idContext:[]
+Nodes: []
+---
+Pregunta: soy el director del departamento de análisis matemático y tengo que organizar el sorteo de los miembros externos de una comisión de selección para una plaza de profesor permanente laboral, ¿qué pasos debo dar exactamente?
+cypher
+MATCH (g:Group {id: "departamento"})-[:PERTENECE_A]->(o:Organización)
+RETURN g.id, o.id
+Context:[]
+Nodes: []
+---
+Pregunta:¿Cuál es la cuantí total del presupuesto de gastos de la ULL para el año 2024?
+cypher
+MATCH (c:Concept {id: "presupuesto de cada universidad"})-[:TIENE_IMPORTE]->(i:Importe), (c)-[:EN]->(:Time_period {id: "ejercicio 2024"}), (c)-[:DE]->(:Organization {id: "universidad de la laguna"})
+RETURN i.id AS importe_total
+Context:[]
+Nodes: []
+---
+Pregunta:¿Cuál es la cuantí total del presupuesto de gastos de la ULL para el año 2024?
+cypher
+MATCH (i:Importe)<-[:TIENE_IMPORTE]-(c:Concept {id: "presupuesto de cada universidad"}), (:Time_period {id: "ejercicio 2024"})<-[:EN]-(c), (:Organization {id: "universidad de la laguna"})<-[:DE]-(c)
+RETURN i.id AS importe_totalContext:[]
+Nodes: []
+---
+Pregunta:¿Cuál es la cuantí total del presupuesto de gastos de la ULL para el año 2024?
+cypher
+MATCH (c:Concept {id: "presupuesto de cada universidad"})-[:TIENE_IMPORTE]->(i:Importe), 
+      (c)-[:EN]->(:Time_period {id: "ejercicio 2024"}), 
+      (c)-[:DE]->(:Organización {id: "universidad de la laguna"})
+RETURN i.id AS importe_total
+Context:[]
+Nodes: []
+---
+Pregunta:¿Cuál es la cuantí total del presupuesto de gastos de la ULL para el año 2024?
+cypher
+MATCH (c:Concept {id: "presupuesto de cada universidad"})<-[:TIENE_IMPORTE]-(i:Importe), 
+      (c)<-[:EN]-(:Time_period {id: "ejercicio 2024"}), 
+      (c)<-[:DE]-(:Organización {id: "universidad de la laguna"})
+RETURN i.id AS importe_totalContext:[]
+Nodes: []
+---
+Pregunta:¿Cuál es la cuantí total del presupuesto de gastos de la ULL para el año 2024?
+cypher
+MATCH (c:Concept {id: "presupuesto de cada universidad"})-[:TIENE_IMPORTE]->(i:Importe), 
+      (c)-[:EN]->(:Time_period {id: "ejercicio 2024"}), 
+      (c)-[:DE]->(:Entidad {id: "universidad de la laguna"})
+RETURN i.id AS importe_total
+Context:[]
+Nodes: []
+---
+Pregunta:¿Cuál es el límite de los contratos menores de investigación?
+cypher
+MATCH (c:Concept {id: "contratos menores de investigación"})-[:LÍMITE]->(l:Concept)
+RETURN l.id
+Context:[]
+Nodes: []
+---
+Pregunta:¿Cuál es el límite de los contratos menores de investigación?
+cypher
+MATCH (c:Concept {id: "contratos menores de investigación"})<-[:LÍMITE]-(l:Concept)
+RETURN l.idContext:[]
+Nodes: []
+---
+Pregunta:¿Cuál es el límite de los contratos menores de investigación?
+cypher
+MATCH (c:Concept {id: "contratos menores"})-[:EN_MATERIA_DE]->(i:Concept {id: "investigación"})-[:IMPORTE]->(l:Amount)
+RETURN l.id
+Context:[]
+Nodes: []
+---
+Pregunta:¿Cuál es el límite de los contratos menores de investigación?
+cypher
+MATCH (c:Concept {id: "contratos menores"})<-[:EN_MATERIA_DE]-(i:Concept {id: "investigación"})<-[:IMPORTE]-(l:Amount)
+RETURN l.idContext:[]
+Nodes: []
+---
+Pregunta:¿Cuál es el límite de los contratos menores de investigación?
+cypher
+MATCH (c:Concept {id: "contratos menores"})-[:EN_MATERIA_DE]->(i:Concept {id: "investigación"})-[:IMPORTE]->(l:Amount)
+RETURN l.id
+Context:[]
+Nodes: []
+---
+Pregunta:¿Cuáles son las tasas del animalario de la ULL?
+cypher
+MATCH (c:Concept {id: "tasas"})-[:DE]->(o:Organization {id: "universidad de la laguna"})
+RETURN c.id, o.id
+Context:[]
+Nodes: []
+---
+Pregunta:¿Cuáles son las tasas del animalario de la ULL?
+cypher
+MATCH (c:Concept {id: "tasas"})<-[:DE]-(o:Organization {id: "universidad de la laguna"})
+RETURN c.id, o.idContext:[]
+Nodes: []
+---
+Pregunta:¿Cuáles son las tasas del animalario de la ULL?
+cypher
+MATCH (c:Concept {id: "tasas"})-[:DE]->(e:Entidad {id: "universidad de la laguna"})
+RETURN c.id, e.id
+Context:[]
+Nodes: []
+---
+Pregunta:¿Cuáles son las tasas del animalario de la ULL?
+cypher
+MATCH (c:Concept {id: "tasas"})<-[:DE]-(e:Entidad {id: "universidad de la laguna"})
+RETURN c.id, e.idContext:[]
+Nodes: []
+---
+Pregunta:¿Cuáles son las tasas del animalario de la ULL?
+cypher
+MATCH (c:Concept {id: "tasas"})-[:DE]->(e:Entidad {id: "universidad de la laguna"})
+RETURN c.id, e.id
+Context:[]
+Nodes: []
+---
+Pregunta:¿Qué es el adelanto de caja?
+cypher
+MATCH (c:Concept {id: "adelanto de caja"})
+RETURN c
+Context:[]
+Nodes: []
+---
+Pregunta:¿Qué es el adelanto de caja?
+cypher
+MATCH (c)<-[:RELATED_TO]-(:Concept {id: "adelanto de caja"})
+RETURN cContext:[]
+Nodes: []
+---
+Pregunta:¿Qué es el adelanto de caja?
+cypher
+MATCH (c:Concept {id: "adelanto de caja"})
+RETURN c
+Context:[]
+Nodes: []
+---
+Pregunta:¿Qué es el adelanto de caja?
+cypher
+MATCH (c)<-[:RELATED_TO]-(:Concept {id: "adelanto de caja"})
+RETURN cContext:[]
+Nodes: []
+---
+Pregunta:¿Qué es el adelanto de caja?
+cypher
+MATCH (c:Concept {id: "adelanto de caja"})-[:ES]->(d:Concept)
+RETURN d
+Context:[]
+Nodes: []
+---
+Pregunta:¿Que es el anticipo de caja?
+cypher
+MATCH (c:Concept {id: "anticipo de caja"})
+RETURN c
+Context:[]
+Nodes: []
+---
+Pregunta:¿Que es el anticipo de caja?
+cypher
+MATCH (c)<-[:RELATED_TO]-(:Concept {id: "anticipo de caja"})
+RETURN cContext:[]
+Nodes: []
+---
+Pregunta:¿Que es el anticipo de caja?
+cypher
+MATCH (c:Concept {id: "anticipo de caja"})
+RETURN c
+Context:[]
+Nodes: []
+---
+Pregunta:¿Que es el anticipo de caja?
+cypher
+MATCH (c:Concept {id: "anticipo de caja"})
+RETURN cContext:[]
+Nodes: []
+---
+Pregunta:¿Que es el anticipo de caja?
+cypher
+MATCH (c:Concept {id: "anticipo de caja"})
+RETURN c
+Context:[]
+Nodes: []
+---
+Pregunta:¿Dónde están regulados los anticipos de caja?
+cypher
+MATCH (c:Concept {id: "anticipos"})-[:REGULA]->(r:Concept {id: "caja fija"})
+RETURN r
+Context:[]
+Nodes: []
+---
+Pregunta:¿Dónde están regulados los anticipos de caja?
+cypher
+MATCH (c:Concept {id: "anticipos"})<-[:REGULA]-(r:Concept {id: "caja fija"})
+RETURN rContext:[]
+Nodes: []
+---
+Pregunta:¿Dónde están regulados los anticipos de caja?
+cypher
+MATCH (c:Concept {id: "anticipos"})-[:REGULA]->(r:Concept {id: "caja fija"})
+RETURN c, r
+Context:[]
+Nodes: []
+---
+Pregunta:¿Dónde están regulados los anticipos de caja?
+cypher
+MATCH (c:Concept {id: "anticipos"})<-[:REGULA]-(r:Concept {id: "caja fija"})
+RETURN c, rContext:[]
+Nodes: []
+---
+Pregunta:¿Dónde están regulados los anticipos de caja?
+cypher
+MATCH (c:Concept {id: "anticipos"})-[:REGULA]->(r:Concept)
+RETURN r
+Context:[]
+Nodes: []
+---
+Pregunta:Enumera 5 objetivos concretos del presupuesto 2024
+cypher
+MATCH (c:Concept)-[:TIENE_POR_OBJETO_FIJAR]->(b:Budget {id: "presupuesto 2024"})
+RETURN c.id LIMIT 5
+Context:[]
+Nodes: []
+---
+Pregunta:Enumera 5 objetivos concretos del presupuesto 2024
+cypher
+MATCH (c:Concept)<-[:TIENE_POR_OBJETO_FIJAR]-(b:Budget {id: "presupuesto 2024"})
+RETURN c.id LIMIT 5Context:[]
+Nodes: []
+---
+Pregunta:Enumera 5 objetivos concretos del presupuesto 2024
+cypher
+MATCH (c:Concept)-[:TIENE_POR_OBJETO_FIJAR]->(b:Budget {id: "ejercicio 2024"})
+RETURN c.id LIMIT 5
+Context:[{'c.id': 'resolución'}]
+Nodes: ['resolución']
+---
+Pregunta:Qué servicios presta el SEGAI
+cypher
+MATCH (o:Organization {id: "servicio de gestión económica y financiera"})-[:TIENE]->(c:Concept)
+RETURN c.id
+Context:[]
+Nodes: []
+---
+Pregunta:Qué servicios presta el SEGAI
+cypher
+MATCH (o:Organization {id: "servicio de gestión económica y financiera"})<-[:TIENE]-(c:Concept)
+RETURN c.idContext:[]
+Nodes: []
+---
+Pregunta:Qué servicios presta el SEGAI
+cypher
+MATCH (o:Organization {id: "servicio de gestión económica y financiera"})-[:TIENE]->(c:Concept)
+RETURN c.id
+Context:[]
+Nodes: []
+---
+Pregunta:Qué servicios presta el SEGAI
+cypher
+MATCH (o:Organization {id: "servicio de gestión económica y financiera"})<-[:TIENE]-(c:Concept)
+RETURN c.idContext:[]
+Nodes: []
+---
+Pregunta:Qué servicios presta el SEGAI
+cypher
+MATCH (o:Organization {id: "servicio de gestión económica y financiera"})-[:REALIZA]->(c:Concept)
+RETURN c.id
+Context:[]
+Nodes: []
+---
+Pregunta:¿cuánto cuesta reservar el paraninfo 3 días para una orla?
+cypher
+MATCH (p:Place {id: 'paraninfo'})-[:TIENE_IMPORTE]->(i:Importe)
+RETURN i.id AS costo
+Context:[]
+Nodes: []
+---
+Pregunta:¿cuánto cuesta reservar el paraninfo 3 días para una orla?
+cypher
+MATCH (p:Place {id: 'paraninfo'})<-[:TIENE_IMPORTE]-(i:Importe)
+RETURN i.id AS costoContext:[]
+Nodes: []
+---
+Pregunta:¿cuánto cuesta reservar el paraninfo 3 días para una orla?
+cypher
+MATCH (p:Place {id: 'paraninfo'})-[:TIENE_IMPORTE]->(i:Importe)
+RETURN i.id AS costo
+Context:[]
+Nodes: []
+---
+Pregunta:¿cuánto cuesta reservar el paraninfo 3 días para una orla?
+cypher
+MATCH (p:Place {id: 'paraninfo'})<-[:TIENE_IMPORTE]-(i:Importe)
+RETURN i.id AS costoContext:[]
+Nodes: []
+---
+Pregunta:¿cuánto cuesta reservar el paraninfo 3 días para una orla?
+cypher
+MATCH (p:Place {id: 'paraninfo'})-[:TIENE_IMPORTE]->(i:Importe)
+RETURN i.id AS costo
+Context:[]
+Nodes: []
+---
+Pregunta:Qué servicios se prestan en los Servicios Generales de Apyo a la Investigación
+cypher
+MATCH (o:Organization {id: "servicios generales de apoyo a la investigación"})-[:TIENE]->(c:Concept)
+RETURN c.id
+Context:[]
+Nodes: []
+---
+Pregunta:Qué servicios se prestan en los Servicios Generales de Apyo a la Investigación
+cypher
+MATCH (o:Organization {id: "servicios generales de apoyo a la investigación"})<-[:TIENE]-(c:Concept)
+RETURN c.idContext:[]
+Nodes: []
+---
+Pregunta:Qué servicios se prestan en los Servicios Generales de Apyo a la Investigación
+cypher
+MATCH (o:Organization {id: "servicio de gestión económica y financiera"})-[:TIENE]->(c:Concept)
+RETURN c.id
+Context:[]
+Nodes: []
+---
+Pregunta:Qué servicios se prestan en los Servicios Generales de Apyo a la Investigación
+cypher
+MATCH (o:Organization {id: "servicio de gestión económica y financiera"})<-[:TIENE]-(c:Concept)
+RETURN c.idContext:[]
+Nodes: []
+---
+Pregunta:Qué servicios se prestan en los Servicios Generales de Apyo a la Investigación
+cypher
+MATCH (o:Organization {id: "servicios generales de apoyo a la investigación"})-[:TIENE]->(c:Concept)
+RETURN c.id
+Context:[]
+Nodes: []
+---
+Pregunta:¿cuánto se ha presupuestado para fondo de contingencia en el 2024?¿En qué capítulo económico se encuentra el fondo de contingencia?
+cypher
+MATCH (c:Concept {id: "fondo de contingencia y otros imprevistos"})-[:EN]->(tp:Time_period {id: "ejercicio 2024"})
+MATCH (c)-[:PERTENECE_A]->(ch:Chapter)
+RETURN c.id AS concepto, tp.id AS periodo, ch.id AS capítulo
+Context:[]
+Nodes: []
+---
+Pregunta:¿cuánto se ha presupuestado para fondo de contingencia en el 2024?¿En qué capítulo económico se encuentra el fondo de contingencia?
+cypher
+MATCH (tp:Time_period {id: "ejercicio 2024"})<-[:EN]-(c:Concept {id: "fondo de contingencia y otros imprevistos"})
+MATCH (ch:Chapter)<-[:PERTENECE_A]-(c)
+RETURN c.id AS concepto, tp.id AS periodo, ch.id AS capítuloContext:[]
+Nodes: []
+---
+Pregunta:¿cuánto se ha presupuestado para fondo de contingencia en el 2024?¿En qué capítulo económico se encuentra el fondo de contingencia?
+cypher
+MATCH (c:Concept {id: "fondo de contingencia y otros imprevistos"})-[:EN]->(tp:Time_period {id: "ejercicio 2024"})
+MATCH (c)-[:PERTENECE_A]->(ch:Capítulo)
+RETURN c.id AS concepto, tp.id AS periodo, ch.id AS capítulo
+Context:[]
+Nodes: []
+---
+Pregunta:¿cuánto se ha presupuestado para fondo de contingencia en el 2024?¿En qué capítulo económico se encuentra el fondo de contingencia?
+cypher
+MATCH (tp:Time_period {id: "ejercicio 2024"})<-[:EN]-(c:Concept {id: "fondo de contingencia y otros imprevistos"})
+MATCH (ch:Capítulo)<-[:PERTENECE_A]-(c)
+RETURN c.id AS concepto, tp.id AS periodo, ch.id AS capítuloContext:[]
+Nodes: []
+---
+Pregunta:¿cuánto se ha presupuestado para fondo de contingencia en el 2024?¿En qué capítulo económico se encuentra el fondo de contingencia?
+cypher
+MATCH (c:Concept {id: "fondo de contingencia y otros imprevistos"})-[:EN]->(tp:Time_period {id: "ejercicio 2024"})
+MATCH (c)-[:PERTENECE_A]->(ch:Chapter)
+RETURN c.id AS concepto, tp.id AS periodo, ch.id AS capítulo
+Context:[]
+Nodes: []
+---
+Pregunta:¿Qué dotación presupuestaria tiene el capítulo 1?
+cypher
+MATCH (c:Capítulo {id: 'capítulo i'})-[:TIENE_IMPORTE]->(i:Importe)
+RETURN i.id
+Context:[]
+Nodes: []
+---
+Pregunta:¿Qué dotación presupuestaria tiene el capítulo 1?
+cypher
+MATCH (c:Capítulo {id: 'capítulo i'})<-[:TIENE_IMPORTE]-(i:Importe)
+RETURN i.idContext:[]
+Nodes: []
+---
+Pregunta:¿Qué dotación presupuestaria tiene el capítulo 1?
+cypher
+MATCH (c:Capítulo {id: 'capítulo i'})-[:TIENE_IMPORTE]->(i:Importe)
+RETURN i.id
+Context:[]
+Nodes: []
+---
+Pregunta:¿Qué dotación presupuestaria tiene el capítulo 1?
+cypher
+MATCH (c:Capítulo {id: 'capítulo i'})<-[:TIENE_IMPORTE]-(i:Importe)
+RETURN i.idContext:[]
+Nodes: []
+---
+Pregunta:¿Qué dotación presupuestaria tiene el capítulo 1?
+cypher
+MATCH (c:Capítulo {id: 'capítulo i'})-[:TIENE_IMPORTE]->(i:Importe)
+RETURN i.id
+Context:[]
+Nodes: []
+---

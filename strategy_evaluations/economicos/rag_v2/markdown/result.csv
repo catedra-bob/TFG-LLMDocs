@@ -1,0 +1,153 @@
+,question,answer,contexts,ground_truth,context_relevancy,context_precision,context_recall,faithfulness,answer_relevancy
+0,¿cuáles son los pasos para gestionar un contrato menor?,"Lo siento, pero no has proporcionado ningún contexto en tu mensaje. Por favor, proporciona el contexto necesario para que pueda responder a tu pregunta.",[],"Para gestionar un contrato menor en la Universidad de La Laguna, se deben seguir varios pasos clave que aseguran el cumplimiento de la normativa vigente y la transparencia del proceso. Estos pasos son:
+
+1. **Verificación de la Existencia de Crédito**: Antes de iniciar cualquier procedimiento, es necesario verificar que existe crédito disponible en la partida presupuestaria correspondiente para cubrir el gasto del contrato.
+
+2. **Solicitud y Conformación de Presupuesto**: Se debe solicitar a la empresa un presupuesto detallado y conformado sobre el servicio, suministro o obra que se pretende realizar. Este presupuesto debe ser revisado y aprobado por el órgano competente dentro de la Universidad.
+
+3. **Aprobación del Gasto**: Una vez conformado el presupuesto, se procede a la aprobación del gasto. Este paso es crucial para formalizar el compromiso de la Universidad con el gasto que implica el contrato.
+
+4. **Supervisión de la Ejecución**: Durante la ejecución del servicio, obra o suministro, es necesario realizar un seguimiento para asegurar que se cumplen las condiciones pactadas. Esto incluye la supervisión de la calidad, los tiempos de entrega y otros aspectos relevantes del contrato.
+
+5. **Certificación de la Obra o Servicio**: En caso de contratos de obras, al finalizar los trabajos, se debe realizar una certificación de la obra y elaborar el informe correspondiente para la factura. Si no se incluye en el informe la conformidad con la obra, se debe elaborar un acta de recepción.
+
+6. **Pago y Cierre del Contrato**: Una vez finalizado el servicio o recibida la mercancía, y tras la verificación de que todo es conforme, se procede al pago de la factura. Este paso finaliza con el cierre administrativo del contrato.
+
+Es importante destacar que, para los contratos menores de importe igual o superior a 5.000 € (sin IGIC), estos pasos pueden variar ligeramente en función de las especificaciones del contrato y los requerimientos internos de la Universidad. Además, se debe tener en cuenta que ciertos contratos pueden estar exentos de algunos requisitos bajo disposiciones específicas, como la Disposición adicional séptima del Decreto-ley 4/2021, que simplifica la tramitación de ciertos gastos menores.",0.0,0.0,0.6923076923076923,,0.0
+1," soy el director del departamento de análisis matemático y tengo que organizar el sorteo de los miembros externos de una comisión de selección para una plaza de profesor permanente laboral, ¿qué pasos debo dar exactamente?","Lo siento, pero no puedo proporcionar una respuesta a tu pregunta basándome solo en el contexto proporcionado, ya que no se ha incluido suficiente información específica sobre el proceso de organización del sorteo de los miembros externos para la comisión de selección.",[],"De acuerdo a la normativa de la Universidad de La Laguna, como director del departamento de análisis matemático encargado de organizar el sorteo de los miembros externos de una comisión de selección para una plaza de profesor permanente laboral, los pasos que debes seguir son los siguientes:
+
+1. El primer paso es elaborar una lista cualificada de personal docente e investigador no perteneciente a la Universidad de La Laguna, que cumpla con los requisitos establecidos en la normativa. Esta lista debe ser aprobada por el Departamento y puede ser complementada con otros profesionales que cumplan con los criterios para participar en las Comisiones de Selección.
+
+2. Posteriormente, se procede a la realización del sorteo público en una sesión del Consejo de Departamento. Durante esta sesión, se llevará a cabo el sorteo de los miembros externos de la Comisión de Selección a partir de la lista cualificada previamente elaborada. Es importante que este sorteo se realice de manera transparente y se levante un acta con el resultado del mismo.
+
+3. Una vez completado el sorteo, se procede a la designación de los miembros externos de la Comisión de Selección que participarán en el proceso de evaluación de los concursos de acceso a plazas de Profesorado Permanente Laboral. Estos miembros externos deben ser elegidos de manera imparcial y profesional, garantizando una composición equilibrada entre hombres y mujeres, salvo que existan razones fundadas y objetivas que impidan este equilibrio.
+
+Siguiendo estos pasos, cumplirás con los procedimientos establecidos en la normativa de la Universidad de La Laguna para organizar el sorteo de los miembros externos de la Comisión de Selección de manera adecuada y conforme a las regulaciones vigentes.",0.0,0.0,1.0,,0.0
+2,¿Cuál es la cuantí total del presupuesto de gastos de la ULL para el año 2024?,"Lo siento, no hay suficiente información en el contexto proporcionado para responder a la pregunta sobre el presupuesto de gastos de la ULL para el año 2024.",[],"El presupuesto total de gastos de la Universidad de La Laguna para el año 2024 asciende a 173.771.500 euros. Este presupuesto está distribuido en diferentes capítulos que incluyen gastos de personal, gastos en bienes corrientes y servicios, gastos financieros, transferencias corrientes, fondo de contingencia y otros imprevistos, inversiones reales, activos financieros y pasivos financieros.",0.0,0.0,1.0,,0.0
+3,¿Cuál es el límite de los contratos menores de investigación?,"El contexto proporcionado no incluye información específica sobre el límite de los contratos menores de investigación. Por lo tanto, no puedo responder a la pregunta basada únicamente en el contexto dado.",[],"En la Universidad de La Laguna, los contratos menores de investigación tienen un límite de valor estimado inferior a 50.000 euros (IGIC no incluido). Este límite se aplica siempre que los contratos no estén destinados a servicios generales y de infraestructura. Esta disposición forma parte de las instrucciones relativas a la tramitación de los contratos menores en la Universidad, establecidas para asegurar una gestión adecuada y transparente de los recursos destinados a la investigación dentro del marco normativo vigente.",0.0,0.0,1.0,,0.0
+4,¿Cuáles son las tasas del animalario de la ULL?,"Lo siento, pero no hay información suficiente en el contexto proporcionado para responder a la pregunta sobre las tasas del animalario de la ULL.",[],"Las tarifas del animalario de la Universidad de La Laguna varían según el tipo de animal y el servicio solicitado. A continuación, se detallan algunos de los precios establecidos:
+
+1. **Rata Sprague Dawley / unidad**:
+   - ULL: 10,00 €
+   - OP: 12,00 €
+   - GENERAL: 15,00 €
+
+2. **Rata preñada / unidad**:
+   - ULL: 25,00 €
+   - OP: 32,00 €
+   - GENERAL: 45,00 €
+
+3. **Ratón Swiss-OF1 / unidad**:
+   - ULL: 3,00 €
+   - OP: 3,50 €
+   - GENERAL: 6,00 €
+
+4. **Ratona Swiss-OF1 preñada / unidad**:
+   - ULL: 12,00 €
+   - OP: 15,00 €
+   - GENERAL: 25,00 €
+
+5. **Ratón consanguíneo / unidad**:
+   - ULL: 8,82 €
+   - OP: 10,40 €
+   - GENERAL: 12,00 €
+
+6. **Ratona consanguínea preñada / unidad**:
+   - ULL: 25,00 €
+   - OP: 31,00 €
+   - GENERAL: 42,00 €
+
+7. **Mantenimiento de ratón por jaula / semana**:
+   - ULL: 2,00 €
+   - OP: 2,50 €
+   - GENERAL: 5,00 €
+
+8. **Mantenimiento de rata / semana**:
+   - ULL: 2,50 €
+   - OP: 3,00 €
+   - GENERAL: 5,00 €
+
+9. **Mantenimiento de conejo / semana**:
+   - ULL: 8,00 €
+   - OP: 10,00 €
+   - GENERAL: 20,00 €
+
+Estos precios son indicativos y pueden variar según las necesidades específicas y los servicios adicionales requeridos. Además, es importante tener en cuenta que estos precios no incluyen el IGIC (Impuesto General Indirecto Canario)",0.0,0.0,1.0,,0.0
+5,¿Qué es el adelanto de caja?,El adelanto de caja es un procedimiento financiero en el que se otorgan fondos a una persona o entidad antes de la fecha prevista para su uso o reembolso.,[]," El adelanto de caja, según la normativa de la Universidad de La Laguna, se refiere a las provisiones de fondo de carácter extrapresupuestario y permanente que se realizan en los centros de gasto de la Universidad para la atención inmediata y posterior aplicación al capítulo de gastos corrientes en bienes y servicios del presupuesto del año en que se realicen. Estos anticipos, conocidos como ""anticipos de Caja Fija"", no tienen la consideración de pagos a justificar. 
+
+Este sistema permite manejar fondos de manera ágil para cubrir necesidades inmediatas de gasto, facilitando así la operativa diaria sin tener que pasar por todos los trámites administrativos ordinarios que requieren otros tipos de gastos. La regulación de estos anticipos busca proporcionar un marco legal claro y adecuado para su gestión, asegurando la correcta administración de los recursos financieros de la Universidad.",0.0,0.0,1.0,1.0,1.0000000000000007
+6,¿Que es el anticipo de caja?,No hay suficiente información en el contexto proporcionado para responder a la pregunta sobre qué es el anticipo de caja.,[],"El anticipo de caja fija en la Universidad de La Laguna se define como las provisiones de fondos de carácter no presupuestario y permanente que se realizan en los centros de gasto de la Universidad para la atención inmediata y posterior aplicación al capítulo de gastos corrientes del presupuesto del ejercicio en que se realicen. Estos anticipos están destinados a cubrir gastos de carácter periódico o repetitivo que no están sujetos a fiscalización previa.
+
+Este sistema permite una gestión ágil de ciertos gastos corrientes, facilitando así la operativa diaria de los distintos departamentos y unidades sin necesidad de tramitar cada gasto de manera individual a través del proceso ordinario de fiscalización previa. La regulación de los anticipos de caja fija busca proporcionar un marco adecuado para su manejo y control, asegurando que los fondos se utilicen de manera eficiente y conforme a las necesidades institucionales.",0.0,0.0,1.0,,0.0
+7,¿Dónde están regulados los anticipos de caja?,Los anticipos de caja están regulados en la Ley General de la Hacienda Pública.,[],"Los anticipos de caja fija en la Universidad de La Laguna están regulados en el ""Reglamento de Anticipo de Caja Fija"" aprobado por la Junta de Gobierno de la Universidad. Este reglamento establece las disposiciones para la gestión y el control de los anticipos de caja fija, que son provisiones de fondo de carácter extrapresupuestario y permanente destinadas a la atención inmediata de gastos corrientes en bienes y servicios. Además, se especifica que estos anticipos no tendrán la consideración de pagos a justificar. 
+
+El procedimiento de gestión de estos anticipos incluye la asignación de un porcentaje máximo del presupuesto destinado a gastos corrientes que puede ser asignado a los centros de gasto para este fin, así como la regulación sobre cómo deben ser justificados y fiscalizados estos fondos. También se menciona que los centros de gasto deben disponer de una cuenta restringida de pagos para la gestión de estos anticipos, y que los habilitados pagadores y sus sustitutos serán nombrados por Resolución Rectoral.
+
+En resumen, la regulación de los anticipos de caja fija en la Universidad de La Laguna se encuentra detallada en el mencionado reglamento, el cual proporciona un marco jurídico para la correcta administración y control de estos fondos, asegurando su uso adecuado y transparente dentro de la institución.",0.0,0.0,1.0,1.0,0.9750021517330737
+8,Enumera 5 objetivos concretos del presupuesto 2024,"1. **Agilizar trámites y procesos**: Implementar un plan de modernización para simplificar los trámites y acelerar la resolución de los mismos.
+
+2. **Planificar la gestión del gasto**: Establecer un calendario económico para el ejercicio 2024 con el fin de organizar la distribución del gasto a lo largo del año.
+
+3. **Evitar la acumulación de cargas de trabajo**: Prevenir la concentración de tareas y cargas de trabajo en la parte final del año.
+
+4. **Mejorar la celeridad en la tramitación de los gastos**: Aumentar la rapidez en la gestión y tramitación de los gastos.
+
+5. **Optimizar la distribución del gasto**: Asegurar una distribución más eficiente y equilibrada del gasto a lo largo del año.","['Agilizar trámites y procesos a través de un plan de modernización con el objetivo de\nlograr que sean más simples y la resolución de los mismos más rápida.'
+ 'EJERCICIO 2024\nLa presente resolución tiene por objeto fijar el calendario económico del ejercicio 2024 con\nel fin de planificar la gestión del gasto a lo largo del año, evitando la acumulación de cargas\nde trabajo en la parte final del mismo y mejorando la celeridad en la tramitación de los\ngastos.']"," Los objetivos concretos del presupuesto 2024 de la Universidad de La Laguna incluyen:
+
+1. Mejorar la experiencia del alumnado en su paso por la Universidad, así como preparar su transición a la vida laboral.
+2. Potenciar y promover la cultura y la extensión universitaria generadas en la Universidad de La Laguna para el beneficio y al alcance de toda la sociedad, optimizando su calidad, procurando una oferta amplia e idónea y mejorando su dotación.
+3. Consolidar la proyección social de la Universidad mediante iniciativas que vinculen la docencia y la investigación con la realidad medioambiental, cultural y social de Canarias y del mundo, observando los Objetivos de Desarrollo Sostenible.
+4. Favorecer la cooperación y el desarrollo de proyectos que aumenten el carácter internacional de la Universidad de La Laguna.
+5. Promover el aprendizaje de idiomas en la comunidad universitaria, así como el uso del español por extranjeros en el ámbito universitario.",0.0,0.99999999995,1.0,1.0,0.7672786188234443
+9,Qué servicios presta el SEGAI,"Lo siento, pero no hay suficiente información en el contexto proporcionado para responder a la pregunta sobre los servicios que presta el SEGAI.",[],"El Servicio General de Apoyo a la Investigación (SEGAI) de la Universidad de La Laguna ofrece una amplia variedad de servicios destinados a apoyar las actividades de investigación y desarrollo dentro de la universidad. Entre los servicios que presta el SEGAI se incluyen:
+
+1. **Departamento de Calidad**: Encargado de asegurar la calidad y el cumplimiento de los estándares en los procesos y resultados de las investigaciones.
+
+2. **Departamento de Promoción, Valorización y Comercialización**: Se enfoca en la promoción y la explotación comercial de los resultados de la investigación.
+
+3. **Estabulario y Animalario**: Proporciona soporte para la investigación que requiere el uso de animales, incluyendo el mantenimiento y cuidado de los mismos.
+
+4. **Instalación Radiactiva del Campus de Anchieta**: Ofrece servicios relacionados con el uso de materiales radiactivos para la investigación.
+
+5. **Laboratorio de Caracterización de Partículas y Microsuperficies**: Proporciona análisis y caracterización de materiales a nivel micro y nano.
+
+6. **Laboratorio de Fonética**: Apoya investigaciones relacionadas con la lingüística y la fonética.
+
+7. **Servicio de Análisis Lípidos, Térmico y de Documentación de Obras de Arte**: Ofrece análisis especializados en diversas áreas.
+
+8. **Servicio de Apoyo a Criminalística Forense y Apoyo Informático a la Investigación**: Brinda asistencia en investigaciones forenses y soporte informático.
+
+9. **Servicio de Electrónica y Mecánica**: Proporciona apoyo técnico en electrónica y mecánica para proyectos de investigación.
+
+10. **Servicios de Espectrometría y Microscopía**: Incluyen espectrometría de masas, espectroscopia de absorción atómica, microscopía electrónica, entre otros.
+
+11. **Servicio de Genómica y Resonancia Magnética**: Ofrece servicios avanzados en genómica y uso de técnicas de resonancia magnética.
+
+12. **Sistema Multitécnicas de Análisis de Superficies y Técnicas Agroalimentarias**: Proporciona análisis de superficies y apoyo en investigaciones agroalimentarias.
+
+Estos servicios son fundamentales para facilitar y potenciar la investigación científica y técnica en la Universidad de La Laguna, proporcionando recursos y tecnología de punta a los investigadores y colaboradores.",0.0,0.0,0.9285714285714286,,0.0
+10,¿cuánto cuesta reservar el paraninfo 3 días para una orla?,"Lo siento, pero no se proporciona información sobre el costo de reservar el paraninfo para una orla en el contexto proporcionado.",[],"El costo de reservar el Paraninfo de la Universidad de La Laguna para una orla universitaria durante tres días es de 0 euros. Según la normativa vigente para el ejercicio 2024, las orlas universitarias de la ULL no tienen costo de arrendamiento para el uso del Paraninfo.",0.0,0.0,1.0,,0.0
+11,Qué servicios se prestan en los Servicios Generales de Apyo a la Investigación,"Lo siento, pero no hay suficiente información en el contexto proporcionado para responder a tu pregunta sobre los servicios que se prestan en los Servicios Generales de Apoyo a la Investigación.",[],"Los Servicios Generales de Apoyo a la Investigación (SEGAI) de la Universidad de La Laguna ofrecen una amplia variedad de servicios destinados a facilitar y potenciar las actividades de investigación de la comunidad universitaria. Estos servicios incluyen:
+
+1. **Departamento de Calidad**: Se encarga de asegurar que todos los servicios y procedimientos cumplen con los estándares de calidad requeridos.
+
+2. **Departamento de Promoción, Valorización y Comercialización**: Su función es promover los resultados de la investigación, valorizarlos y buscar su aplicación comercial.
+
+3. **Estabulario y Animalario**: Proporciona soporte para la investigación que requiere el uso de animales, asegurando el cuidado y mantenimiento adecuado de los mismos bajo normativas éticas.
+
+4. **Instalación Radiactiva del Campus de Anchieta**: Facilita recursos y espacios controlados para la manipulación de materiales radiactivos.
+
+5. **Laboratorios especializados**: Incluyen laboratorios de Caracterización de Partículas y Microsuperficies, Fonética, Análisis Lípidos, Análisis Térmico, entre otros, equipados con tecnología avanzada para la realización de diversos tipos de análisis y pruebas.
+
+6. **Servicio de Apoyo a Criminalística Forense**: Ofrece asistencia en la realización de análisis forenses, lo cual es crucial para investigaciones que requieren de peritaje especializado.
+
+7. **Servicio de Electrónica**: Proporciona apoyo en la reparación y mantenimiento de equipos electrónicos, así como en el diseño y fabricación de dispositivos electrónicos personalizados.
+
+8. **Servicio de Espectrometría de Masas y Análisis Elemental**: Ofrece análisis detallados de composición química mediante técnicas avanzadas como la espectrometría de masas.
+
+9. **Servicio de Espectroscopía de Absorción Atómica**: Especializado en la determinación de metales y otros elementos químicos en diversas muestras.
+
+Estos servicios son fundamentales para apoyar la investigación científica y técnica en la universidad, proporcionando recursos y asistencia técnica especializada que facilitan y potencian los proyectos de investigación de los docentes, investigadores y estudiantes.",0.0,0.0,1.0,,0.0
+12,¿cuánto se ha presupuestado para fondo de contingencia en el 2024?¿En qué capítulo económico se encuentra el fondo de contingencia?,"Lo siento, pero no se ha proporcionado suficiente contexto para responder a las preguntas sobre el monto presupuestado para el fondo de contingencia en 2024 y el capítulo económico en el que se encuentra.",[],"Para el año 2024, la Universidad de La Laguna ha presupuestado un total de 100.000 euros para el Fondo de Contingencia. Este fondo está destinado a cubrir necesidades de carácter no discrecional y no previstas inicialmente en el presupuesto. El Fondo de Contingencia se encuentra clasificado en el Capítulo V del estado de gastos del presupuesto de la universidad.",0.0,0.0,1.0,,0.0
+13,¿Qué dotación presupuestaria tiene el capítulo 1?,"Lo siento, pero no se proporciona información sobre la dotación presupuestaria del capítulo 1 en el contexto de arriba.",[],"El capítulo 1 del presupuesto de la Universidad de La Laguna para el ejercicio 2024, que corresponde a los gastos de personal, tiene una dotación presupuestaria de 138.398.600 euros.",0.0,0.0,1.0,,0.0

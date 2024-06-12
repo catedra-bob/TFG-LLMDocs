@@ -1,0 +1,93 @@
+Node properties:
+- **Concept**
+  - `id`: STRING Example: "la cocina mediterránea"
+- **Event**
+  - `id`: STRING Available options: ['semifinal de la copa', 'partido', 'semifinal de la copa de europa', 'mutaciones']
+- **Organization**
+  - `id`: STRING Available options: ['real madrid', 'bayern de múnich']
+- **Place**
+  - `id`: STRING Available options: ['europa']
+- **Person**
+  - `id`: STRING Available options: ['fanáticos', 'espectadores']
+- **Location**
+  - `id`: STRING Available options: ['estación espacial', 'tierra']
+- **Organism**
+  - `id`: STRING Available options: ['bacterias']
+- **Object**
+  - `id`: STRING Available options: ['hilo']
+- **Document**
+  - `id`: STRING Example: "49d6583f247f64ff8c995ca5cdb70ca7"
+  - `page`: INTEGER Min: 0, Max: 1
+  - `text`: STRING Example: "La cocina mediterránea, reconocida mundialmente po"
+  - `source`: STRING Available options: ['pdfs_otros\\Temas_variados.pdf']
+  - `Cabecera_1`: STRING Available options: ['Importancia de la Unidad Familiar', 'El Futuro de los Vehículos Eléctricos: Perspectiva']
+  - `Cabecera_2`: STRING Available options: ['La Dimensión de la Familia: Más es Mejor', 'La Promesa de la Sostenibilidad']
+- **Group**
+  - `id`: STRING Available options: ['equipos']
+- **Evento**
+  - `id`: STRING Available options: ['duelo']
+- **Grupo**
+  - `id`: STRING Available options: ['aficionados', 'gigantes del fútbol europeo', 'jugadores de clase mundial']
+- **Lugar**
+  - `id`: STRING Available options: ['estadio', 'campo']
+Relationship properties:
+
+The relationships:
+(:Concept)-[:DESTACA_POR_EL_EMPLEO_GENEROSO_DE]->(:Concept)
+(:Concept)-[:SON_EL_SELLO_DISTINTIVO_DE]->(:Concept)
+(:Concept)-[:SE_COMBINAN_CON]->(:Concept)
+(:Concept)-[:REALZAN]->(:Concept)
+(:Concept)-[:SON_PARTE_DE]->(:Concept)
+(:Concept)-[:HASTA]->(:Concept)
+(:Concept)-[:DESDE]->(:Concept)
+(:Concept)-[:SE_CENTRA_EN]->(:Event)
+(:Concept)-[:PENDE_DE]->(:Object)
+(:Concept)-[:DE]->(:Group)
+(:Concept)-[:DIFERENTES_A_LAS_QUE_SE_OBSERVAN_EN]->(:Location)
+(:Concept)-[:PLANTEANDO_INTERROGANTES_SOBRE_SU_COMPORTAMIENTO_Y_ADAPTACIÓN_EN]->(:Concept)
+(:Concept)-[:EXPANSIÓN_HACIA]->(:Concept)
+(:Concept)-[:SE_ADAPTA_Y_EVOLUCIONA_EN]->(:Concept)
+(:Concept)-[:SOBRE]->(:Concept)
+(:Concept)-[:IMPACTO]->(:Concept)
+(:Concept)-[:IMPORTANCIA]->(:Concept)
+(:Concept)-[:FORTALECE]->(:Concept)
+(:Concept)-[:REÚNE_EN_TORNO_A]->(:Concept)
+(:Concept)-[:FOMENTA]->(:Concept)
+(:Concept)-[:CULTIVAN]->(:Concept)
+(:Concept)-[:JUEGA_UN_PAPEL_CRUCIAL_EN]->(:Concept)
+(:Concept)-[:AUMENTA]->(:Concept)
+(:Concept)-[:PARTICIPEN_EN]->(:Concept)
+(:Concept)-[:ENRIQUECE]->(:Concept)
+(:Concept)-[:PROPORCIONANDO]->(:Concept)
+(:Concept)-[:A]->(:Concept)
+(:Concept)-[:POSIBILIDAD_DE_REDUCIR]->(:Concept)
+(:Concept)-[:REPRESENTAN_UNA_ALTERNATIVA_PROMETEDORA_A]->(:Concept)
+(:Concept)-[:MITIGAR_LOS_IMPACTOS_DE]->(:Concept)
+(:Concept)-[:SE_VISLUMBRA_COMO_UN_PASO_SIGNIFICATIVO_HACIA]->(:Concept)
+(:Concept)-[:RESPETUOSO_CON]->(:Concept)
+(:Concept)-[:PROMETE_MEJORAR]->(:Concept)
+(:Concept)-[:EN]->(:Concept)
+(:Concept)-[:CREANDO]->(:Concept)
+(:Event)-[:TIENE]->(:Concept)
+(:Event)-[:LLEVARÁ_AL_BORDE_DE_SUS_ASIENTOS]->(:Person)
+(:Event)-[:DIFERENTES_A_LAS_QUE_SE_OBSERVAN_EN]->(:Location)
+(:Organization)-[:ENFRENTA]->(:Organization)
+(:Organism)-[:ADAPTAN_Y_MUTAN_EN]->(:Location)
+(:Organism)-[:PROLIFERACIÓN]->(:Location)
+(:Organism)-[:EXPERIMENTANDO]->(:Concept)
+(:Organism)-[:EXPERIMENTANDO]->(:Event)
+(:Document)-[:MENTIONS]->(:Concept)
+(:Document)-[:MENTIONS]->(:Event)
+(:Document)-[:MENTIONS]->(:Organization)
+(:Document)-[:MENTIONS]->(:Place)
+(:Document)-[:MENTIONS]->(:Person)
+(:Document)-[:MENTIONS]->(:Grupo)
+(:Document)-[:MENTIONS]->(:Evento)
+(:Document)-[:MENTIONS]->(:Lugar)
+(:Document)-[:MENTIONS]->(:Object)
+(:Document)-[:MENTIONS]->(:Group)
+(:Document)-[:MENTIONS]->(:Organism)
+(:Document)-[:MENTIONS]->(:Location)
+(:Evento)-[:SE_ESPERA]->(:Grupo)
+(:Grupo)-[:SE_PREPARAN]->(:Lugar)
+(:Grupo)-[:EN_AMBOS_LADOS]->(:Lugar)

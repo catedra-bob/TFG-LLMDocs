@@ -53,7 +53,7 @@ def ragas_evaluator(runnable, retriever = 0):
 
 def plot_results(result):
     df = result.to_pandas()
-    df.to_csv("strategy_evaluations/economicos/rag_v1/result.csv")
+    df.to_csv("strategy_evaluations/economicos/result.csv")
     # df.to_csv("strategy_evaluations/temas_variados/result.csv")
 
     metrics_df = df[['context_relevancy', 'context_precision', 'context_recall', 'faithfulness', 'answer_relevancy']]

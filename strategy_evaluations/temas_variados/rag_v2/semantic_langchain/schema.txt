@@ -1,0 +1,103 @@
+Node properties:
+- **Concept**
+  - `id`: STRING Example: "cocina mediterránea"
+- **Food**
+  - `id`: STRING Available options: ['olivas', 'tomates', 'hierbas aromáticas', 'pescado fresco', 'ingredientes locales']
+- **Event**
+  - `id`: STRING Available options: ['copa de europa', 'enfrentamiento legendario', 'partido crucial', 'semifinal de la copa de europa']
+- **Organization**
+  - `id`: STRING Available options: ['real madrid', 'bayern de múnich', 'gigantes del fútbol europeo', 'google']
+- **Place**
+  - `id`: STRING Available options: ['estadio', 'estación espacial', 'new york']
+- **Person**
+  - `id`: STRING Available options: ['aficionados', 'espectadores', 'john doe', 'jane smith']
+- **Organism**
+  - `id`: STRING Available options: ['bacterias']
+- **Document**
+  - `format`: STRING Available options: ['PDF 1.4']
+  - `trapped`: STRING Available options: ['']
+  - `author`: STRING Available options: ['']
+  - `subject`: STRING Available options: ['']
+  - `file_path`: STRING Available options: ['pdfs_otros\\Temas_variados.pdf']
+  - `creator`: STRING Available options: ['']
+  - `modDate`: STRING Available options: ['']
+  - `keywords`: STRING Available options: ['']
+  - `id`: STRING Example: "b16a160053a241565aeeb68ad4395975"
+  - `producer`: STRING Available options: ['Skia/PDF m126 Google Docs Renderer']
+  - `text`: STRING Example: "La cocina mediterránea, reconocida mundialmente po"
+  - `source`: STRING Available options: ['pdfs_otros\\Temas_variados.pdf']
+  - `page`: INTEGER Min: 0, Max: 1
+  - `total_pages`: INTEGER Min: 2, Max: 2
+  - `title`: STRING Available options: ['Temas_variados']
+  - `creationDate`: STRING Available options: ['']
+- **Lugar**
+  - `id`: STRING Available options: ['mundo']
+- **Personas**
+  - `id`: STRING Available options: ['fanáticos']
+- **Occupation**
+  - `id`: STRING Available options: ['software engineer']
+Relationship properties:
+
+The relationships:
+(:Concept)-[:DESTACA_POR_EL_EMPLEO_DE]->(:Concept)
+(:Concept)-[:SE_COMBINAN_CON]->(:Concept)
+(:Concept)-[:TIENE_COMO_SELLO_DISTINTIVO]->(:Concept)
+(:Concept)-[:PREVENCIÓN]->(:Concept)
+(:Concept)-[:PROMETE_UNA_EXHIBICIÓN_DE]->(:Concept)
+(:Concept)-[:ENVUELVE]->(:Place)
+(:Concept)-[:EN]->(:Concept)
+(:Concept)-[:DE]->(:Concept)
+(:Concept)-[:LLENO_DE]->(:Concept)
+(:Concept)-[:OCURRE_EN]->(:Event)
+(:Concept)-[:PENDE_DE_UN_HILO_EN]->(:Event)
+(:Concept)-[:SURGE_EN]->(:Place)
+(:Concept)-[:SE_ADAPTAN_Y_MUTAN_EN]->(:Concept)
+(:Concept)-[:EXPERIMENTAN]->(:Concept)
+(:Concept)-[:ADAPTACIÓN_EN]->(:Concept)
+(:Concept)-[:DIFERENTES_A_LAS_QUE_SE_OBSERVAN_EN]->(:Concept)
+(:Concept)-[:DISTINTAS_A_LAS_OBSERVADAS_EN]->(:Concept)
+(:Concept)-[:EXPANSIÓN]->(:Concept)
+(:Concept)-[:SE_ADAPTA_Y_EVOLUCIONA_EN]->(:Concept)
+(:Concept)-[:PLANTEA]->(:Concept)
+(:Concept)-[:IMPACTO_EN]->(:Concept)
+(:Concept)-[:SOBRE]->(:Concept)
+(:Concept)-[:IMPORTANCIA]->(:Concept)
+(:Concept)-[:CULTIVA]->(:Concept)
+(:Concept)-[:REÚNE_EN_TORNO_A]->(:Concept)
+(:Concept)-[:FOMENTA]->(:Concept)
+(:Concept)-[:JUEGA_UN_PAPEL_CRUCIAL_EN]->(:Concept)
+(:Concept)-[:MAYOR_SERÁ]->(:Concept)
+(:Concept)-[:PARTICIPEN_EN]->(:Concept)
+(:Concept)-[:POSIBILIDAD_DE_REDUCIR]->(:Concept)
+(:Concept)-[:SE_VISLUMBRA_COMO_UN_PASO_SIGNIFICATIVO_HACIA]->(:Concept)
+(:Concept)-[:REPRESENTAN_UNA_ALTERNATIVA_PROMETEDORA_A]->(:Concept)
+(:Concept)-[:FUNCIONAMIENTO_SILENCIOSO_Y_EFICIENTE]->(:Concept)
+(:Concept)-[:PROMETEN_CREAR_MÁS_HABITABLES_Y_SALUDABLES]->(:Concept)
+(:Concept)-[:POSIBILIDAD_DE_MITIGAR_LOS_IMPACTOS_DE]->(:Concept)
+(:Concept)-[:MÁS_SOSTENIBLE_Y_RESPETUOSO_CON]->(:Concept)
+(:Food)-[:ES_PARTE_DE]->(:Food)
+(:Event)-[:ENTRE]->(:Organization)
+(:Event)-[:LLEVA_A]->(:Person)
+(:Organization)-[:SE_ENFRENTA_A]->(:Organization)
+(:Organization)-[:PARTICIPA_EN]->(:Event)
+(:Person)-[:SE_PREPARAN_PARA_PRESENCIAR]->(:Place)
+(:Person)-[:WORKS_FOR]->(:Organization)
+(:Person)-[:LIVES_IN]->(:Place)
+(:Person)-[:HAS_OCCUPATION]->(:Occupation)
+(:Person)-[:WORKS_AT]->(:Organization)
+(:Person)-[:WORKS_AS]->(:Occupation)
+(:Person)-[:KNOWS]->(:Person)
+(:Organism)-[:SE_ADAPTAN_Y_MUTAN_EN]->(:Concept)
+(:Organism)-[:EXPERIMENTAN]->(:Concept)
+(:Organism)-[:ADAPTACIÓN_EN]->(:Concept)
+(:Document)-[:MENTIONS]->(:Concept)
+(:Document)-[:MENTIONS]->(:Food)
+(:Document)-[:MENTIONS]->(:Event)
+(:Document)-[:MENTIONS]->(:Organization)
+(:Document)-[:MENTIONS]->(:Personas)
+(:Document)-[:MENTIONS]->(:Lugar)
+(:Document)-[:MENTIONS]->(:Place)
+(:Document)-[:MENTIONS]->(:Person)
+(:Document)-[:MENTIONS]->(:Organism)
+(:Document)-[:MENTIONS]->(:Occupation)
+(:Personas)-[:ESPERAN_ANSIOSAMENTE_EN]->(:Lugar)

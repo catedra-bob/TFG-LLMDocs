@@ -1,0 +1,258 @@
+Pregunta:¿Qué beneficios para la salud tiene la cocina mediterránea?
+cypher
+MATCH (c:Concept {id: "cocina mediterránea"})-[:IMPORTANCIA]->(beneficio:Concept)
+RETURN beneficio.id
+Context:[]
+Nodes: []
+---
+Pregunta:¿Qué beneficios para la salud tiene la cocina mediterránea?
+cypher
+MATCH (c:Concept {id: "cocina mediterránea"})<-[:IMPORTANCIA]-(beneficio:Concept)
+RETURN beneficio.idContext:[]
+Nodes: []
+---
+Pregunta:¿Qué beneficios para la salud tiene la cocina mediterránea?
+cypher
+MATCH (c:Concept {id: "cocina mediterránea"})-[:PREVENCIÓN]->(beneficio:Concept)
+RETURN beneficio.id
+Context:[]
+Nodes: []
+---
+Pregunta:¿Qué beneficios para la salud tiene la cocina mediterránea?
+cypher
+MATCH (c:Concept {id: "cocina mediterránea"})<-[:PREVENCIÓN]-(beneficio:Concept)
+RETURN beneficio.idContext:[]
+Nodes: []
+---
+Pregunta:¿Qué beneficios para la salud tiene la cocina mediterránea?
+cypher
+MATCH (c:Concept {id: "cocina mediterránea"})-[:FOMENTA]->(beneficio:Concept)
+RETURN beneficio.id
+Context:[]
+Nodes: []
+---
+Pregunta:¿Cuál es el sello distintivo de la cocina mediterránea?
+cypher
+MATCH (c:Concept {id: "cocina mediterránea"})-[:TIENE_COMO_SELLO_DISTINTIVO]->(s:Concept)
+RETURN s.id
+Context:[{'s.id': 'sabores vibrantes'}, {'s.id': 'simplicidad'}]
+Nodes: ['sabores vibrantes', 'simplicidad']
+---
+Pregunta:¿Quién se enfrenta al Real Madrid?
+cypher
+MATCH (o:Organization {id: 'real madrid'})<-[:SE_ENFRENTA_A]-(opponent:Organization)
+RETURN opponent.id
+Context:[]
+Nodes: []
+---
+Pregunta:¿Quién se enfrenta al Real Madrid?
+cypher
+MATCH (o:Organization {id: 'real madrid'})-[:SE_ENFRENTA_A]->(opponent:Organization)
+RETURN opponent.idContext:[{'opponent.id': 'bayern de múnich'}]
+Nodes: ['bayern de múnich']
+---
+Pregunta:¿Qué se espera del partido?
+cypher
+MATCH (e:Event {id: 'partido crucial'})-[:LLEVA_A]->(p:Person)
+RETURN p.id
+Context:[{'p.id': 'espectadores'}]
+Nodes: ['espectadores']
+---
+Pregunta:¿Cuál es el desafío relacionado con las bacterias en la estación espacial?
+cypher
+MATCH (o:Organism {id: 'bacterias'})-[:EXPERIMENTAN]->(c:Concept)-[:SURGE_EN]->(p:Place {id: 'estación espacial'})
+RETURN c.id AS desafio
+Context:[]
+Nodes: []
+---
+Pregunta:¿Cuál es el desafío relacionado con las bacterias en la estación espacial?
+cypher
+MATCH (o:Organism {id: 'bacterias'})<-[:EXPERIMENTAN]-(c:Concept)<-[:SURGE_EN]-(p:Place {id: 'estación espacial'})
+RETURN c.id AS desafioContext:[]
+Nodes: []
+---
+Pregunta:¿Cuál es el desafío relacionado con las bacterias en la estación espacial?
+cypher
+MATCH (o:Organism {id: 'bacterias'})-[:EXPERIMENTAN]->(c:Concept)-[:ADAPTACIÓN_EN]->(p:Place {id: 'estación espacial'})
+RETURN c.id AS desafio
+Context:[]
+Nodes: []
+---
+Pregunta:¿Cuál es el desafío relacionado con las bacterias en la estación espacial?
+cypher
+MATCH (o:Organism {id: 'bacterias'})<-[:EXPERIMENTAN]-(c:Concept)<-[:ADAPTACIÓN_EN]-(p:Place {id: 'estación espacial'})
+RETURN c.id AS desafioContext:[]
+Nodes: []
+---
+Pregunta:¿Cuál es el desafío relacionado con las bacterias en la estación espacial?
+cypher
+MATCH (o:Organism {id: 'bacterias'})-[:SE_ADAPTAN_Y_MUTAN_EN]->(c:Concept)-[:SURGE_EN]->(p:Place {id: 'estación espacial'})
+RETURN c.id AS desafio
+Context:[]
+Nodes: []
+---
+Pregunta:¿Qué plantea el fenómeno de las mutaciones bacterianas?
+cypher
+MATCH (c:Concept {id: "fenómeno de las mutaciones bacterianas"})-[:PLANTEA]->(result:Concept)
+RETURN result.id
+Context:[]
+Nodes: []
+---
+Pregunta:¿Qué plantea el fenómeno de las mutaciones bacterianas?
+cypher
+MATCH (c:Concept {id: "fenómeno de las mutaciones bacterianas"})<-[:PLANTEA]-(result:Concept)
+RETURN result.idContext:[]
+Nodes: []
+---
+Pregunta:¿Qué plantea el fenómeno de las mutaciones bacterianas?
+cypher
+MATCH (c:Organism {id: "bacterias"})-[:SE_ADAPTAN_Y_MUTAN_EN]->(result:Concept)-[:PLANTEA]->(plantea:Concept)
+RETURN plantea.id
+Context:[]
+Nodes: []
+---
+Pregunta:¿Qué plantea el fenómeno de las mutaciones bacterianas?
+cypher
+MATCH (c:Organism {id: "bacterias"})<-[:SE_ADAPTAN_Y_MUTAN_EN]-(result:Concept)<-[:PLANTEA]-(plantea:Concept)
+RETURN plantea.idContext:[]
+Nodes: []
+---
+Pregunta:¿Qué plantea el fenómeno de las mutaciones bacterianas?
+cypher
+MATCH (o:Organism {id: "bacterias"})-[:SE_ADAPTAN_Y_MUTAN_EN]->(c:Concept)-[:PLANTEA]->(result:Concept)
+RETURN result.id
+Context:[]
+Nodes: []
+---
+Pregunta:¿Cómo fortalece compartir una comida los lazos familiares?
+cypher
+MATCH (c:Concept {id: "compartir una comida"})-[:FOMENTA]->(l:Concept {id: "lazos familiares"})
+RETURN c, l
+Context:[]
+Nodes: []
+---
+Pregunta:¿Cómo fortalece compartir una comida los lazos familiares?
+cypher
+MATCH (c:Concept {id: "compartir una comida"})<-[:FOMENTA]-(l:Concept {id: "lazos familiares"})
+RETURN c, lContext:[]
+Nodes: []
+---
+Pregunta:¿Cómo fortalece compartir una comida los lazos familiares?
+cypher
+MATCH (c:Concept {id: "compartir una comida"})-[:FOMENTA]->(l:Concept {id: "lazos familiares"})
+RETURN c, l
+Context:[]
+Nodes: []
+---
+Pregunta:¿Cómo fortalece compartir una comida los lazos familiares?
+cypher
+MATCH (c:Concept {id: "compartir una comida"})<-[:FOMENTA]-(l:Concept {id: "lazos familiares"})
+RETURN c, lContext:[]
+Nodes: []
+---
+Pregunta:¿Cómo fortalece compartir una comida los lazos familiares?
+cypher
+MATCH (c:Concept {id: "compartir una comida"})-[:FOMENTA]->(l:Concept {id: "lazos familiares"})
+RETURN c, l
+Context:[]
+Nodes: []
+---
+Pregunta:¿Por qué se destaca la participación de más miembros en las reuniones familiares?
+cypher
+MATCH (c:Concept {id: "participación"})-[:DESTACA_POR_EL_EMPLEO_DE]->(m:Concept {id: "miembros"})-[:EN]->(r:Concept {id: "reuniones familiares"})
+RETURN c, m, r
+Context:[]
+Nodes: []
+---
+Pregunta:¿Por qué se destaca la participación de más miembros en las reuniones familiares?
+cypher
+MATCH (c:Concept {id: "participación"})<-[:DESTACA_POR_EL_EMPLEO_DE]-(m:Concept {id: "miembros"})<-[:EN]-(r:Concept {id: "reuniones familiares"})
+RETURN c, m, rContext:[]
+Nodes: []
+---
+Pregunta:¿Por qué se destaca la participación de más miembros en las reuniones familiares?
+cypher
+MATCH (c:Concept {id: "participación"})-[:MAYOR_SERÁ]->(m:Concept {id: "miembros"})-[:REÚNE_EN_TORNO_A]->(r:Concept {id: "reuniones familiares"})
+RETURN c, m, r
+Context:[]
+Nodes: []
+---
+Pregunta:¿Por qué se destaca la participación de más miembros en las reuniones familiares?
+cypher
+MATCH (c:Concept {id: "participación"})<-[:MAYOR_SERÁ]-(m:Concept {id: "miembros"})<-[:REÚNE_EN_TORNO_A]-(r:Concept {id: "reuniones familiares"})
+RETURN c, m, rContext:[]
+Nodes: []
+---
+Pregunta:¿Por qué se destaca la participación de más miembros en las reuniones familiares?
+cypher
+MATCH (c:Concept {id: "participación"})-[:MAYOR_SERÁ]->(m:Concept {id: "miembros"})-[:REÚNE_EN_TORNO_A]->(r:Concept {id: "reuniones familiares"})
+RETURN c, m, r
+Context:[]
+Nodes: []
+---
+Pregunta:¿Qué incertidumbre hay sobre los vehículos eléctricos?
+cypher
+MATCH (c:Concept {id: "incertidumbre"})-[:SOBRE]->(v:Concept {id: "vehículos eléctricos"})
+RETURN c, v
+Context:[]
+Nodes: []
+---
+Pregunta:¿Qué incertidumbre hay sobre los vehículos eléctricos?
+cypher
+MATCH (c:Concept {id: "incertidumbre"})<-[:SOBRE]-(v:Concept {id: "vehículos eléctricos"})
+RETURN c, vContext:[]
+Nodes: []
+---
+Pregunta:¿Qué incertidumbre hay sobre los vehículos eléctricos?
+cypher
+MATCH (c:Concept {id: "incertidumbre"})-[:SOBRE]->(v:Concept {id: "vehículos eléctricos"})
+RETURN c, v
+Context:[]
+Nodes: []
+---
+Pregunta:¿Qué incertidumbre hay sobre los vehículos eléctricos?
+cypher
+MATCH (c:Concept {id: "incertidumbre"})<-[:SOBRE]-(v:Concept {id: "vehículos eléctricos"})
+RETURN c, vContext:[]
+Nodes: []
+---
+Pregunta:¿Qué incertidumbre hay sobre los vehículos eléctricos?
+cypher
+MATCH (c:Concept {id: "incertidumbre"})-[:SOBRE]->(v:Concept {id: "vehículos eléctricos"})
+RETURN c, v
+Context:[]
+Nodes: []
+---
+Pregunta:¿Por qué los vehículos eléctricos son una alternativa a los de combustión fósil?
+cypher
+MATCH (c1:Concept {id: "vehículos eléctricos"})-[:REPRESENTAN_UNA_ALTERNATIVA_PROMETEDORA_A]->(c2:Concept {id: "combustión fósil"})
+RETURN c1, c2
+Context:[]
+Nodes: []
+---
+Pregunta:¿Por qué los vehículos eléctricos son una alternativa a los de combustión fósil?
+cypher
+MATCH (c1:Concept {id: "vehículos eléctricos"})<-[:REPRESENTAN_UNA_ALTERNATIVA_PROMETEDORA_A]-(c2:Concept {id: "combustión fósil"})
+RETURN c1, c2Context:[]
+Nodes: []
+---
+Pregunta:¿Por qué los vehículos eléctricos son una alternativa a los de combustión fósil?
+cypher
+MATCH (c1:Concept {id: "vehículos eléctricos"})-[:REPRESENTAN_UNA_ALTERNATIVA_PROMETEDORA_A]->(c2:Concept {id: "vehículos de combustión fósil"})
+RETURN c1, c2
+Context:[]
+Nodes: []
+---
+Pregunta:¿Por qué los vehículos eléctricos son una alternativa a los de combustión fósil?
+cypher
+MATCH (c1:Concept {id: "vehículos eléctricos"})<-[:REPRESENTAN_UNA_ALTERNATIVA_PROMETEDORA_A]-(c2:Concept {id: "vehículos de combustión fósil"})
+RETURN c1, c2Context:[]
+Nodes: []
+---
+Pregunta:¿Por qué los vehículos eléctricos son una alternativa a los de combustión fósil?
+cypher
+MATCH (c1:Concept {id: "vehículos eléctricos"})-[:REPRESENTAN_UNA_ALTERNATIVA_PROMETEDORA_A]->(c2:Concept {id: "vehículos de combustión fósil"})
+RETURN c1, c2
+Context:[]
+Nodes: []
+---
