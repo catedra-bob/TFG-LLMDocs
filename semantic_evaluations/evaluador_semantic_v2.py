@@ -3,7 +3,8 @@ from langchain_community.document_loaders import PyMuPDFLoader
 import sys
 
 
-pdf_path = "semantic_evaluations\Titulo II.pdf"
+pdf_path = "pdfs_evaluaciones\Titulo II.pdf"
+# pdf_path = "pdfs_evaluaciones\exposicion_de_motivos.pdf"
 document = []
 loader = PyMuPDFLoader(str(pdf_path))
 document = loader.load()
@@ -11,7 +12,7 @@ document = loader.load()
 flag = int(sys.argv[1])
 
 if (flag == 0):
-    with open("semantic_evaluations/pdf_langchain_chunks.txt", 'w', encoding='utf-8') as f:
+    with open("outputs/pdf_langchain_chunks.txt", 'w', encoding='utf-8') as f:
         all_text = ""
         for page_num in range(len(document)):
             all_text += document[page_num].page_content
@@ -22,7 +23,7 @@ if (flag == 0):
             f.writelines(str(chunk))
             f.write("\n---\n")
 elif (flag == 1):
-    with open("semantic_evaluations/pdf_gpt_chunks.txt", 'w', encoding='utf-8') as f:
+    with open("outputs/pdf_gpt_chunks.txt", 'w', encoding='utf-8') as f:
         llm_splitter = LLMTextSplitter(count_tokens=True)
         chunks = llm_splitter.split_documents(document) # Le afectan los saltos de página por ser documentos
 

@@ -1,9 +1,9 @@
 import os
 
-os.environ["OPENAI_API_KEY"] = "sk-proj-S6N1LP3ePLPBDcRcU77uT3BlbkFJMsihwy3eQsyueEEIVKiX"
+os.environ["OPENAI_API_KEY"] = ""
 os.environ["NEO4J_URI"] = "bolt://localhost:7687"
 os.environ["NEO4J_USERNAME"] = "neo4j"
-os.environ["NEO4J_PASSWORD"] = "q7dUtnqP"
+os.environ["NEO4J_PASSWORD"] = ""
 
 from langchain_community.graphs import Neo4jGraph
 from langchain_experimental.graph_transformers import LLMGraphTransformer
@@ -99,14 +99,15 @@ def rag_v1_store_embeddings(chunks: List[Document], collection_name: str):
 
 
 def rag_v2_store_graphs(chunks: List[Document]):
-    neo4j_db = Neo4jGraph(enhanced_schema=True)
+    # Creación del grafo
     llm_transformer = LLMGraphTransformer(llm=GENERATIVE_MODEL_T0, prompt=GRAPH_GENERATION_PROMPT)
+    graph_documents = llm_transformer.convert_to_graph_documents(chunks)
+
+    # Almacenamiento del grafo
+    neo4j_db = Neo4jGraph(enhanced_schema=True)
 
     neo4j_db.query("MATCH (n) DETACH DELETE n")
     neo4j_db.refresh_schema()
-
-    graph_documents = llm_transformer.convert_to_graph_documents(chunks)
-
     neo4j_db.add_graph_documents(graph_documents, baseEntityLabel=True, include_source=True)
     neo4j_db.query("MATCH (n) SET n.id = toLower(n.id)")
 

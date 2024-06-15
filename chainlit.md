@@ -12,5 +12,5 @@ uLLM es un sistema de preguntas y respuestas.
 
 ## 📚 Los documentos
 
-- **Documentos económicos:** 
-- **Documentos Anaga:** 
+- **Documentos económicos** 
+- **Documentos Anaga** 

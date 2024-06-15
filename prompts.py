@@ -10,7 +10,7 @@ LLM_SPLITTER_PROMPT = "Trocea el siguiente texto siguiendo la técnica de trocea
 SYSTEM_LABEL_PROMPT = "Responde SÓLO con el nombre de la etiqueta, sin añadir la descripción"
 
 USER_LABEL_PROMPT = (
-    "Eres un experto en entendiendo la normativa de la Universidad de La Laguna.\n"
+    "Eres un experto entendiendo la normativa de la Universidad de La Laguna.\n"
     "Tu trabajo es etiquetar correctamente el siguiente extracto de la normativa con una de las siguientes etiquetas:\n"
         "Introducción: Una sección introductoria que proporciona una visión general del propósito y alcance de las bases de ejecución presupuestaria.\n",
         "Marco Legal: Una descripción de las leyes, reglamentos y normativas que rigen la gestión presupuestaria de la entidad.\n",

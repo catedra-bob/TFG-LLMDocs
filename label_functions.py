@@ -1,6 +1,6 @@
 import os
 
-os.environ["OPENAI_API_KEY"] = "sk-proj-S6N1LP3ePLPBDcRcU77uT3BlbkFJMsihwy3eQsyueEEIVKiX"
+os.environ["OPENAI_API_KEY"] = ""
 
 from openai import OpenAI
 from langchain_community.document_loaders import DataFrameLoader
@@ -58,7 +58,7 @@ def label_chunks_autolabel(chunks):
 # Etiqueta los chunks con OpenAI
 def label_chunks_llm(chunks):
     # model = OpenAI(base_url="http://openai.ull.es:8080/v1", api_key="lm-studio")
-    model = OpenAI(api_key="sk-proj-S6N1LP3ePLPBDcRcU77uT3BlbkFJMsihwy3eQsyueEEIVKiX")
+    model = OpenAI()
 
     i = 0
     for chunk in chunks:

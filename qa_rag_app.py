@@ -1,9 +1,9 @@
 import os
 
-os.environ["OPENAI_API_KEY"] = "sk-proj-S6N1LP3ePLPBDcRcU77uT3BlbkFJMsihwy3eQsyueEEIVKiX"
+os.environ["OPENAI_API_KEY"] = ""
 os.environ["NEO4J_URI"] = "bolt://localhost:7687"
 os.environ["NEO4J_USERNAME"] = "neo4j"
-os.environ["NEO4J_PASSWORD"] = "q7dUtnqP"
+os.environ["NEO4J_PASSWORD"] = ""
 
 from langchain_community.graphs import Neo4jGraph
 from langchain_core.runnables import RunnableParallel, RunnablePassthrough
@@ -26,14 +26,15 @@ import chromadb
 import re
 
 
+GENERATIVE_MODEL = ChatOpenAI(model="gpt-4o", streaming=True)
+GENERATIVE_MODEL_T0 = ChatOpenAI(model_name="gpt-4o", temperature=0)
+EMBEDDING_MODEL = OpenAIEmbeddings()
+
+
 PDF_STORAGE_PATH = Path("./pdfs_economicos") # Path("./pdfs_otros") # Path("./pdfs_anaga")
 COLLECTION_NAME = "coleccion_economicos" # "coleccion_otros" # "coleccion_anaga"
 RAG_VERSION = 1
-PREPROCESS = False
-
-GENERATIVE_MODEL = ChatOpenAI(model="gpt-4o", streaming=True)
-GENERATIVE_MODEL_T0 = ChatOpenAI(model_name="gpt-4o", temperature=0)
-EMBEDDINGS_MODEL = OpenAIEmbeddings()
+PREPROCESS = True
 
 
 if (PREPROCESS):
@@ -64,7 +65,7 @@ def rag_v1_chain():
     chroma_db = Chroma(
         client=chroma_client,
         collection_name=COLLECTION_NAME,
-        embedding_function=EMBEDDINGS_MODEL,
+        embedding_function=EMBEDDING_MODEL,
     )
 
     retriever = chroma_db.as_retriever(
